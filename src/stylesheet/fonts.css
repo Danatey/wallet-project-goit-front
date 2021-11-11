@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'Circe Bold';
+  src: url('../assets/fonts/circe/circe_bold.eot'); /* IE 9 Compatibility Mode */
+  src: url('../assets/fonts/circe/circe_bold.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE < 9 */ url('../assets/fonts/circe/circe_bold.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('../assets/fonts/circe/circe_bold.woff')
+      format('woff'),
+    /* Firefox >= 3.6, any other modern browser */
+      url('../assets/fonts/circe/circe_bold.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+      url('../assets/fonts/circe/circe_bold.svg#circe_bold') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+@font-face {
+  font-family: 'Circe';
+  src: url('../assets/fonts/circe/circe.eot'); /* IE 9 Compatibility Mode */
+  src: url('../assets/fonts/circe/circe.eot?#iefix') format('embedded-opentype'),
+    /* IE < 9 */ url('../assets/fonts/circe/circe.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('../assets/fonts/circe/circe.woff')
+      format('woff'),
+    /* Firefox >= 3.6, any other modern browser */
+      url('../assets/fonts/circe/circe.ttf') format('truetype'),
+    /* Safari, Android, iOS */ url('../assets/fonts/circe/circe.svg#circe')
+      format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins/');
+  src: local('Poppins Regular'), local('Poppins-Regular'),
+    url('../assets/fonts/Poppins/?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/Poppins/Poppins-Regular.woff2') format('woff2'),
+    url('../assets/fonts/Poppins/Poppins-Regular.woff') format('woff'),
+    url('../assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins/Poppins-Bold.eot');
+  src: local('Poppins Bold'), local('Poppins-Bold'),
+    url('../assets/fonts/Poppins/Poppins-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('../assets/fonts/Poppins/Poppins-Bold.woff2') format('woff2'),
+    url('../assets/fonts/Poppins/Poppins-Bold.woff') format('woff'),
+    url('../assets/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
