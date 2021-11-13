@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import HomeTab from "./components/HomeTab";
 import DiagramTab from "./components/DiagramTab";
+import Table from './components/Table'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegistrationPage />} />
       </Routes>
+      <Table/>
     </Container>
   );
 }
