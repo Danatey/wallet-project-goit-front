@@ -5,7 +5,7 @@ import Navigation from "../../components/Navigation";
 const DashboardPage = () => {
   return (
     <>
-      <Header />
+      <Header name="Имя" />
       <main>
         <aside>
           <Navigation />

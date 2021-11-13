@@ -1,0 +1,59 @@
+@import "../../stylesheet/vars";
+
+.Header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.Header__logo-text {
+  margin-left: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  //   font-family: "Poplin"
+
+  @media screen and (min-width: $TabletWidth) {
+    font-size: 30px;
+    margin-left: 20px;
+  }
+}
+
+.Header__logout {
+  display: flex;
+  color: #bdbdbd;
+  font-size: 18px;
+  height: 30px;
+  line-height: 30px;
+  //   font-family: "Circle"
+}
+
+.Header__username {
+  margin-right: 10px;
+
+  @media screen and (min-width: $TabletWidth) {
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 1px solid;
+  }
+}
+
+.Header__link {
+  display: flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.Header__logout-text {
+  padding-left: 10px;
+
+  @media screen and (max-width: $MaxMobileWidth) {
+    display: none;
+  }
+}

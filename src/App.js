@@ -6,8 +6,6 @@ import RegistrationPage from "./pages/RegistrationPage";
 import HomeTab from "./components/HomeTab";
 import DiagramTab from "./components/DiagramTab";
 
-import "./App.css";
-
 function App() {
   return (
     <Container>
