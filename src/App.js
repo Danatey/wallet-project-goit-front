@@ -2,11 +2,11 @@ import { Routes, Route } from "react-router-dom";
 import Container from "./components/Container";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
-import RegistrationPage from "./pages/RegistrationPage";
+// import RegistrationPage from "./pages/RegistrationPage";
 import HomeTab from "./components/HomeTab";
 import DiagramTab from "./components/DiagramTab";
 
-import "./App.css";
+import "./App.scss";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route path="diagram" element={<DiagramTab />} />
         </Route>
         <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegistrationPage />} />
+        {/* <Route path="register" element={<RegistrationPage />} /> */}
       </Routes>
     </Container>
   );
