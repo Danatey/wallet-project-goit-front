@@ -6,6 +6,7 @@ import RegistrationPage from './pages/RegistrationPage';
 import HomeTab from './components/HomeTab';
 import DiagramTab from './components/DiagramTab';
 import 'node_modules/modern-normalize/modern-normalize.css';
+import './stylesheet/fonts.css';
 import './common/main.scss';
 
 function App() {
