@@ -1,6 +1,7 @@
 import { Outlet } from "react-router";
 import Header from "../../components/Header";
 import Navigation from "../../components/Navigation";
+import Balance from "../../components/Balance";
 
 const DashboardPage = () => {
   return (
@@ -9,8 +10,10 @@ const DashboardPage = () => {
       <main>
         <aside>
           <Navigation />
-          {/* <Balance />
-          <Currency /> */}
+          {
+            <Balance />
+            /* <Currency /> */
+          }
         </aside>
         <article>
           <Outlet />

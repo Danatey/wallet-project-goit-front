@@ -1,15 +1,15 @@
 import React from "react";
-import style from "./Balance.scss";
-import { transactionSelector } from "../../redux/transactions";
+import "./Balance.scss";
+// import { transactionSelector } from "../..";
 
 const Balance = () => {
   // TODO getLastTransaction
-  const getLastResult = transactionSelector;
+  //   const getLastResult = transactionSelector.getLastTransaction;
 
   return (
-    <div className={style.container}>
-      <p className={style.title}>ВАШ БАЛАНС</p>
-      <p className={style.balance}>&#8372;{getLastResult?.balance || 0.0}</p>
+    <div class="container">
+      <p class="title">ВАШ БАЛАНС</p>
+      <p class="balance">&#8372; getLastResult || 0.0</p>
     </div>
   );
 };
