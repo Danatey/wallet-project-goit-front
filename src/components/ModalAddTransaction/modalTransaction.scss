@@ -1,0 +1,68 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background-color: rgba(#161616, 0.7);
+  z-index: 9999;
+  overflow: auto;
+}
+
+.modal-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  padding: 40px 80px 60px;
+  max-width: 540px;
+
+  background-color: #ffffff;
+  border: none;
+  border-radius: #161616;
+}
+
+.Modal-title {
+  margin: 0;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.checkBox {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  display: flex;
+
+  &-option {
+    margin: 0;
+  }
+}
+
+.money-date-container {
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.descriptionInput {
+  margin-bottom: 50px;
+}
+
+.btn-add {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+.btn-exit {
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+}

@@ -1,5 +1,12 @@
-const HomeTab = () => {
-  return <h1>Home Tab!</h1>;
-};
+import { ModalTransaction } from '../ModalAddTransaction'
 
-export default HomeTab;
+const HomeTab = () => {
+  return (
+    <>
+      <h1>Home Tab!</h1>
+      <ModalTransaction />
+    </>
+  )
+}
+
+export default HomeTab
