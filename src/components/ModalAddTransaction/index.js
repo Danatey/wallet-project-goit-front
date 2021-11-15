@@ -1,69 +1,71 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 // import { useDispatch } from 'react-redux'
 // import { addTransaction } from ''
-import Modal from 'react-modal'
-import Select from 'react-select'
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
-import { creditTransaction, debetTransaction } from './transactionType'
-import './modalTransaction.scss'
-import { format } from 'date-fns'
+import Modal from "react-modal";
+import Select from "react-select";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { creditTransaction, debetTransaction } from "./transactionType";
+import "./modalTransaction.scss";
+import { format } from "date-fns";
 
-Modal.setAppElement('#root')
+Modal.setAppElement("#root");
 
 const defaultState = {
   date: new Date(),
   type: false,
-  amount: '',
-  comment: '',
-  category: '',
-}
+  amount: "",
+  comment: "",
+  category: "",
+};
 
 export function ModalTransaction() {
-  const [transaction, setTransaction] = useState(defaultState)
+  const [transaction, setTransaction] = useState(defaultState);
 
-  const [modalIsOpen, setIsOpen] = React.useState(false)
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
-    setIsOpen(true)
+    setIsOpen(true);
   }
 
   function closeModal() {
-    setTransaction(defaultState)
-    setIsOpen(false)
+    setTransaction(defaultState);
+    setIsOpen(false);
   }
 
   const handleInputChange = (event) => {
-    const name = event.target.name
+    const name = event.target.name;
     const value =
-      event.target.type === 'checkbox'
+      event.target.type === "checkbox"
         ? event.target.checked
-        : event.target.value
-    updateTransaction(name, value)
-    if (event.target.type === 'checkbox') {
-      updateTransaction('category', '')
+        : event.target.value;
+    updateTransaction(name, value);
+    if (event.target.type === "checkbox") {
+      updateTransaction("category", "");
     }
-  }
+  };
 
   const updateTransaction = (name, value) => {
-    setTransaction((prev) => ({ ...prev, [name]: value }))
-  }
+    setTransaction((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     console.log({
       ...transaction,
-      type: transaction.type ? 'Расход' : 'Доход',
-      date: format(transaction.date, 'yyyy-MM-dd'),
-    })
+      type: transaction.type ? "Расход" : "Доход",
+      date: format(transaction.date, "yyyy-MM-dd"),
+    });
 
     // dispatch(addTransaction(...transaction))
-  }
+  };
 
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
+      <button className="btn-open" onClick={openModal}>
+        Open Modal
+      </button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -76,7 +78,7 @@ export function ModalTransaction() {
         <div className="checkBox">
           <p
             className={`checkBox-option ${
-              !transaction.type ? 'activGreen' : ''
+              !transaction.type ? "activGreen" : ""
             }`}
           >
             Доход
@@ -95,7 +97,7 @@ export function ModalTransaction() {
             {/* {value ? checkedLabel ?? label : label} */}
           </label>
           <p
-            className={`checkBox-option ${transaction.type ? 'activPink' : ''}`}
+            className={`checkBox-option ${transaction.type ? "activPink" : ""}`}
           >
             Расход
           </p>
@@ -107,7 +109,7 @@ export function ModalTransaction() {
               options={transaction.type ? creditTransaction : debetTransaction}
               placeholder="выберите категорию"
               onChange={(option) => {
-                updateTransaction('category', option.value)
+                updateTransaction("category", option.value);
               }}
             />
             <input
@@ -130,10 +132,10 @@ export function ModalTransaction() {
                 value={transaction.amount}
                 onChange={(e) => {
                   if (
-                    e.target.value === '' ||
+                    e.target.value === "" ||
                     /^[0-9]*(\.[0-9]?[0-9]?)?$/.test(e.target.value)
                   ) {
-                    handleInputChange(e)
+                    handleInputChange(e);
                   }
                 }}
                 required
@@ -144,7 +146,7 @@ export function ModalTransaction() {
               className="moneyInput"
               selected={transaction.date}
               onChange={(date) => {
-                updateTransaction('date', date)
+                updateTransaction("date", date);
               }}
               dateFormat="dd.MM.yyyy"
             />
@@ -170,5 +172,5 @@ export function ModalTransaction() {
         </button>
       </Modal>
     </div>
-  )
+  );
 }
