@@ -1,7 +1,7 @@
 import axios from "axios";
 import authActions from "./auth-actions";
 
-axios.defaults.baseURL = "";
+axios.defaults.baseURL = ""; //Подставить нужный URL
 
 const token = {
   set(token) {
