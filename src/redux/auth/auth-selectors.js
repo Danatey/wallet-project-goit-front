@@ -1,5 +1,2 @@
-// const getIsAuthenticated = state => ;
+// export const getIsAuthenticated = state => state.auth.;
 // const getUserName = state => ;
-
-// eslint-disable-next-line
-export default { getIsAuthenticated, getUserName };

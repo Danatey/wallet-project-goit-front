@@ -9,6 +9,9 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { financeReducer } from "./transactions";
+import { authReducer } from "./auth";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -18,11 +21,20 @@ const middleware = [
   }),
 ];
 
+const authPersistConfig = {
+  key: "auth",
+  storage,
+  whitelist: ["token"],
+};
+
 const store = configureStore({
   reducer: {
-    auth: persistReducer(),
+    finance: financeReducer,
+    auth: persistReducer(authPersistConfig, authReducer),
+
+    middleware,
+    devTools: process.env.NODE_ENV === "development",
   },
-  middleware,
 });
 
 const persistor = persistStore(store);
