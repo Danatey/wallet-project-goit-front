@@ -6,7 +6,6 @@ import RegistrationPage from "./pages/RegistrationPage";
 import HomeTab from "./components/HomeTab";
 import DiagramTab from "./components/DiagramTab";
 import Loader from "./components/Loader";
-// import './stylesheet/fonts.css';
 import "./common/main.scss";
 
 function App() {
