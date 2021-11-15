@@ -52,9 +52,10 @@
 
   &-option {
     margin: 0;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 16px;
     line-height: 1;
+    color: #e0e0e0;
   }
 }
 
@@ -191,6 +192,16 @@
     text-transform: uppercase;
     color: #4a56e2;
   }
+
+  &:hover,
+  &:focus {
+    background: #24cca7;
+    border: 1px solid #24cca7;
+
+    .btn-text {
+      color: #ffffff;
+    }
+  }
 }
 
 .btn-add {
@@ -200,6 +211,16 @@
 
   .btn-text {
     color: #ffffff;
+  }
+
+  &:hover,
+  &:focus {
+    background: #ffffff;
+    border: 1px solid #4a56e2;
+
+    .btn-text {
+      color: #4a56e2;
+    }
   }
 }
 

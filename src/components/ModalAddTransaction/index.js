@@ -146,7 +146,7 @@ export function ModalTransaction() {
               onChange={(date) => {
                 updateTransaction('date', date)
               }}
-              dateFormat="yyyy.MM.dd"
+              dateFormat="dd.MM.yyyy"
             />
           </div>
 
