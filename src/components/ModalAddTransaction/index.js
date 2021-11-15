@@ -11,13 +11,16 @@ import { format } from 'date-fns'
 
 Modal.setAppElement('#root')
 
+const defaultState = {
+  date: new Date(),
+  type: false,
+  amount: '',
+  comment: '',
+  category: '',
+}
+
 export function ModalTransaction() {
-  const [transaction, setTransaction] = useState({
-    date: new Date(),
-    type: false,
-    amount: '',
-    comment: '',
-  })
+  const [transaction, setTransaction] = useState(defaultState)
 
   const [modalIsOpen, setIsOpen] = React.useState(false)
 
@@ -26,6 +29,7 @@ export function ModalTransaction() {
   }
 
   function closeModal() {
+    setTransaction(defaultState)
     setIsOpen(false)
   }
 
@@ -36,6 +40,9 @@ export function ModalTransaction() {
         ? event.target.checked
         : event.target.value
     updateTransaction(name, value)
+    if (event.target.type === 'checkbox') {
+      updateTransaction('category', '')
+    }
   }
 
   const updateTransaction = (name, value) => {
@@ -67,31 +74,58 @@ export function ModalTransaction() {
         <h2 className="Modal-title">Добавить транзакцию</h2>
 
         <div className="checkBox">
-          <p className="checkBox-option">Доход</p>
-          <input
-            type="checkbox"
-            name="type"
-            onChange={handleInputChange}
-            checked={transaction.type}
-          />
-          <p className="checkBox-option">Расход</p>
+          <p
+            className={`checkBox-option ${
+              !transaction.type ? 'activGreen' : ''
+            }`}
+          >
+            Доход
+          </p>
+          <label className="switch">
+            <input
+              className="switch"
+              type="checkbox"
+              name="type"
+              onChange={handleInputChange}
+              checked={transaction.type}
+            />
+            <div className="back">
+              <div className="indicator" />
+            </div>
+            {/* {value ? checkedLabel ?? label : label} */}
+          </label>
+          <p
+            className={`checkBox-option ${transaction.type ? 'activPink' : ''}`}
+          >
+            Расход
+          </p>
         </div>
 
         <form id="transaction-form" onSubmit={handleSubmit}>
-          <Select
-            options={transaction.type ? creditTransaction : debetTransaction}
-            placeholder="выберите категорию"
-            onChange={(option) => {
-              updateTransaction('category', option.value)
-            }}
-            required
-          />
+          <div className="input-select-container">
+            <Select
+              options={transaction.type ? creditTransaction : debetTransaction}
+              placeholder="выберите категорию"
+              onChange={(option) => {
+                updateTransaction('category', option.value)
+              }}
+            />
+            <input
+              tabIndex={-1}
+              className="requiredHackInput"
+              type="text"
+              required
+              onChange={() => ({})}
+              value={transaction.category}
+            />
+          </div>
 
           <div className="money-date-container">
-            <label className="moneyInput">
+            <label>
               <input
+                className="moneyInput"
                 type="text"
-                placeholder="0,00"
+                placeholder="0.00"
                 name="amount"
                 value={transaction.amount}
                 onChange={(e) => {
@@ -107,15 +141,16 @@ export function ModalTransaction() {
             </label>
 
             <DatePicker
+              className="moneyInput"
               selected={transaction.date}
               onChange={(date) => {
                 updateTransaction('date', date)
               }}
-              dateFormat="yyyy-MM-dd"
+              dateFormat="yyyy.MM.dd"
             />
           </div>
 
-          <label>
+          <label className="lable">
             <input
               type="text"
               placeholder="Комментарий"
@@ -127,11 +162,11 @@ export function ModalTransaction() {
             />
           </label>
         </form>
-        <button type="submit" form="transaction-form" className="btn-add">
-          добавить
+        <button type="submit" form="transaction-form" className="btn btn-add">
+          <span className="btn-text">добавить</span>
         </button>
-        <button className="btn-exit" onClick={closeModal}>
-          отмена
+        <button className="btn btn-exit" onClick={closeModal}>
+          <span className="btn-text">отмена</span>
         </button>
       </Modal>
     </div>
