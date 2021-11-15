@@ -1,5 +1,7 @@
 import { React, Component } from "react";
+import { connect } from "react-redux";
 import MainButton from "../MainButton";
+import { authOperations } from "../../redux/auth";
 import "./LoginForm.scss";
 import "../MainButton/MainButton.scss";
 
@@ -184,4 +186,9 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+const mapDispatchToProps = {
+  onLogin: authOperations.logIn,
+  onRegister: authOperations.register,
+};
+
+export default connect(null, mapDispatchToProps)(LoginForm);
