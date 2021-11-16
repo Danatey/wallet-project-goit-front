@@ -1,0 +1,78 @@
+.statsSheet {
+  background-color: var(--secondary-background-color);
+  display: flex;
+}
+
+.tr,
+td {
+  border-bottom: 0;
+
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px 0px #ffffff99;
+}
+.th,
+td {
+  margin: 0;
+
+  padding: 0.5rem;
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+table {
+  border-spacing: 0;
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px 0px #ffffff99;
+  width: 350px;
+}
+.rectangle {
+  display: inline-flex;
+  margin-right: 16px;
+}
+
+td:nth-child(even) div {
+  display: none;
+}
+thead {
+  height: 58px;
+  width: 350px;
+  border-radius: 30px;
+}
+thead tr {
+  width: 350px;
+  border-radius: 30px;
+  background-color: var(--secondary-text-color);
+}
+/* .tableHeader {
+  background-color: var(--secondary-text-color);
+  width: 350px;
+  border-radius: 30px;
+} */
+
+.th {
+  border-radius: 30px;
+}
+
+.dateFilter {
+  display: flex;
+  justify-content: flex-start;
+}
+.table {
+  width: 350px;
+  margin-top: 95px;
+}
+input {
+  display: block;
+  width: 166px;
+  height: 50px;
+  border: 1px solid var(--primary-text-color);
+  box-sizing: border-box;
+  border-radius: 30px;
+  font-size: 16px;
+  font-family: Circe;
+  padding-left: 21px;
+  margin-bottom: 20px;
+  margin-right: 19px;
+}
+/* .react-datepicker__input-container {
+  margin-right: 19px;
+} */

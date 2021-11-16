@@ -1,0 +1,60 @@
+.Button {
+  display: inline-block;
+  height: 50px;
+  width: 280px;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+
+  border-radius: 20px;
+  text-align: center;
+
+  transition: 100ms linear, color 100ms linear, border-color 100ms linear;
+
+  &.accent {
+    background-color: #24cca7;
+    color: #ffffff;
+    border-color: #24cca7;
+
+    &:hover {
+      background-color: #24cca7;
+      border-color: #24cca7;
+    }
+  }
+}
+
+.register-btn {
+  @extend .Button;
+  background-color: #24cca7;
+  border: transparent;
+
+  &.accent {
+    box-shadow: 1px 3px 5px rgb(9, 126, 120);
+  }
+
+  &:hover {
+    background-color: #05bd95;
+  }
+}
+
+.main-btn {
+  @extend .Button;
+  color: #4a56e2;
+  background-color: #ffffff;
+  border: 2px solid #4a56e2;
+
+  &:hover {
+    color: #ffffff;
+    background-color: #4a56e2;
+  }
+}
+
+.mr-20 {
+  margin-bottom: 20px;
+}
