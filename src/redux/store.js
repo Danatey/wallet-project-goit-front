@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { financeReducer } from "./transactions";
+import { transactionsReducer } from "./transactions";
 import { authReducer } from "./auth";
 
 const middleware = [
@@ -29,8 +29,8 @@ const authPersistConfig = {
 
 const store = configureStore({
   reducer: {
-    transactions: financeReducer,
     auth: persistReducer(authPersistConfig, authReducer),
+    transactions: transactionsReducer,
 
     middleware,
     devTools: process.env.NODE_ENV === "development",
