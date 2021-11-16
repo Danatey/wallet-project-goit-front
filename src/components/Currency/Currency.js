@@ -1,5 +1,4 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -8,65 +7,42 @@ import {
   TableRow,
   TableCell,
 } from "@material-ui/core";
-import { useMediaQuery } from "react-responsive";
 import "./Currency.scss";
-// import fetch from "../"
+// import fetchData from "../"
 
-const tableStyles = makeStyles({
-  table: {
-    minWidth: 280,
-    maxWidth: 350,
-    maxHeight: 347,
-    borderRadius: 30,
-    background: "4A56E2",
-  },
-  head: {
-    background: "FFFFFF",
-    opacity: 0.2,
-    borderRadius: "30px 30px 0px 0px",
-  },
-  header: {
-    fontFamily: "Circe, sans-serif",
-    fontSize: 18,
-    fontWeight: 700,
-    paddingTop: 11,
-    paddingBottom: 12,
-    color: "FFFFFF",
-  },
-  // body:{},
-  currency: {
-    fontFamily: "Circe, sans-serif",
-    fontSize: 16,
-    fontWeight: 400,
-    paddingTop: 10,
-    paddingBottom: 10,
-    color: "FFFFFF",
-  },
-  buy: {
-    fontFamily: "Circe, sans-serif",
-    fontSize: 16,
-    fontWeight: 400,
-    color: "FFFFFF",
-  },
-  sell: {
-    fontFamily: "Circe, sans-serif",
-    fontSize: 16,
-    fontWeight: 400,
-    color: "FFFFFF",
-  },
-});
+const fetchData = async () => {
+  try {
+    const response = await fetch(
+      "https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11"
+    );
+    const rates = response.json();
+    return rates;
+  } catch (error) {
+    throw error;
+  }
+};
 
 function Currency() {
-  const isTabletOrDesktop = useMediaQuery({ minWidth: 1280 });
+  const [currency, setCurrency] = useState([]);
+
+  const fetch = async () => {
+    try {
+      const data = await fetchData();
+      const sliced = data.slice(0, -1);
+      setCurrency([...sliced]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetch();
+  }, []);
 
   return (
     <>
-      <div>
-        <TableContainer
-          class="table"
-          width={isTabletOrDesktop ? 350 : 280}
-          height={174}
-        >
+      <div class="currency-sidebar">
+        <TableContainer class="table">
           <Table size="small">
             <TableHead class="head">
               <TableRow>
@@ -80,11 +56,24 @@ function Currency() {
               </TableRow>
             </TableHead>
             <TableBody class="body">
-              <TableRow>
-                <TableCell align="left" class="currency"></TableCell>
-                <TableCell align="center" class="buy"></TableCell>
-                <TableCell align="center" class="sell"></TableCell>
-              </TableRow>
+              {currency?.map((element) => (
+                <TableRow key={element.ccy}>
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    align="left"
+                    class="currency"
+                  >
+                    {element.ccy}
+                  </TableCell>
+                  <TableCell align="center" class="buy">
+                    {Math.floor(element.buy * 100) / 100}
+                  </TableCell>
+                  <TableCell align="center" class="sell">
+                    {Math.floor(element.sale * 100) / 100}
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>

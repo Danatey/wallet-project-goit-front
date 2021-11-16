@@ -8,7 +8,31 @@
     border-radius: 30px;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (min-width: 1280px) {
+    .container {
+        margin-bottom: 0px;
+    }
+    .title {
+        font-family: Circe, sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0;
+        text-transform: uppercase;
+        color: #A6A6A6;
+    }
+    .balance {
+        font-family: Poppins, sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 45px;
+        margin: 0;
+        align-items: center;
+        color: #000000;
+    }  
+}
+
+@media screen and (max-width: 1279px) {
 .container {
     margin-bottom: 0px;
 }

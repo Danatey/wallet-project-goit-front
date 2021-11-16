@@ -9,7 +9,8 @@ const Balance = () => {
   return (
     <div class="container">
       <p class="title">ВАШ БАЛАНС</p>
-      <p class="balance">&#8372; getLastResult || 0.0</p>
+      {/* <p class="balance">&#8372; getLastResult || 0.0</p> */}
+      <p class="balance">&#8372; Amount</p>
     </div>
   );
 };
