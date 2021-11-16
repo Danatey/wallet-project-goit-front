@@ -4,7 +4,7 @@ import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 // import { ColumnFilter } from './ColumnFilter'
 import { FaCaretSquareUp, FaCaretSquareDown } from "react-icons/fa";
-import { ModalTransaction } from "../ModalAddTransaction";
+import ModalTransaction from "../ModalAddTransaction";
 
 import "./table.scss";
 
@@ -75,4 +75,4 @@ const HomeTab = () => {
   );
 };
 
-export default HomeTab
+export default HomeTab;
