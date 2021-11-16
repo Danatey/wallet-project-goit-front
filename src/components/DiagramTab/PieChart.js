@@ -5,6 +5,7 @@ class Chart extends PureComponent {
   render() {
     return (
       <div>
+        <h2>Статистика</h2>
         <PieChart width={350} height={380} onMouseEnter={this.onPieEnter}>
           <Pie
             data={this.props.data}
