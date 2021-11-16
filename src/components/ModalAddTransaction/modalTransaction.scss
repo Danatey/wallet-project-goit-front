@@ -1,0 +1,251 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background-color: rgba(#161616, 0.7);
+  z-index: 9999;
+  overflow: auto;
+}
+
+.modal-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  padding: 40px 80px 60px;
+  max-width: 540px;
+
+  background-color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  border-radius: #161616;
+}
+
+.Modal-title {
+  margin: 0;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+}
+
+// checkBox
+
+.checkBox {
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  justify-content: center;
+  // justify-content: space-around;
+
+  align-items: center;
+
+  &-option {
+    margin: 0;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    color: #e0e0e0;
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: #c5450a;
+
+  cursor: pointer;
+
+  .back {
+    position: relative;
+    width: 80px;
+    height: 40px;
+    // margin-right: 10px;
+    border-radius: 30px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    opacity: 1;
+
+    transition: background-color 200ms ease-in-out;
+
+    .indicator {
+      position: absolute;
+      top: -2px;
+      left: -1px;
+
+      width: 44px;
+      height: 44px;
+      background-color: #24cca7;
+      border-radius: 22px;
+
+      transition: left 250ms ease-in-out;
+    }
+  }
+
+  & > input {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+
+    &:checked {
+      & ~ .back {
+        background-color: rgba(#ffffff, 0.1);
+
+        .indicator {
+          left: 37px;
+
+          background-color: #ff6596;
+        }
+      }
+    }
+  }
+}
+
+.money-date-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.moneyInput {
+  height: 34px;
+  width: 190px;
+  font-size: 11px;
+  outline: none;
+  outline-offset: 0;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+
+  color: #000000;
+  text-align: center;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: #bdbdbd;
+  }
+}
+
+.descriptionInput {
+  margin-bottom: 50px;
+  padding-left: 16px;
+  height: 34px;
+  width: 410px;
+  font-size: 11px;
+  outline: none;
+  outline-offset: 0;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+
+  color: #000000;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: #bdbdbd;
+  }
+}
+
+.btn-open {
+  width: 44px;
+  height: 44px;
+  background-color: #24cca7;
+  border-radius: 22px;
+}
+
+.btn {
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 50px;
+  background: #ffffff;
+  border: 1px solid #4a56e2;
+  border-radius: 20px;
+
+  .btn-text {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4a56e2;
+  }
+
+  &:hover,
+  &:focus {
+    background: #24cca7;
+    border: 1px solid #24cca7;
+
+    .btn-text {
+      color: #ffffff;
+    }
+  }
+}
+
+.btn-add {
+  margin-bottom: 20px;
+  background: #24cca7;
+  border: 1px solid #24cca7;
+
+  .btn-text {
+    color: #ffffff;
+  }
+
+  &:hover,
+  &:focus {
+    background: #ffffff;
+    border: 1px solid #4a56e2;
+
+    .btn-text {
+      color: #4a56e2;
+    }
+  }
+}
+
+.input-select-container {
+  position: relative;
+}
+
+.requiredHackInput {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+}
+
+.activGreen {
+  color: #24cca7;
+}
+
+.activPink {
+  color: #ff6596;
+}
