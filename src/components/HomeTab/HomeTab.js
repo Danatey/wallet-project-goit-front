@@ -2,8 +2,7 @@ import React, { useMemo } from "react";
 import { useSortBy, useTable } from "react-table";
 import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
-// import { ColumnFilter } from './ColumnFilter'
-import { FaCaretSquareUp, FaCaretSquareDown } from "react-icons/fa";
+import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
 
 import "./table.scss";
 
@@ -15,9 +14,9 @@ const HomeTab = () => {
     useTable({ columns, data }, useSortBy);
 
   return (
-    <>
-      <table {...getTableProps()}>
-        <thead className="Table__head-first">
+    <div className="Table__home">
+      <table className="Table__home-secondary" {...getTableProps()}>
+        <thead className="Table__home-head-secondary">
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
@@ -26,9 +25,9 @@ const HomeTab = () => {
                   <span>
                     {column.isSorted ? (
                       column.isSortedDesc ? (
-                        <FaCaretSquareDown />
+                        <AiOutlineDown />
                       ) : (
-                        <FaCaretSquareUp />
+                        <AiOutlineUp />
                       )
                     ) : (
                       ""
@@ -42,21 +41,8 @@ const HomeTab = () => {
         <tbody {...getTableBodyProps()}>
           {rows.map((row) => {
             prepareRow(row);
-
             return (
               <>
-                {headerGroups.map((headerGroup) => (
-                  <tr
-                    className="Table__head-secondary"
-                    {...headerGroup.getHeaderGroupProps()}
-                  >
-                    {headerGroup.headers.map((column) => (
-                      <th {...column.getHeaderProps()}>
-                        {column.render("Header")}
-                      </th>
-                    ))}
-                  </tr>
-                ))}
                 <tr {...row.getRowProps()}>
                   {row.cells.map((cell) => {
                     return (
@@ -69,7 +55,39 @@ const HomeTab = () => {
           })}
         </tbody>
       </table>
-    </>
+
+      <table className="Table__home-first" {...getTableProps()}>
+        <tbody {...getTableBodyProps()}>
+          for (i=0; i = data.length-1; ++i){" "}
+          {
+            <tr>
+              <td>Дата</td>
+              <td>data[i].date</td>
+            </tr>
+          }
+          <tr>
+            <td>Тип</td>
+            <td>data[i].type</td>
+          </tr>
+          <tr>
+            <td>Коментарий</td>
+            <td>data[i].comment</td>
+          </tr>
+          <tr>
+            <td>Категория</td>
+            <td>data[i].category</td>
+          </tr>
+          <tr>
+            <td>Сумма</td>
+            <td>data[i].sum</td>
+          </tr>
+          <tr>
+            <td>Баланс</td>
+            <td>data[i].balance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   );
 };
 

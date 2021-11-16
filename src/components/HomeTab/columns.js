@@ -36,44 +36,44 @@ export const COLUMNS = [
   },
 ];
 
-export const GROUPED_COLUMNS = [
-  {
-    Header: "Дата",
+// export const GROUPED_COLUMNS = [
+//   {
+//     Header: "Дата",
 
-    accessor: "date",
-  },
-  {
-    Header: "Тип",
-    accessor: "type",
-    sticky: "left",
+//     accessor: "date",
+//   },
+//   {
+//     Header: "Тип",
+//     accessor: "type",
+//     sticky: "left",
 
-    columns: [
-      {
-        Header: "Дата",
-        accessor: "date",
-      },
-      {
-        Header: "тип",
-        accessor: "type",
-      },
-    ],
-  },
-  {
-    Header: " ",
+//     columns: [
+//       {
+//         Header: "Дата",
+//         accessor: "date",
+//       },
+//       {
+//         Header: "тип",
+//         accessor: "type",
+//       },
+//     ],
+//   },
+//   {
+//     Header: " ",
 
-    columns: [
-      {
-        Header: " ",
-        accessor: "",
-      },
-      {
-        Header: "",
-        accessor: "",
-      },
-      {
-        Header: "",
-        accessor: "",
-      },
-    ],
-  },
-];
+//     columns: [
+//       {
+//         Header: " ",
+//         accessor: "",
+//       },
+//       {
+//         Header: "",
+//         accessor: "",
+//       },
+//       {
+//         Header: "",
+//         accessor: "",
+//       },
+//     ],
+//   },
+// ];
