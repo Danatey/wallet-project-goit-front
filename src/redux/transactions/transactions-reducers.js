@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
 import { fetchTransactions, addTransaction } from "./transactions-operations";
 
-const transactions = createReducer([], {
+const items = createReducer([], {
   [fetchTransactions.fulfilled]: (_, { payload }) => payload,
   [addTransaction.fulfilled]: (state, { payload }) => [payload, ...state],
 });
@@ -24,7 +24,7 @@ const error = createReducer(null, {
 });
 
 export default combineReducers({
-  transactions,
+  items,
   isLoading,
   error,
 });
