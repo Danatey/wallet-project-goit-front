@@ -9,8 +9,9 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import { authReducer } from "./auth";
 import storage from "redux-persist/lib/storage";
+import { transactionsReducer } from "./transactions";
+import { authReducer } from "./auth";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -20,16 +21,19 @@ const middleware = [
   }),
 ];
 
-const authPersistConfig = { key: "token", whitelist: ["token"], storage };
+const authPersistConfig = {
+  key: "auth",
+  storage,
+  whitelist: ["token"],
+};
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-  },
-  middleware,
+    transactions: transactionsReducer,
+ },
+    middleware,
+    devTools: process.env.NODE_ENV === "development",
 });
 
-const persistor = persistStore(store);
-
-// eslint-disable-next-line
-export default { store, persistor };
+export const persistor = persistStore(store);

@@ -1,7 +1,7 @@
 import axios from "axios";
-import authActions from "./auth-actions";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = ""; //Подставить нужный URL
+axios.defaults.baseURL = "http://localhost:3001";
 
 const token = {
   set(token) {
@@ -12,38 +12,59 @@ const token = {
   },
 };
 
-const register = (credentials) => async (dispatch) => {
-  dispatch(authActions.registerRequest());
-  try {
-    const response = await axios.post("/signup", credentials);
-
-    token.set(response.data.token);
-    dispatch(authActions.registerSuccess(response.data));
-  } catch (error) {
-    dispatch(authActions.registerError(error.message));
+export const register = createAsyncThunk(
+  "auth/register",
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const response = axios.post("/api/users/signup", credentials);
+      token.set(response.data.token);
+      return response.data;
+    } catch (err) {
+      rejectWithValue(err.message);
+    }
   }
-};
+);
 
-const logIn = (credentials) => async (dispatch) => {
-  dispatch(authActions.loginRequest());
-  try {
-    const response = await axios.post("/login", credentials);
-
-    token.set(response.data.token);
-    dispatch(authActions.loginSuccess(response.data));
-  } catch (error) {
-    dispatch(authActions.loginError(error.message));
+export const logIn = createAsyncThunk(
+  "auth/login",
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const response = axios.post("/api/users/login", credentials);
+      token.set(response.data.token);
+      return response.data;
+    } catch (err) {
+      rejectWithValue(err.message);
+    }
   }
-};
+);
 
-const logOut = (onSuccess) => async (dispatch) => {};
+export const logOut = createAsyncThunk(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post("api/users/logout");
+      token.unset();
+    } catch (err) {
+      rejectWithValue(err.message);
+    }
+  }
+);
 
-const getCurrentUser = () => async (dispatch, getState) => {};
+export const getCurrentUser = createAsyncThunk(
+  "auth/refresh",
+  async (_, thunkAPI) => {
+    const persistedToken = thunkAPI.getState().auth.token;
 
-// eslint-disable-next-line
-export default {
-  register,
-  logIn,
-  logOut,
-  getCurrentUser,
-};
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(persistedToken);
+    try {
+      const response = await axios.get("/api/users/info");
+      return response.data;
+    } catch (err) {
+      thunkAPI.rejectWithValue(err.message);
+    }
+  }
+);
