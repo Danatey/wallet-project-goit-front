@@ -1,0 +1,8 @@
+[{"date":"13.11.2021","type":"-","comment":"Подарок ","category":"Расходы","sum":"1","balance":1},
+{"date":"15.11.2021","type":"-","comment":"Книга","category":"Расходы","sum":"2","balance":3},
+{"date":"14.11.2021","type":"+","comment":"зарплата","category":"Доходы","sum":"3","balance":6},
+{"date":"11.11.2021","type":"-","comment":"Продукты","category":"Расходы","sum":"4","balance":10},
+{"date":"10.11.2021","type":"-","comment":"***","category":"Расходы","sum":"5","balance":15}
+
+
+]

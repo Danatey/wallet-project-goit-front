@@ -27,17 +27,13 @@ const authPersistConfig = {
   whitelist: ["token"],
 };
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     transactions: transactionsReducer,
-
+ },
     middleware,
     devTools: process.env.NODE_ENV === "development",
-  },
 });
 
-const persistor = persistStore(store);
-
-// eslint-disable-next-line
-export default { store, persistor };
+export const persistor = persistStore(store);
