@@ -1,3 +1,1 @@
-// const function name(params) {
-
-// }
+export { default } from "./ModalAddTransaction";
