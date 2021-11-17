@@ -7,8 +7,8 @@ export const fetchTransactions = createAsyncThunk(
   "transactions/fetchTransactions",
   async (_, { rejectWithValue }) => {
     try {
-      const { data: transactions } = await axios.get("/api/transactions");
-      return transactions;
+      const { data: response } = await axios.get("/api/transactions");
+      return response.data;
     } catch (err) {
       return rejectWithValue(err.message);
     }
@@ -19,12 +19,11 @@ export const addTransaction = createAsyncThunk(
   "transactions/addTransaction",
   async (transactionBody, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(
+      const { data: response } = await axios.post(
         "/api/transactions/create",
         transactionBody
       );
-      console.log(data);
-      return data.data.transaction;
+      return response.data;
     } catch (err) {
       return rejectWithValue(err.message);
     }
