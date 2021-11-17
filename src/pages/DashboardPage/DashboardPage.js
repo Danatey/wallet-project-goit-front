@@ -6,7 +6,7 @@ import Balance from "../../components/Balance";
 const DashboardPage = () => {
   return (
     <>
-      <Header name="Имя" />
+      <Header />
       <main>
         <aside>
           <Navigation />

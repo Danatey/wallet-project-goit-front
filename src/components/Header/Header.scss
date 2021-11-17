@@ -31,11 +31,11 @@
   font-size: 18px;
   height: 30px;
   line-height: 30px;
-  //font-family: "Circle";
 }
 
 .Header__username {
   margin-right: 10px;
+  font-family: "Circe";
 
   @media screen and (min-width: $TabletWidth) {
     margin-right: 15px;
@@ -52,6 +52,7 @@
 
 .Header__logout-text {
   padding-left: 10px;
+  font-family: "Circe";
 
   @media screen and (max-width: $MaxMobileWidth) {
     display: none;
