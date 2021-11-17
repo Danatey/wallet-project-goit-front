@@ -1,9 +1,13 @@
 import React from "react";
-import wallet from "../../images/svg/wallet.svg";
+import sprite from "../../images/svg/symbol-defs.svg";
 import "./Logo.scss";
 
 const Logo = () => {
-  return <img src={wallet} className="Logo" alt="logo" />;
+  return (
+    <svg className="Logo">
+      <use href={`${sprite}#icon-wallet`} />
+    </svg>
+  );
 };
 
 export default Logo;

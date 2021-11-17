@@ -7,7 +7,7 @@ import Currency from "../../components/Currency/Currency";
 const DashboardPage = () => {
   return (
     <>
-      <Header name="Имя" />
+      <Header />
       <main>
         <aside>
           <Navigation />
