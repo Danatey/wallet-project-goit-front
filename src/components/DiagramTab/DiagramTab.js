@@ -18,6 +18,11 @@ const data = [
   { name: "Досуг", value: 1230.0 },
   { name: "Другие расходы", value: 610.0 },
 ];
+const sumIncome = [
+  { type:"Расходы:", money: 5000.00 },
+  { type:"Доходы:", money: 10000.00 },
+]
+
 const colors = [
   "#FED057",
   "#FFD8D0",
@@ -36,7 +41,7 @@ export class DiagramTab extends React.Component {
       <>
         <div className={s.statsSheet}>
           <PieChart data={data} colors={colors} />
-          <TableStats data={data} colors={colors} />
+          <TableStats data={data} sumIncome={sumIncome} colors={colors} />
         </div>
       </>
     );
