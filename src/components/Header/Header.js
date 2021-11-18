@@ -6,8 +6,19 @@ import { authSelectors } from "../../redux/auth";
 import sprite from "../../images/svg/symbol-defs.svg";
 import "./Header.scss";
 
+import { useDispatch } from "react-redux";
+import * as authOperations from "../../redux/auth/auth-operations";
+
 const Header = () => {
   const userName = useSelector(authSelectors.getUserName);
+
+  const dispatch = useDispatch();
+
+  const handleClick = (event) => {
+    event.preventDefault();
+
+    dispatch(authOperations.logOut());
+  };
   return (
     <header className="Header">
       <Link to="/home" className="Header__link">
@@ -16,7 +27,7 @@ const Header = () => {
       </Link>
       <div className="Header__logout">
         <span className="Header__username">{userName}</span>
-        <button type="button" className="Header__button">
+        <button type="button" className="Header__button" onClick={handleClick}>
           <svg className="Header__button--icon" width="18px" height="18px">
             <use href={`${sprite}#icon-logout`}></use>
           </svg>
