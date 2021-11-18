@@ -8,7 +8,7 @@ import "./Dashboard.scss";
 const DashboardPage = () => {
   return (
     <>
-      <Header name="Имя" />
+      <Header />
       <main className="Dashboard__wrap">
         <aside>
           <Navigation />

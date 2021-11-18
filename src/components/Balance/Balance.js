@@ -7,9 +7,9 @@ const Balance = () => {
   //   const getLastResult = transactionSelector.getLastTransaction;
 
   return (
-    <div className="container">
-      <p className="title">ВАШ БАЛАНС</p>
-      <p className="balance">&#8372; getLastResult || 0.0</p>
+    <div className="balance_container">
+      <p className="balance_title">ВАШ БАЛАНС</p>
+      <p className="balance_result">&#8372; БАЛАНС</p>
     </div>
   );
 };

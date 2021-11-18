@@ -30,34 +30,34 @@ function Currency() {
   return (
     <>
       <div className="currency-sidebar">
-        <TableContainer className="table">
+        <TableContainer className="currency_table">
           <Table size="small">
-            <TableHead className="head">
+            <TableHead className="currency_head">
               <TableRow>
-                <TableCell className="header">Валюта</TableCell>
-                <TableCell align="center" className="header">
+                <TableCell className="currency_header">Валюта</TableCell>
+                <TableCell align="center" className="currency_header">
                   Покупка
                 </TableCell>
-                <TableCell align="center" className="header">
+                <TableCell align="center" className="currency_header">
                   Продажа
                 </TableCell>
               </TableRow>
             </TableHead>
-            <TableBody className="body">
+            <TableBody className="currency_body">
               {currency?.map((element) => (
                 <TableRow key={element.ccy}>
                   <TableCell
                     component="th"
                     scope="row"
                     align="left"
-                    className="currency"
+                    className="currency_currency"
                   >
                     {element.ccy}
                   </TableCell>
-                  <TableCell align="center" className="buy">
+                  <TableCell align="center" className="currency_buy">
                     {Math.floor(element.buy * 100) / 100}
                   </TableCell>
-                  <TableCell align="center" className="sell">
+                  <TableCell align="center" className="currency_sell">
                     {Math.floor(element.sale * 100) / 100}
                   </TableCell>
                 </TableRow>

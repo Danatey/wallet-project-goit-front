@@ -1,30 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 import Logo from "../Logo";
-import logout from "../../images/svg/logout.svg";
+import { authSelectors } from "../../redux/auth";
+import sprite from "../../images/svg/symbol-defs.svg";
 import "./Header.scss";
 
-const Header = ({ name }) => {
+const Header = () => {
+  const userName = useSelector(authSelectors.getUserName);
   return (
     <header className="Header">
-      <div className="Header__logo">
+      <Link to="/home" className="Header__link">
         <Logo />
-        <span className="Header__logo-text">Wallet</span>
-      </div>
+        <h1 className="Header__logo--text">Wallet</h1>
+      </Link>
       <div className="Header__logout">
-        <span className="Header__username">{name}</span>
-        <Link to="/logout" className="Header__link">
-          <img src={logout} width="18" height="18" alt="logout" />
+        <span className="Header__username">{userName}</span>
+        <button type="button" className="Header__button">
+          <svg className="Header__button--icon" width="18px" height="18px">
+            <use href={`${sprite}#icon-logout`}></use>
+          </svg>
           <span className="Header__logout-text">Выйти</span>
-        </Link>
+        </button>
       </div>
     </header>
   );
-};
-
-Header.propTypes = {
-  name: PropTypes.string.isRequired,
 };
 
 export default Header;
