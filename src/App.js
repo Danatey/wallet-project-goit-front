@@ -9,8 +9,9 @@ import HomeTab from "./components/HomeTab";
 import DiagramTab from "./components/DiagramTab";
 import PrivateOutlet from "./components/PrivateRoute";
 import PublicOutlet from "./components/PublicRoute";
-import { authOperations } from "./redux/auth";
+import Currency from "./components/Currency";
 import Loader from "./components/Loader";
+import { authOperations } from "./redux/auth";
 import "./common/main.scss";
 
 import "./App.scss";
@@ -38,6 +39,7 @@ function App() {
           <Route index element={<Navigate to="/home" />} />
           <Route path="home" element={<HomeTab />} />
           <Route path="diagram" element={<DiagramTab />} />
+          <Route path="currency" element={<Currency />} />
         </Route>
         <Route path="login" element={<PublicOutlet restricted />}>
           <Route index element={<LoginPage />} />
