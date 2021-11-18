@@ -3,6 +3,21 @@ import { PieChart, Pie, Cell} from "recharts";
 import s from './diagramm.module.css'
 
 class Chart extends PureComponent {
+
+  sumIncome=this.props.sumIncome[1].money  //  сумма на балансе пользователя в центре диаграммы
+
+   renderIncomeLabel = ({ cx, cy }) => {
+
+    const x = cx;
+    const y = cy;
+  
+    return (
+      <text x={x} y={y} fill="black" textAnchor={'middle'} dominantBaseline="central">
+        &#8372; {this.sumIncome}
+      </text>
+    );
+  };
+
   render() {
     return (
       <div>
@@ -14,10 +29,11 @@ class Chart extends PureComponent {
             cy={200}
             innerRadius={110}
             outerRadius={160}
-            // fill="#333"
             paddingAngle={0}
             dataKey="value"
             className={s.pie}
+            labelLine={false}
+            label={this.renderIncomeLabel}
           >
             {this.props.data.map((entry, index) => (
               <Cell

@@ -3,10 +3,6 @@ import TableStats from "./TableStats";
 import PieChart from "./PieChart";
 import s from "./diagramm.module.css";
 
-/* const DiagramTab = () => {
-  return <h1>Diagram Tab!</h1>;
-}; */
-
 const data = [
   { name: "Основные расходы", value: 8700.0 },
   { name: "Продукты", value: 3800.74 },
@@ -40,7 +36,7 @@ export class DiagramTab extends React.Component {
     return (
       <>
         <div className={s.statsSheet}>
-          <PieChart data={data} colors={colors} />
+          <PieChart data={data} colors={colors} sumIncome={sumIncome}/>
           <TableStats data={data} sumIncome={sumIncome} colors={colors} />
         </div>
       </>

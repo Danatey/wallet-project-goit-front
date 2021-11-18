@@ -16,7 +16,8 @@ const Year = () => {
       showYearPicker
       dateFormat="yyyy"
       placeholderText="Год"
-      className={s.arrow}
+      className={[s.arrow, s.dateInput]}
+      
     />
   );
 };
@@ -30,7 +31,7 @@ const Month = () => {
       dateFormat="MMM"
       showMonthYearPicker
       placeholderText="Месяц"
-      className={s.arrow}
+      className={[s.arrow, s.dateInput]}
     />
   );
 };
@@ -53,22 +54,22 @@ const Month = () => {
     // Render the UI for your table
     return (
       <table {...getTableProps()} className={s.tableStyle}>
-        <thead >
+        <thead className={s.tableHeaderStyle}>
           {headerGroups.map(headerGroup => (
             <tr className={s.tableHeader} {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                <th {...column.getHeaderProps()} className={s.rowStatsStyle}>{column.render('Header')}</th>
               ))}
             </tr>
           ))}
         </thead>
-        <tbody {...getTableBodyProps()}>
+        <tbody {...getTableBodyProps()} className={s.bodyStatsStyle}>
           {rows.map((row, i) => {
             prepareRow(row)
             return (
-              <tr {...row.getRowProps()}>
+              <tr {...row.getRowProps()} className={s.trStatsStyle}>
                 {row.cells.map(cell => {
-                  return    <td {...cell.getCellProps()}>
+                  return    <td {...cell.getCellProps()} className={s.columnStatsStyle}>
                                 <div  className={s.rectangle}  style={{width: 24 + 'px', height: 24 + 'px', backgroundColor: colors[i]}}></div>
                                 {cell.render('Cell')}
                             </td>
@@ -79,8 +80,8 @@ const Month = () => {
         </tbody>
         <tfoot className={s.tableFooter}>
         {sumIncome.map(cash => (
-          <tr>
-            <td>
+          <tr className={s.tableFooterCash}>
+            <td className={s.columnFooterStatsStyle}>
             {cash.type}
             </td>
            <td className={s.cash}>
