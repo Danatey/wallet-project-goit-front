@@ -13,7 +13,6 @@ import PublicOutlet from "./components/PublicRoute";
 import Currency from "./components/Currency";
 import Loader from "./components/Loader";
 import { authOperations } from "./redux/auth";
-import "./common/main.scss";
 
 import "./App.scss";
 
