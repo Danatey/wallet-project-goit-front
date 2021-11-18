@@ -2,11 +2,10 @@ import React, { useMemo } from "react";
 import { useSortBy, useTable } from "react-table";
 import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
-// import { ColumnFilter } from './ColumnFilter'
-import { FaCaretSquareUp, FaCaretSquareDown } from "react-icons/fa";
-import ModalTransaction from "../ModalAddTransaction";
+import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
+import { ModalTransaction } from "../ModalAddTransaction";
 
-import "./table.scss";
+import "./homeTab.scss";
 
 const HomeTab = () => {
   const columns = useMemo(() => COLUMNS, []);
@@ -17,62 +16,100 @@ const HomeTab = () => {
 
   return (
     <>
-      <table {...getTableProps()}>
-        <thead className="Table__head-first">
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                  {column.render("Header")}
-                  <span>
-                    {column.isSorted ? (
-                      column.isSortedDesc ? (
-                        <FaCaretSquareDown />
-                      ) : (
-                        <FaCaretSquareUp />
-                      )
-                    ) : (
-                      ""
-                    )}
-                  </span>
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-
-            return (
-              <>
-                {headerGroups.map((headerGroup) => (
-                  <tr
-                    className="Table__head-secondary"
-                    {...headerGroup.getHeaderGroupProps()}
-                  >
-                    {headerGroup.headers.map((column) => (
-                      <th {...column.getHeaderProps()}>
-                        {column.render("Header")}
-                      </th>
-                    ))}
-                  </tr>
-                ))}
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                    );
-                  })}
+      {/* let className = 'green';
+      if(data.type === '-'){
+        
+      } */}
+      <div className="HomeTab">
+        <table className="HomeTab-secondary" {...getTableProps()}>
+          <div className="HomeTab__header">
+            <thead>
+              {headerGroups.map((headerGroup) => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column) => (
+                    <th
+                      className="HomeTab-column-header"
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                    >
+                      {column.render("Header")}
+                      <span>
+                        {column.isSorted ? (
+                          column.isSortedDesc ? (
+                            <AiOutlineDown />
+                          ) : (
+                            <AiOutlineUp />
+                          )
+                        ) : (
+                          ""
+                        )}
+                      </span>
+                    </th>
+                  ))}
                 </tr>
-              </>
-            );
-          })}
-        </tbody>
-      </table>
-      <ModalTransaction />
+              ))}
+            </thead>
+          </div>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((row) => {
+              prepareRow(row);
+              return (
+                <>
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map((cell) => {
+                      return (
+                        <td className="HomeTab-column" {...cell.getCellProps()}>
+                          {cell.render("Cell")}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                </>
+              );
+            })}
+          </tbody>
+        </table>
+
+        <table className="HomeTab-mobile" {...getTableProps()}>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((_row, i) => {
+              return (
+                <div className="HomeTab1">
+                  <div className="HomeTab2">
+                    <tr>
+                      <td className="HomeTab-column-header">Дата</td>
+                      <td className="HomeTab-column">{data[i].date}</td>
+                    </tr>
+                    <tr>
+                      <td className="HomeTab-column-header">Тип</td>
+                      <td className="HomeTab-column">{data[i].type}</td>
+                    </tr>
+                    <tr>
+                      <td className="HomeTab-column-header">Коментарий</td>
+                      <td className="HomeTab-column">{data[i].comment}</td>
+                    </tr>
+                    <tr>
+                      <td className="HomeTab-column-header">Категория</td>
+                      <td className="HomeTab-column">{data[i].category}</td>
+                    </tr>
+                    <tr>
+                      <td className="HomeTab-column-header">Сумма</td>
+                      <td className="HomeTab-column">{data[i].sum}</td>
+                    </tr>
+                    <tr>
+                      <td className="HomeTab-column-header">Баланс</td>
+                      <td className="HomeTab-column">{data[i].balance}</td>
+                    </tr>
+                  </div>
+                </div>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   );
+
+  <ModalTransaction />;
 };
 
 export default HomeTab;
