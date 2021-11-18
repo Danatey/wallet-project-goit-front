@@ -1,11 +1,10 @@
-@import "../../stylesheet/vars";
-
+@import '../../common/utils/breakpoints';
 .Logo {
-  width: 30px;
-  height: 30px;
+	width: 30px;
+	height: 30px;
 
-  @media screen and (min-width: $TabletWidth) {
-    width: 40px;
-    height: 40px;
-  }
+	@media screen and (min-width: $TabletWidth) {
+		width: 40px;
+		height: 40px;
+	}
 }

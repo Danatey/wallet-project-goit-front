@@ -11,8 +11,6 @@ import PrivateOutlet from "./components/PrivateRoute";
 import PublicOutlet from "./components/PublicRoute";
 import { authOperations } from "./redux/auth";
 import Loader from "./components/Loader";
-import "./common/main.scss";
-
 import "./App.scss";
 
 function App() {

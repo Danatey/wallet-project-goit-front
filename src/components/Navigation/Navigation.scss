@@ -1,10 +1,9 @@
-@import "../../stylesheet/vars";
+@import "../../common/main.scss";
 
 .nav_list {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
-
 
 // nav_link
 

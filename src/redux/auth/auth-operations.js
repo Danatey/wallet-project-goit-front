@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "http://localhost:3001";
+import { BACK_END } from "../../assets/API/BACK_END";
 
 const token = {
   set(token) {
@@ -17,7 +17,7 @@ export const register = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data: response } = await axios.post(
-        "/api/users/signup",
+        `${BACK_END}/api/users/signup`,
         credentials
       );
       token.set(response.data.token);
@@ -33,7 +33,7 @@ export const logIn = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data: response } = await axios.post(
-        "/api/users/login",
+        `${BACK_END}/api/users/login`,
         credentials
       );
       token.set(response.data.token);
@@ -48,7 +48,7 @@ export const logOut = createAsyncThunk(
   "auth/logout",
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post("api/users/logout");
+      await axios.post(`${BACK_END}/api/users/logout`);
       token.unset();
     } catch (err) {
       rejectWithValue(err.message);
@@ -67,7 +67,7 @@ export const getCurrentUser = createAsyncThunk(
 
     token.set(persistedToken);
     try {
-      const { data: response } = await axios.get("/api/users/info");
+      const { data: response } = await axios.get(`${BACK_END}/api/users/info`);
       return response.data;
     } catch (err) {
       thunkAPI.rejectWithValue(err.message);
