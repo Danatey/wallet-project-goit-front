@@ -1,4 +1,6 @@
-.container {
+@import "../../stylesheet/vars";
+
+.balance_container {
     min-width: 280px;
     max-width: 350px;
     margin-bottom: 30px;
@@ -8,11 +10,12 @@
     border-radius: 30px;
 }
 
+
 @media screen and (min-width: 1280px) {
-    .container {
+    .balance_container {
         margin-bottom: 0px;
     }
-    .title {
+    .balance_title {
         font-family: Circe, sans-serif;
         font-weight: 400;
         font-size: 12px;
@@ -21,7 +24,7 @@
         text-transform: uppercase;
         color: #A6A6A6;
     }
-    .balance {
+    .balance_result {
         font-family: Poppins, sans-serif;
         font-weight: 700;
         font-size: 30px;
@@ -29,14 +32,13 @@
         margin: 0;
         align-items: center;
         color: #000000;
-    }  
-}
-
+    }
+    }
 @media screen and (max-width: 1279px) {
-.container {
+.balance_container {
     margin-bottom: 0px;
 }
-.title {
+.balance_title {
     font-family: Circe, sans-serif;
     font-weight: 400;
     font-size: 12px;
@@ -45,7 +47,7 @@
     text-transform: uppercase;
     color: #A6A6A6;
 }
-.balance {
+.balance_result {
     font-family: Poppins, sans-serif;
     font-weight: 700;
     font-size: 30px;
@@ -57,7 +59,7 @@
 }
 
 @media screen and (max-width: 767px) {
-.container {   
+.balance_container {   
     padding: 8px 30px;
 }
 }
