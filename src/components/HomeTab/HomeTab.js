@@ -3,7 +3,7 @@ import { useSortBy, useTable } from "react-table";
 import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
-import { ModalTransaction } from "../ModalAddTransaction";
+import ModalAddTransaction from "../ModalAddTransaction";
 
 import "./homeTab.scss";
 
@@ -106,10 +106,9 @@ const HomeTab = () => {
           </tbody>
         </table>
       </div>
+      <ModalAddTransaction />
     </>
   );
-
-  <ModalTransaction />;
 };
 
 export default HomeTab;
