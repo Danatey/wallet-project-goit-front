@@ -1,7 +1,39 @@
 @import "../../stylesheet/vars";
 
 .Dashboard__wrap {
-  @media screen and (min-width: $TabletWidth) {
+  @media screen and (min-width: $DesktopWidth) {
     display: flex;
+  }
+}
+
+.Dashboard__aside {
+  @media screen and (min-width: $TabletWidth) and (max-width: 1279px) {
+    display: flex;
+  }
+
+  @media screen and (min-width: $DesktopWidth) {
+    flex-basis: 36%;
+  }
+}
+
+.Dashboard__nav {
+  @media screen and (min-width: $TabletWidth) and (max-width: 1279px) {
+    flex-basis: 50%;
+  }
+}
+
+.Dashboard__currency {
+  @media screen and (max-width: $MaxMobileWidth) {
+    display: none;
+  }
+
+  @media screen and (min-width: $TabletWidth) and (max-width: 1279px) {
+    flex-basis: 50%;
+  }
+}
+
+.Dashboard__main {
+  @media screen and (min-width: $DesktopWidth) {
+    flex-basis: 64%;
   }
 }
