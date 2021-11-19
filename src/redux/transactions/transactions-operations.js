@@ -1,13 +1,15 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "http://localhost:3001";
+import { BACK_END } from "../../assets/API/BACK_END";
 
 export const fetchTransactions = createAsyncThunk(
   "transactions/fetchTransactions",
   async (_, { rejectWithValue }) => {
     try {
-      const { data: response } = await axios.get("/api/transactions");
+      const { data: response } = await axios.get(
+        `${BACK_END}/api/transactions`
+      );
       return response.data;
     } catch (err) {
       return rejectWithValue(err.message);
@@ -20,7 +22,7 @@ export const addTransaction = createAsyncThunk(
   async (transactionBody, { rejectWithValue }) => {
     try {
       const { data: response } = await axios.post(
-        "/api/transactions/create",
+        `${BACK_END}/api/transactions/create`,
         transactionBody
       );
       return response.data;
