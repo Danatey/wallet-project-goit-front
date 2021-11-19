@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-// import { useDispatch } from 'react-redux'
-// import { addTransaction } from ''
+import { useDispatch } from "react-redux";
+import { addTransaction } from "../../redux/transactions/transactions-operations";
 import Modal from "react-modal";
 import Select from "react-select";
 import DatePicker from "react-datepicker";
@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { creditTransaction, debetTransaction } from "./transactionType";
 import "./modalTransaction.scss";
 import { format } from "date-fns";
+import { selectStyles } from "./SelectStyles";
 
 Modal.setAppElement("#root");
 
@@ -21,8 +22,9 @@ const defaultState = {
 
 function ModalAddTransaction() {
   const [transaction, setTransaction] = useState(defaultState);
-
   const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  const dispatch = useDispatch();
 
   function openModal() {
     setIsOpen(true);
@@ -52,13 +54,14 @@ function ModalAddTransaction() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log({
-      ...transaction,
-      type: transaction.type ? "Расход" : "Доход",
-      date: format(transaction.date, "yyyy-MM-dd"),
-    });
-
-    // dispatch(addTransaction(...transaction))
+    dispatch(
+      addTransaction({
+        ...transaction,
+        type: transaction.type ? "Расход" : "Доход",
+        date: format(transaction.date, "yyyy-MM-dd"),
+      })
+    );
+    closeModal();
   };
 
   return (
@@ -106,11 +109,14 @@ function ModalAddTransaction() {
         <form id="transaction-form" onSubmit={handleSubmit}>
           <div className="input-select-container">
             <Select
+              key={transaction.type}
+              styles={selectStyles}
               options={transaction.type ? creditTransaction : debetTransaction}
-              placeholder="выберите категорию"
+              placeholder="Выберите категорию"
               onChange={(option) => {
                 updateTransaction("category", option.value);
               }}
+              isSearchable={false}
             />
             <input
               tabIndex={-1}
@@ -133,7 +139,8 @@ function ModalAddTransaction() {
                 onChange={(e) => {
                   if (
                     e.target.value === "" ||
-                    /^[0-9]*(\.[0-9]?[0-9]?)?$/.test(e.target.value)
+                    /^[0-9]$/.test(e.target.value)
+                    // /^[0-9]*(\.[0-9]?[0-9]?)?$/.test(e.target.value)
                   ) {
                     handleInputChange(e);
                   }
@@ -165,10 +172,10 @@ function ModalAddTransaction() {
           </label>
         </form>
         <button type="submit" form="transaction-form" className="btn btn-add">
-          <span className="btn-text">добавить</span>
+          <p className="btn-text">добавить</p>
         </button>
         <button className="btn btn-exit" onClick={closeModal}>
-          <span className="btn-text">отмена</span>
+          <p className="btn-text">отмена</p>
         </button>
       </Modal>
     </div>
