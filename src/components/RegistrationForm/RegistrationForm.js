@@ -1,20 +1,24 @@
 import { React } from "react";
 import { NavLink } from "react-router-dom";
 import MainButton from "../MainButton";
-import GoogleAuth from "../GoogleAuth";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/auth";
-import "./LoginForm.scss";
+import "./RegistrationForm.scss";
 import "../MainButton/MainButton.scss";
 
-function LoginForm() {
+function RegistrationForm() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
   const handleChange = (evt) => {
     switch (evt.currentTarget.name) {
+      case "name":
+        setName(evt.currentTarget.value);
+        break;
+
       case "email":
         setEmail(evt.currentTarget.value);
         break;
@@ -28,31 +32,18 @@ function LoginForm() {
     }
   };
 
-  const handleLogin = (evt) => {
+  const handleRegister = (evt) => {
     evt.preventDefault();
 
-    dispatch(authOperations.logIn({ email, password }));
+    dispatch(authOperations.register({ name, email, password }));
+    setName("");
     setEmail("");
     setPassword("");
   };
 
   return (
-    <form onSubmit={handleLogin} className="form" autoComplete="off">
-      <div className="container_google">
-        <p className="text">
-          Вы можете авторизоваться с помощью <br />
-          Google Account:
-        </p>
-
-        <GoogleAuth />
-      </div>
-
+    <form onSubmit={handleRegister} className="form" autoComplete="off">
       <div className="container_input">
-        <p className="text">
-          Или зайти с помощью e-mail и пароля, предварительно
-          зарегистрировавшись:
-        </p>
-
         <div className="form-field">
           <input
             className="input"
@@ -61,7 +52,7 @@ function LoginForm() {
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             value={email}
             placeholder=" "
-            title="Введите свою пошту."
+            title="Введите свою почту."
             required
             onChange={handleChange}
           />
@@ -82,19 +73,35 @@ function LoginForm() {
           />
           <label className="label">Пароль:</label>
         </div>
+
+        <div className="form-field">
+          <input
+            className="input"
+            type="text"
+            name="name"
+            value={name}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+            placeholder=" "
+            required
+            minLength="3"
+            onChange={handleChange}
+          />
+          <label className="label">Ваше имя</label>
+        </div>
       </div>
 
       <div className="button_container">
         <MainButton
           type="submit"
-          text="Вход"
+          text="Регистрация"
           className="logo-btn"
           disable="sd"
         />
 
         <div>
-          <NavLink to="/register" className="main-btn">
-            Регистрация
+          <NavLink to="/login" className="main-btn">
+            Вход
           </NavLink>
         </div>
       </div>
@@ -102,4 +109,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default RegistrationForm;
