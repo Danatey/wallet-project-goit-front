@@ -13,18 +13,26 @@ import fetchCurrency from "../../assets/API/fetchCurrency/fetchCurrency";
 function Currency() {
   const [currency, setCurrency] = useState([]);
 
-  const fetch = async () => {
-    try {
-      const data = await fetchCurrency();
-      const sliced = data.slice(0, -1);
-      setCurrency([...sliced]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    fetch();
+    // (1) определить в области обратного вызова эффекта
+    const fetch = async () => {
+      console.log(1);
+      try {
+        const data = await fetchCurrency();
+        const sliced = data.slice(0, -1);
+        setCurrency([...sliced]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const id = setInterval(() => {
+      fetch(); // <- (3) вызов в интервале обратного вызова
+    }, 300000);
+
+    fetch(); // <- (2) вызываем при монтировании
+
+    return () => clearInterval(id);
   }, []);
 
   return (
