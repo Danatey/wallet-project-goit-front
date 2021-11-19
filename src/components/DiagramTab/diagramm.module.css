@@ -10,7 +10,6 @@
 }
 
 .statsSheet {
-  background-color: var(--secondary-background-color);
   display: flex;
 }
 
@@ -120,7 +119,7 @@
 .arrow {
   background-image: url(../../images/svg/arrow.svg);
   display: block;
-  content: '';
+  content: "";
   contain: content;
   background-position: 90% 50%;
   background-repeat: no-repeat;
