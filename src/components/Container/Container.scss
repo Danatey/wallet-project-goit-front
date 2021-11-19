@@ -1,21 +1,21 @@
-@import '../../common/utils/breakpoints';
+@import "../../common/utils/breakpoints";
 
 .Container {
-	width: $MobileWidth;
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: 20px;
-	padding-right: 20px;
+  width: $MobileWidth;
+  margin-left: auto;
+  margin-right: auto;
+  // padding-left: 20px;
+  // padding-right: 20px;
 
-	@media screen and (min-width: $TabletWidth) {
-		width: $TabletWidth;
-		padding-left: 40px;
-		padding-right: 40px;
-	}
+  @media screen and (min-width: $TabletWidth) {
+    width: $TabletWidth;
+    // padding-left: 40px;
+    // padding-right: 40px;
+  }
 
-	@media screen and (min-width: $DesktopWidth) {
-		width: $DesktopWidth;
-		padding-left: 85px;
-		padding-right: 85px;
-	}
+  @media screen and (min-width: $DesktopWidth) {
+    width: $DesktopWidth;
+    // padding-left: 85px;
+    // padding-right: 85px;
+  }
 }

@@ -1,0 +1,101 @@
+@import "../../common/utils/breakpoints.scss";
+
+.Dashboard__bg {
+  position: relative;
+  z-index: 1;
+  background-color: var(--secondary-background-color);
+  overflow-x: hidden;
+}
+
+.Dashboard__wrap {
+  min-height: calc(100vh - 60px);
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @media screen and (min-width: $TabletWidth) {
+    min-height: calc(100vh - 80px);
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media screen and (min-width: $DesktopWidth) {
+    display: flex;
+    padding-left: 85px;
+    padding-right: 85px;
+  }
+}
+
+.Dashboard__wrap::before {
+  @media screen and (min-width: $TabletWidth) {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    left: 0;
+    height: 100%;
+    background-image: url(../../images/bg-tablet-login/ellipse-up.png),
+      url(../../images/bg-tablet-login/ellipse-down.png);
+    background-repeat: no-repeat;
+    background-position: right top, left bottom;
+    filter: blur(20px);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      .Dashboard__wrap::before {
+        background-image: url(../../images/bg-tablet-login/ellipse-up@2x.png),
+          url(../../images/bg-tablet-login/ellipse-down@2x.png);
+      }
+    }
+  }
+
+  @media screen and (min-width: $DesktopWidth) {
+    background-image: url(../../images/bg-desktop-login/ellipse-up-desktop.png),
+      url(../../images/bg-desktop-login/ellipse.png);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      .Dashboard__wrap::before {
+        background-image: url(../../images/bg-desktop-login/ellipse-up-desktop@2x.png),
+          url(../../images/bg-desktop-login/ellipse@2x.png);
+      }
+    }
+  }
+}
+
+.Dashboard__aside {
+  @media screen and (min-width: $TabletWidth) and (max-width: 1279px) {
+    display: flex;
+  }
+
+  @media screen and (min-width: $DesktopWidth) {
+    border-right: 1px solid #e7e5f2;
+    box-shadow: inset -1px 0px 0px rgba(0, 0, 0, 0.05),
+      1px 0px 0px rgba(255, 255, 255, 0.6);
+    flex-basis: 36%;
+  }
+}
+
+.Dashboard__nav {
+  @media screen and (min-width: $TabletWidth) and (max-width: 1279px) {
+    flex-basis: 50%;
+  }
+}
+
+.Dashboard__currency {
+  @media screen and (max-width: $MaxMobileWidth) {
+    display: none;
+  }
+
+  @media screen and (min-width: $TabletWidth) and (max-width: 1279px) {
+    flex-basis: 50%;
+  }
+}
+
+.Dashboard__main {
+  @media screen and (min-width: $DesktopWidth) {
+    flex-basis: 64%;
+  }
+}
