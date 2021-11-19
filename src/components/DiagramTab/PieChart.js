@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { PieChart, Pie, Cell} from "recharts";
-import s from './diagramm.module.css'
+import s from './diagramm.module.scss'
 
 class Chart extends PureComponent {
 

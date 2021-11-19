@@ -1,7 +1,7 @@
 import React from "react";
 import TableStats from "./TableStats";
 import PieChart from "./PieChart";
-import s from "./diagramm.module.css";
+import s from './diagramm.module.scss'
 
 const data = [
   { name: "Основные расходы", value: 8700.0 },
