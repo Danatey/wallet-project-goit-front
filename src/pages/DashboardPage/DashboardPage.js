@@ -19,34 +19,36 @@ const DashboardPage = () => {
   return (
     <>
       <Header />
-      <main className="Dashboard__wrap">
-        <aside className="Dashboard__aside">
-          <section className="Dashboard__nav">
-            <Navigation />
-            <Media
-              queries={{
-                mobile: { maxWidth: 767 },
-                other: { minWidth: 768 },
-              }}
-            >
-              {(matches) => {
-                return (
-                  <Fragment>
-                    {matches.mobile && display && <Balance />}
-                    {matches.other && <Balance />}
-                  </Fragment>
-                );
-              }}
-            </Media>
-          </section>
-          <section className="Dashboard__currency">
-            <Currency />
-          </section>
-        </aside>
-        <article className="Dashboard__main">
-          <Outlet />
-        </article>
-      </main>
+      <div className="Dashboard__bg">
+        <main className="Dashboard__wrap">
+          <aside className="Dashboard__aside">
+            <section className="Dashboard__nav">
+              <Navigation />
+              <Media
+                queries={{
+                  mobile: { maxWidth: 767 },
+                  other: { minWidth: 768 },
+                }}
+              >
+                {(matches) => {
+                  return (
+                    <Fragment>
+                      {matches.mobile && display && <Balance />}
+                      {matches.other && <Balance />}
+                    </Fragment>
+                  );
+                }}
+              </Media>
+            </section>
+            <section className="Dashboard__currency">
+              <Currency />
+            </section>
+          </aside>
+          <article className="Dashboard__main">
+            <Outlet />
+          </article>
+        </main>
+      </div>
     </>
   );
 };

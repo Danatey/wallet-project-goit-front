@@ -1,10 +1,23 @@
-@import "../../common/main.scss";
+@import "../../common/utils/breakpoints";
 
 .Header {
   height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @media screen and (min-width: $TabletWidth) {
+    height: 80px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media screen and (min-width: $DesktopWidth) {
+    padding-left: 85px;
+    padding-right: 85px;
+  }
 }
 
 .Header__link {
