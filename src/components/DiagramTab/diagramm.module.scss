@@ -1,3 +1,5 @@
+@import '../../common/utils/breakpoints.scss';
+
 .pieHeader {
   font-family: Poppins;
   font-size: 30px;
@@ -12,6 +14,7 @@
 .statsSheet {
   background-color: var(--secondary-background-color);
   display: flex;
+  width: $TabletWidth;
 }
 
 .columnStatsStyle {
@@ -25,6 +28,7 @@
 .tableStyle {
   border-spacing: 0;
   border-bottom: 1px solid #dcdcdf;
+  width: 350px;
 }
 .tableFooter .columnFooterStatsStyle {
   border-bottom: none;
@@ -116,6 +120,12 @@
   font-size: 16px;
   line-height: 24px;
   color: var(--primary-text-color);
+}
+.react-datepicker-wrapper:last-child {
+  margin-right: 0px;
+}
+.dateInput:last-child {
+  margin-right: 0px;
 }
 .arrow {
   background-image: url(../../images/svg/arrow.svg);

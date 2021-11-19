@@ -3,7 +3,7 @@ import { useTable, useGroupBy, useExpanded } from 'react-table'
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import s from './diagramm.module.css'
+import s from './diagramm.module.scss'
 
 // import makeData from './makeData'
 
