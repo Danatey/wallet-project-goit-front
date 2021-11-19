@@ -12,22 +12,36 @@
 }
 
 .statsSheet {
-  display: flex;
-  width: $TabletWidth;
-}
+  @media screen and (min-width: $MobileWidth) {
+    /* display: flex; */
+    /* width: 730 px; */
+    padding-top: 40px;
+  }
 
+  @media screen and (min-width: $TabletWidth) {
+    display: flex;
+    /* width: 730 px; */
+    padding-top: 40px;
+  }
+  @media screen and (min-width: $DesktopWidth) {
+    padding-top: 30px;
+  }
+}
 .columnStatsStyle {
   margin: 0;
   text-align: left;
   justify-content: start;
   padding: 0.5rem;
   border-bottom: 1px solid #dcdcdf;
-  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 0px 0px rgba(255, 255, 255, 0.6);
 }
 .tableStyle {
   border-spacing: 0;
   border-bottom: 1px solid #dcdcdf;
   width: 350px;
+  @media screen and (max-width: $MaxMobileWidth) {
+    width: 280px;
+  }
 }
 .tableFooter .columnFooterStatsStyle {
   border-bottom: none;
@@ -43,22 +57,32 @@
 .tableFooter .tableFooterCash:last-child .cash:last-child {
   color: var(--accent-color-grean);
   padding-right: 30px;
+  @media screen and (max-width: $MaxMobileWidth) {
+    padding-right: 10px;
+  }
 }
 .cash {
   color: var(--accent-color-red);
   padding-right: 30px;
   text-align: right;
+  @media screen and (max-width: $MaxMobileWidth) {
+    padding-right: 10px;
+  }
 }
 .bodyStatsStyle .trStatsStyle .columnStatsStyle:last-child {
   text-align: right;
   padding-right: 30px;
+  @media screen and (max-width: $MaxMobileWidth) {
+    padding-right: 10px;
+  }
 }
 .rectangle {
-  display: inline-flex;
+  float: left;
+  /* display: inline-flex; */
   margin-right: 16px;
   margin-left: 20px;
 }
-.columnStatsStyle:nth-child(even) div {
+.columnStatsStyle:nth-child(even) span {
   display: none;
 }
 
@@ -88,11 +112,22 @@
 .dateFilter {
   display: flex;
   justify-content: flex-start;
+
+  @media screen and (max-width: $MaxMobileWidth) {
+    display: block;
+  }
 }
 .table {
-  width: 350px;
-  margin-top: 95px;
-  margin-left: 30px;
+  /*  @media screen and (min-width: $MobileWidth) {
+  } */
+  @media screen and (min-width: $TabletWidth) {
+    width: 350px;
+    margin-top: 95px;
+    margin-left: 15px;
+  }
+  @media screen and (min-width: $DesktopWidth) {
+    margin-left: 40px;
+  }
 }
 .dateInput {
   display: block;
@@ -107,6 +142,9 @@
   margin-bottom: 20px;
   margin-right: 19px;
   cursor: pointer;
+  @media screen and (max-width: $MaxMobileWidth) {
+    width: 280px;
+  }
 }
 .dateInput:hover,
 .dateInput:focus {
@@ -129,8 +167,23 @@
 .arrow {
   background-image: url(../../images/svg/arrow.svg);
   display: block;
-  content: "";
+  content: '';
   contain: content;
   background-position: 90% 50%;
   background-repeat: no-repeat;
+}
+
+.pieStyle {
+  margin-top: 40px;
+  margin-right: auto;
+  margin-left: auto;
+
+  width: 320px;
+  height: 320px;
+  @media screen and (max-width: $MaxMobileWidth) {
+    width: 280px;
+    height: 280px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
 }

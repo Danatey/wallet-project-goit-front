@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { PieChart, Pie, Cell} from "recharts";
+import { ResponsiveContainer, PieChart, Pie, Cell} from "recharts";
 import s from './diagramm.module.scss'
 
 class Chart extends PureComponent {
@@ -10,7 +10,7 @@ class Chart extends PureComponent {
 
     const x = cx;
     const y = cy;
-  
+      
     return (
       <text x={x} y={y} fill="black" textAnchor={'middle'} dominantBaseline="central">
         &#8372; {this.sumIncome}
@@ -22,13 +22,13 @@ class Chart extends PureComponent {
     return (
       <div>
         <h2 className={s.pieHeader}>Статистика</h2>
-        <PieChart width={350} height={380} onMouseEnter={this.onPieEnter}>
+        <div className={s.pieStyle} /* style={{ width: 300, height: 300 }} */>
+        <ResponsiveContainer>
+         <PieChart>
           <Pie
             data={this.props.data}
-            cx={180}
-            cy={200}
-            innerRadius={110}
-            outerRadius={160}
+            innerRadius = "70%"
+            outerRadius = "100%"
             paddingAngle={0}
             dataKey="value"
             className={s.pie}
@@ -42,7 +42,10 @@ class Chart extends PureComponent {
               />
             ))}
           </Pie>
-        </PieChart>
+          </PieChart> 
+          </ResponsiveContainer>
+          </div>
+        {/* </PieChart> */}
       </div>
     );
   }

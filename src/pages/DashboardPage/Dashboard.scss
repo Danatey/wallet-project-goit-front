@@ -1,4 +1,4 @@
-@import "../../common/utils/breakpoints.scss";
+@import '../../common/utils/breakpoints.scss';
 
 .Dashboard__bg {
   position: relative;
@@ -28,7 +28,7 @@
 
 .Dashboard__wrap::before {
   @media screen and (min-width: $TabletWidth) {
-    content: "";
+    content: '';
     position: absolute;
     z-index: -1;
     right: 0;
