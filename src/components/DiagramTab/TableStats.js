@@ -70,7 +70,7 @@ const Month = () => {
               <tr {...row.getRowProps()} className={s.trStatsStyle}>
                 {row.cells.map(cell => {
                   return    <td {...cell.getCellProps()} className={s.columnStatsStyle}>
-                                <div  className={s.rectangle}  style={{width: 24 + 'px', height: 24 + 'px', backgroundColor: colors[i]}}></div>
+                                <span  className={s.rectangle}  style={{width: 24 + 'px', height: 24 + 'px', backgroundColor: colors[i]}}></span>
                                 {cell.render('Cell')}
                             </td>
                 })}
