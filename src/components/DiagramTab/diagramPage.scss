@@ -1,0 +1,17 @@
+.selectContainer {
+  display: flex;
+  gap: 19px;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.input-select-container {
+  position: relative;
+}
+
+.requiredHackInput {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -10000;
+}

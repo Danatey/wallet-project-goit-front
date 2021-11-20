@@ -51,17 +51,21 @@ function ModalAddTransaction() {
     setTransaction((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    dispatch(
-      addTransaction({
-        ...transaction,
-        type: transaction.type ? "Расход" : "Доход",
-        date: format(transaction.date, "yyyy-MM-dd"),
-      })
-    );
-    closeModal();
+    try {
+      await dispatch(
+        addTransaction({
+          ...transaction,
+          type: transaction.type ? "Расход" : "Доход",
+          date: format(transaction.date, "yyyy-MM-dd"),
+        }).unwrap()
+      );
+      closeModal();
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (

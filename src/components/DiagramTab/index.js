@@ -1,1 +1,1 @@
-export { default } from "./DiagramTab";
+export { default } from "./DiagramPage";
