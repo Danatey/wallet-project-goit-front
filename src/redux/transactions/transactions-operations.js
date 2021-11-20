@@ -10,7 +10,7 @@ export const fetchTransactions = createAsyncThunk(
       const { data: response } = await axios.get(
         `${BACK_END}/api/transactions`
       );
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.message);
@@ -40,7 +40,7 @@ export const fetchTransactionsByCategory = createAsyncThunk(
       const { data: response } = await axios.get(
         `${BACK_END}/api/transactions/categories`
       );
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.message);

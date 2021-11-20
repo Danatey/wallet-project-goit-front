@@ -36,8 +36,9 @@ const colors = [
 ];
 
 export const DiagramTab = () => {
-  const data = useSelector((state) => state.transactions.items.categories);
+  const data = useSelector((state) => state.transactions.categories);
   const dispatch = useDispatch();
+  console.log(data);
 
   useEffect(() => {
     dispatch(fetchTransactionsByCategory());
@@ -47,8 +48,8 @@ export const DiagramTab = () => {
       <div className={s.statsSheet}>
         {data ? (
           <>
-            <PieChart data={data} colors={colors} sumIncome={sumIncome} />
-            {/* <TableStats data={data} sumIncome={sumIncome} colors={colors} /> */}
+            {/* <PieChart data={data} colors={colors} sumIncome={sumIncome} />
+            <TableStats data={data} sumIncome={sumIncome} colors={colors} /> */}
           </>
         ) : (
           <span className="contact-message">You have no transactions yet </span>

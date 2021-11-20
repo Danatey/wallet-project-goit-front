@@ -6,9 +6,12 @@ import {
   fetchTransactionsByCategory,
 } from "./transactions-operations";
 
+const categories = createReducer([], {
+  [fetchTransactionsByCategory.fulfilled]: (_, { payload }) => payload,
+});
+
 const items = createReducer([], {
   [fetchTransactions.fulfilled]: (_, { payload }) => payload,
-  [fetchTransactionsByCategory.fulfilled]: (_, { payload }) => payload,
   [addTransaction.fulfilled]: (state, { payload }) => [payload, ...state],
 });
 
@@ -34,6 +37,7 @@ const error = createReducer(null, {
 });
 
 export default combineReducers({
+  categories,
   items,
   isLoading,
   error,
