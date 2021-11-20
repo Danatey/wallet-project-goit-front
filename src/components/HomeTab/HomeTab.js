@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useSortBy, useTable } from "react-table";
 import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
@@ -14,6 +14,8 @@ const HomeTab = () => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data }, useSortBy);
 
+  useEffect(() => {}, [data]);
+
   return (
     <>
       {/* let className = 'green';
@@ -22,33 +24,33 @@ const HomeTab = () => {
       } */}
       <div className="HomeTab">
         <table className="HomeTab-secondary" {...getTableProps()}>
-          <div className="HomeTab__header">
-            <thead>
-              {headerGroups.map((headerGroup) => (
-                <tr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map((column) => (
-                    <th
-                      className="HomeTab-column-header"
-                      {...column.getHeaderProps(column.getSortByToggleProps())}
-                    >
-                      {column.render("Header")}
-                      <span>
-                        {column.isSorted ? (
-                          column.isSortedDesc ? (
-                            <AiOutlineDown />
-                          ) : (
-                            <AiOutlineUp />
-                          )
+          <thead className="HomeTab__header">
+            {headerGroups.map((headerGroup) => (
+              // key={transactionId}
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th
+                    className="HomeTab-column-header"
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                  >
+                    {column.render("Header")}
+                    <span>
+                      {column.isSorted ? (
+                        column.isSortedDesc ? (
+                          <AiOutlineDown />
                         ) : (
-                          ""
-                        )}
-                      </span>
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </thead>
-          </div>
+                          <AiOutlineUp />
+                        )
+                      ) : (
+                        ""
+                      )}
+                    </span>
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+
           <tbody {...getTableBodyProps()}>
             {rows.map((row) => {
               prepareRow(row);
