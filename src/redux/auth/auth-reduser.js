@@ -6,13 +6,13 @@ const initialUserState = { name: null, email: null };
 
 const user = createReducer(initialUserState, {
   [register.fulfilled]: (_, { payload }) => payload.user,
-  [logIn.fulfilled]: (_, { payload }) => payload.user,
+  //[logIn.fulfilled]: (_, { payload }) => payload.user,
   [logOut.fulfilled]: () => initialUserState,
   [getCurrentUser.fulfilled]: (_, { payload }) => payload,
 });
 
 const token = createReducer(null, {
-  [register.fulfilled]: (_, { payload }) => payload.token,
+  // [register.fulfilled]: (_, { payload }) => payload.token,
   [logIn.fulfilled]: (_, { payload }) => payload.token,
   [logOut.fulfilled]: () => null,
 });
@@ -27,7 +27,7 @@ const error = createReducer(null, {
 });
 
 const isAuthenticated = createReducer(false, {
-  [register.fulfilled]: () => true,
+  [register.fulfilled]: () => false,
   [logIn.fulfilled]: () => true,
   [logOut.fulfilled]: () => false,
   [getCurrentUser.fulfilled]: () => true,
