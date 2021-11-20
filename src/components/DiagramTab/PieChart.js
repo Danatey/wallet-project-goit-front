@@ -3,7 +3,7 @@ import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import s from "./diagramm.module.scss";
 
 class Chart extends PureComponent {
-  sumIncome = this.props.sumIncome[1].money; //  сумма на балансе пользователя в центре диаграммы
+  sumIncome = this.props.balance; //  сумма на балансе пользователя в центре диаграммы
   renderIncomeLabel = ({ cx, cy }) => {
     const x = cx;
     const y = cy;

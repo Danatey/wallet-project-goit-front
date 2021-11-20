@@ -4,6 +4,7 @@ import TableStats from "./TableStats";
 import PieChart from "./PieChart";
 
 import { fetchTransactionsByCategory } from "../../redux/transactions/transactions-operations";
+import { getCurrentUser } from "../../redux/auth/auth-operations";
 
 import s from "./diagramm.module.scss";
 
@@ -36,9 +37,13 @@ const colors = [
 ];
 
 export const DiagramTab = () => {
+  const balance = useSelector((state) => state.auth.user?.balance);
   // const data = useSelector((state) => state.transactions.categories.categories);
   const dispatch = useDispatch();
-  console.log(data);
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchTransactionsByCategory());
@@ -48,7 +53,7 @@ export const DiagramTab = () => {
       <div className={s.statsSheet}>
         {data !== undefined ? (
           <>
-            <PieChart data={data} colors={colors} sumIncome={sumIncome} />
+            <PieChart balance={balance} data={data} colors={colors} />
             <TableStats data={data} sumIncome={sumIncome} colors={colors} />
           </>
         ) : (
