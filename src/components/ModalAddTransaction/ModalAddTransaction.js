@@ -71,7 +71,7 @@ function ModalAddTransaction() {
   return (
     <div>
       <button className="btn-open" onClick={openModal}>
-        Open Modal
+        Add
       </button>
       <Modal
         isOpen={modalIsOpen}
@@ -114,7 +114,7 @@ function ModalAddTransaction() {
           <div className="input-select-container">
             <Select
               key={transaction.type}
-              styles={selectStyles}
+              styles={selectStyles(transaction.type)}
               options={transaction.type ? creditTransaction : debetTransaction}
               placeholder="Выберите категорию"
               onChange={(option) => {

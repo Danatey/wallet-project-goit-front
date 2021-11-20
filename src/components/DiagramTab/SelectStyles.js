@@ -40,7 +40,7 @@ export const selectStyles = {
     color: "#000000",
     margin: 0,
     fontSize: 16,
-    lineHeight: 16,
+    lineHeight: 1,
     fontFamily: "Circe, sans-serif",
   }),
   dropdownIndicator: (provided) => ({
@@ -72,7 +72,9 @@ export const selectStyles = {
     background: isFocused || isSelected ? "#ffffff" : "transparent",
     color: isFocused || isSelected ? "#4A56E2" : "#000000",
     cursor: "pointer",
-    padding: "14px 20px 0",
-    height: 44,
+    padding: "14px 20px",
+    fontSize: 16,
+    lineHeight: 1,
+    fontFamily: "Circe, sans-serif",
   }),
 };
