@@ -1,16 +1,70 @@
 @import "../../common/main.scss";
 
+
+.nav_container {
+  padding-top: 10px;
+
+  @media screen and (min-width: $DesktopWidth) {
+   padding-top:  20px;
+  }
+}
 .nav_list {
   display: flex;
   justify-content: space-between;
+  margin: 0 0 40px;
+  padding: 0;
+  width: 100%;
+
+  @media screen and (max-width: $TabletWidth) {
+      padding: 0;
+      margin-bottom: 20px;
+    }
+  
+    @media screen  and (min-width: $TabletWidth) and (max-width: $DesktopWidth) {
+        margin: 0 0 50px;
+    }
 }
 
-// nav_link
+.nav_list li {
+  width: 33.33333%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
 
-// link_active
 
-// nav_img
+}
 
-// nav_home_text
+.nav_link {
+  width: 100%;
+  display: flex;
+  align-items: center;
 
-// nav_diagram_text
+  @media screen  and (max-width: $MaxMobileWidth) {
+     justify-content: center;
+}
+}
+
+.nav_link_active {
+  pointer-events: none;
+}
+
+.nav_img {
+  height: 44px;
+  width: 44px;
+
+  @media screen  and (min-width: $MaxMobileWidth) {
+    height: 24px;
+    width: 24px;
+}
+}
+
+.nav_text {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  color: #000000;
+}
+

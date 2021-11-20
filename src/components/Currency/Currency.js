@@ -36,7 +36,7 @@ function Currency() {
 
   return (
     <>
-      <div className="currency-sidebar">
+      <div className="currency_sidebar">
         <TableContainer className="currency_table">
           <Table size="small">
             <TableHead className="currency_head">

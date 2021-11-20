@@ -1,11 +1,18 @@
 @import "../../common/main.scss";
 
+
+
 .currency_table {
   min-width: 280px;
   max-width: 348px;
   max-height: 347px;
   border-radius: 30px;
   background: #4a56e2;
+
+  @media screen and (min-width: $DesktopWidth) {
+    width: 348px;
+    height: 347px;
+  }
 }
 .currency_head {
   background: #ffffff;
@@ -19,8 +26,13 @@
   font-weight: 700;
   padding-top: 11px;
   padding-bottom: 12px;
-  color: #fffefe;
+  color: #ffffff;
   align-items: center;
+
+  @media screen and (min-width: $DesktopWidth) {
+      padding-top: 17px;
+      padding-bottom: 16px;
+    }
 }
 .currency_body {
   background: linear-gradient(
@@ -28,6 +40,13 @@
     rgba(255, 255, 255, 0.2) -8.67%,
     rgba(255, 255, 255, 0) 116.22%
   );
+  @media screen and (min-width: $DesktopWidth) {
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.2) -7.46%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
 }
 .currency_currency {
   font-family: "Circe, sans-serif";
@@ -50,28 +69,13 @@
   color: #ffffff;
 }
 
-@media screen and (min-width: 1280px) {
-  .currency_currency_sidebar {
+@media screen and (min-width: $DesktopWidth) {
+  .currency_sidebar {
     width: 348px;
-  }
-  .currency_table {
-    width: 348px;
-    height: 347px;
-  }
-  .currency_header {
-    padding-top: 17px;
-    padding-bottom: 16px;
-  }
-  .currency_body {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.2) -7.46%,
-      rgba(255, 255, 255, 0) 100%
-    );
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .currency_currency_sidebar {
+  .currency_sidebar {
     display: flex;
     justify-content: center;
     align-items: flex-start;
