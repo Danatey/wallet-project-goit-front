@@ -7,17 +7,17 @@ import { fetchTransactionsByCategory } from "../../redux/transactions/transactio
 
 import s from "./diagramm.module.scss";
 
-// const data = [
-//   { name: "Основные расходы", value: 8700.0 },
-//   { name: "Продукты", value: 3800.74 },
-//   { name: "Машина", value: 1500.0 },
-//   { name: "Забота о себе", value: 800.0 },
-//   { name: "Забота о детях", value: 2208.5 },
-//   { name: "Товары для дома", value: 300 },
-//   { name: "Образование", value: 3400.0 },
-//   { name: "Досуг", value: 1230.0 },
-//   { name: "Другие расходы", value: 610.09 },
-// ];
+const data = [
+  { name: "Основные расходы", value: 8700.0 },
+  { name: "Продукты", value: 3800.74 },
+  { name: "Машина", value: 1500.0 },
+  { name: "Забота о себе", value: 800.0 },
+  { name: "Забота о детях", value: 2208.5 },
+  { name: "Товары для дома", value: 300 },
+  { name: "Образование", value: 3400.0 },
+  { name: "Досуг", value: 1230.0 },
+  { name: "Другие расходы", value: 610.09 },
+];
 const sumIncome = [
   { type: "Расходы:", money: 5000.0 },
   { type: "Доходы:", money: 10000.0 },
@@ -36,7 +36,7 @@ const colors = [
 ];
 
 export const DiagramTab = () => {
-  const data = useSelector((state) => state.transactions.categories);
+  // const data = useSelector((state) => state.transactions.categories.categories);
   const dispatch = useDispatch();
   console.log(data);
 
@@ -46,10 +46,10 @@ export const DiagramTab = () => {
   return (
     <>
       <div className={s.statsSheet}>
-        {data ? (
+        {data !== undefined ? (
           <>
-            {/* <PieChart data={data} colors={colors} sumIncome={sumIncome} />
-            <TableStats data={data} sumIncome={sumIncome} colors={colors} /> */}
+            <PieChart data={data} colors={colors} sumIncome={sumIncome} />
+            <TableStats data={data} sumIncome={sumIncome} colors={colors} />
           </>
         ) : (
           <span className="contact-message">You have no transactions yet </span>

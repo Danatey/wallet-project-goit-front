@@ -16,9 +16,9 @@ import "./homeTab.scss";
 
 const HomeTab = () => {
   const columns = useMemo(() => COLUMNS, []);
-  // const data = useMemo(() => MOCK_DATA, []);
+  const data = useMemo(() => MOCK_DATA, []);
 
-  const data = useSelector((state) => state.transactions.items.result);
+  // const data = useSelector((state) => state.transactions.items.result);
   const dispatch = useDispatch();
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data }, useSortBy);
