@@ -4,10 +4,20 @@ import {
   fetchTransactions,
   addTransaction,
   fetchTransactionsByCategory,
+  getTransactionDate,
+  getTransactionsList,
 } from "./transactions-operations";
 
 const categories = createReducer([], {
   [fetchTransactionsByCategory.fulfilled]: (_, { payload }) => payload,
+});
+
+const stats = createReducer(null, {
+  [getTransactionDate.fulfilled]: (_, { payload }) => payload,
+});
+
+const categoriesList = createReducer(null, {
+  [getTransactionsList.fulfilled]: (_, { payload }) => payload,
 });
 
 const items = createReducer([], {
@@ -38,6 +48,8 @@ const error = createReducer(null, {
 
 export default combineReducers({
   categories,
+  stats,
+  categoriesList,
   items,
   isLoading,
   error,

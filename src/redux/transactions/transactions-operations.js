@@ -47,3 +47,31 @@ export const fetchTransactionsByCategory = createAsyncThunk(
     }
   }
 );
+
+export const getTransactionDate = createAsyncThunk(
+  "transactions/getTransactionDate",
+  async ({ month = "01", year = "2021" }, { rejectWithValue }) => {
+    try {
+      const { data: response } = await axios.get(
+        `${BACK_END}/api/transactions/categories?month=${month}&year=${year}`
+      );
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const getTransactionsList = createAsyncThunk(
+  "transactions/getTransactionsList",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data: response } = await axios.get(
+        `${BACK_END}/api/transactions/list`
+      );
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
