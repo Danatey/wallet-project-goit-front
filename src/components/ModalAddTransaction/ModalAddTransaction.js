@@ -51,23 +51,27 @@ function ModalAddTransaction() {
     setTransaction((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    // e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    dispatch(
-      addTransaction({
-        ...transaction,
-        type: transaction.type ? "-" : "+",
-        date: format(transaction.date, "yyyy-MM-dd"),
-      })
-    );
-    closeModal();
+    try {
+      await dispatch(
+        addTransaction({
+          ...transaction,
+          type: transaction.type ? "Расход" : "Доход",
+          date: format(transaction.date, "yyyy-MM-dd"),
+        }).unwrap()
+      );
+      closeModal();
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
     <div>
       <button className="btn-open" onClick={openModal}>
-        Open Modal
+        Add
       </button>
       <Modal
         isOpen={modalIsOpen}
@@ -110,7 +114,7 @@ function ModalAddTransaction() {
           <div className="input-select-container">
             <Select
               key={transaction.type}
-              styles={selectStyles}
+              styles={selectStyles(transaction.type)}
               options={transaction.type ? creditTransaction : debetTransaction}
               placeholder="Выберите категорию"
               onChange={(option) => {
