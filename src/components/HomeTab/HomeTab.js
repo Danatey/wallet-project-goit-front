@@ -26,13 +26,10 @@ const HomeTab = () => {
         <table className="HomeTab-secondary" {...getTableProps()}>
           <thead className="HomeTab__header">
             {headerGroups.map((headerGroup) => (
-              <tr
-                key={data.transactionId}
-                {...headerGroup.getHeaderGroupProps()}
-              >
+              // key={data.transactionId}
+              <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
                   <th
-                    key={data.transactionId}
                     className="HomeTab-column-header"
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                   >
@@ -59,14 +56,10 @@ const HomeTab = () => {
               prepareRow(row);
               return (
                 <>
-                  <tr key={data.transactionId} {...row.getRowProps()}>
+                  <tr {...row.getRowProps()}>
                     {row.cells.map((cell) => {
                       return (
-                        <td
-                          key={data.transactionId}
-                          className="HomeTab-column"
-                          {...cell.getCellProps()}
-                        >
+                        <td className="HomeTab-column" {...cell.getCellProps()}>
                           {cell.render("Cell")}
                         </td>
                       );
@@ -82,74 +75,32 @@ const HomeTab = () => {
           <tbody {...getTableBodyProps()}>
             {rows.map((_row, i) => {
               return (
-                <>
+                <div className="HomeTab-mobile_table">
                   <tr>
-                    <td
-                      key={data.transactionId}
-                      className="HomeTab-column-header"
-                    >
-                      Дата
-                    </td>
-                    <td key={data.transactionId} className="HomeTab-column">
-                      {data[i].date}
-                    </td>
+                    <td className="HomeTab-column-header">Дата</td>
+                    <td className="HomeTab-column">{data[i].date}</td>
                   </tr>
                   <tr>
-                    <td
-                      key={data.transactionId}
-                      className="HomeTab-column-header"
-                    >
-                      Тип
-                    </td>
-                    <td key={data.transactionId} className="HomeTab-column">
-                      {data[i].type}
-                    </td>
+                    <td className="HomeTab-column-header">Тип</td>
+                    <td className="HomeTab-column">{data[i].type}</td>
                   </tr>
                   <tr>
-                    <td
-                      key={data.transactionId}
-                      className="HomeTab-column-header"
-                    >
-                      Коментарий
-                    </td>
-                    <td key={data.transactionId} className="HomeTab-column">
-                      {data[i].comment}
-                    </td>
+                    <td className="HomeTab-column-header">Коментарий</td>
+                    <td className="HomeTab-column">{data[i].comment}</td>
                   </tr>
                   <tr>
-                    <td
-                      key={data.transactionId}
-                      className="HomeTab-column-header"
-                    >
-                      Категория
-                    </td>
-                    <td key={data.transactionId} className="HomeTab-column">
-                      {data[i].category}
-                    </td>
+                    <td className="HomeTab-column-header">Категория</td>
+                    <td className="HomeTab-column">{data[i].category}</td>
                   </tr>
                   <tr>
-                    <td
-                      key={data.transactionId}
-                      className="HomeTab-column-header"
-                    >
-                      Сумма
-                    </td>
-                    <td key={data.transactionId} className="HomeTab-column">
-                      {data[i].sum}
-                    </td>
+                    <td className="HomeTab-column-header">Сумма</td>
+                    <td className="HomeTab-column">{data[i].sum}</td>
                   </tr>
                   <tr>
-                    <td
-                      key={data.transactionId}
-                      className="HomeTab-column-header"
-                    >
-                      Баланс
-                    </td>
-                    <td key={data.transactionId} className="HomeTab-column">
-                      {data[i].balance}
-                    </td>
+                    <td className="HomeTab-column-header">Баланс</td>
+                    <td className="HomeTab-column">{data[i].balance}</td>
                   </tr>
-                </>
+                </div>
               );
             })}
           </tbody>

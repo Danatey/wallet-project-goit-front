@@ -3,7 +3,6 @@
 export const COLUMNS = [
   {
     Header: "Дата",
-
     accessor: "date",
     disableFilters: true,
     sticky: "centre",
@@ -29,6 +28,7 @@ export const COLUMNS = [
   {
     Header: "Сумма",
     accessor: "sum",
+    sticky: "right",
   },
   {
     Header: "Баланс",

@@ -5,13 +5,14 @@
   }
   @media screen and (min-width: 1280px) {
     margin-top: 46px;
+    margin-left: 30px;
   }
 }
 
 .HomeTab-secondary {
   display: none;
-  margin-left: auto;
-  margin-right: auto;
+  // margin-left: auto;
+  // margin-right: auto;
   border-spacing: 0px;
   // width: 100%;
   @media screen and (min-width: 768px) {
@@ -95,14 +96,21 @@ td:last-child {
 .HomeTab__header th:not(:first-child) {
   background: #ffffff;
 }
-// .HomeTab2 {
-//   background-color: aqua;
-//   position: absolute;
-//     top: 0px;
-//     left: 0px;
-//   width: 280px;
-//   height: 282px;
-// }
-// .HomeTab1 {
-//   position: relative;
+
+.HomeTab-mobile_table::before {
+  @media screen and (max-width: 767px) {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 282px;
+
+    right: 0;
+    left: 0;
+    background-color: aqua;
+  }
+}
+// .HomeTab-column1 tr:last-child {
+//   @media screen and (max-width: 767px) {
+//     margin-bottom: 10px;
+//   }
 // }
