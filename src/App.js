@@ -27,28 +27,28 @@ function App() {
     <Container>
       <Routes>
         {/* це приватний раут, поки що залишаю відкритим, щоб зручно було кодить, коли буде працювати логін, тоді розкоментую */}
-        {/* <Route path="/" element={<PrivateOutlet />}>
+        <Route path="/" element={<PrivateOutlet />}>
           <Route element={<DashboardPage />}>
             <Route index element={<Navigate to="/home" />} />
             <Route path="home" element={<HomeTab />} />
             <Route path="diagram" element={<DiagramTab />} />
+            <Route
+              path="currency"
+              element={
+                <Media query={{ maxWidth: 767 }}>
+                  {(matches) =>
+                    matches ? <Currency /> : <Navigate to="/home" />
+                  }
+                </Media>
+              }
+            />
           </Route>
-        </Route> */}
-        {/* тимчасово звичайний раут, не приватний */}
-        <Route path="/" element={<DashboardPage />}>
+          {/* тимчасово звичайний раут, не приватний */}
+          {/* <Route path="/" element={<DashboardPage />}>
           <Route index element={<Navigate to="/home" />} />
           <Route path="home" element={<HomeTab />} />
           <Route path="diagram" element={<DiagramTab />} />
-          <Route
-            path="currency"
-            element={
-              <Media query={{ maxWidth: 767 }}>
-                {(matches) =>
-                  matches ? <Currency /> : <Navigate to="/home" />
-                }
-              </Media>
-            }
-          />
+        </Route> */}
         </Route>
         <Route path="login" element={<PublicOutlet restricted />}>
           <Route index element={<LoginPage />} />
