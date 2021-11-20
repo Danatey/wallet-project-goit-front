@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useSortBy, useTable } from "react-table";
 import Media from "react-media";
 import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
+import { nanoid } from "nanoid";
+
+import { fetchTransactions } from "../../redux/transactions/transactions-operations";
+
 import { HomeTabMobile } from "./HomeTabMobile";
 import ModalAddTransaction from "../ModalAddTransaction";
-import { nanoid } from "nanoid";
 
 import "./homeTab.scss";
 
@@ -14,10 +18,14 @@ const HomeTab = () => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
 
+  // const data = useSelector((state) => state.transactions.items.result);
+  const dispatch = useDispatch();
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data }, useSortBy);
 
-  useEffect(() => {}, [data]);
+  useEffect(() => {
+    dispatch(fetchTransactions());
+  }, [dispatch]);
 
   return (
     <>

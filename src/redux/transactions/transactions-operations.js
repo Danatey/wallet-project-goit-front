@@ -10,6 +10,7 @@ export const fetchTransactions = createAsyncThunk(
       const { data: response } = await axios.get(
         `${BACK_END}/api/transactions`
       );
+      // console.log(response.data);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.message);
@@ -25,6 +26,21 @@ export const addTransaction = createAsyncThunk(
         `${BACK_END}/api/transactions/create`,
         transactionBody
       );
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const fetchTransactionsByCategory = createAsyncThunk(
+  "transactions/fetchTransactionsByCategory",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data: response } = await axios.get(
+        `${BACK_END}/api/transactions/categories`
+      );
+      // console.log(response.data);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.message);

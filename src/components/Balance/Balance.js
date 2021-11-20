@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
 import "./Balance.scss";
-// import { transactionSelector } from "../..";
+
+import { getCurrentUser } from "../../redux/auth/auth-operations";
 
 const Balance = () => {
-  // TODO getLastTransaction
-  //   const getLastResult = transactionSelector.getLastTransaction;
+  const balance = useSelector((state) => state.auth.user?.balance);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
 
   return (
     <div className="balance_container">
       <p className="balance_title">ВАШ БАЛАНС</p>
-      <p className="balance_result">&#8372; БАЛАНС</p>
+      <p className="balance_result">&#8372; {balance}</p>
     </div>
   );
 };

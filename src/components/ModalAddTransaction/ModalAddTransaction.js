@@ -52,7 +52,7 @@ function ModalAddTransaction() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     dispatch(
       addTransaction({

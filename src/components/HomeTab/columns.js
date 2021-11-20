@@ -27,7 +27,7 @@ export const COLUMNS = [
   },
   {
     Header: "Сумма",
-    accessor: "sum",
+    accessor: "amount",
     sticky: "right",
   },
   {
