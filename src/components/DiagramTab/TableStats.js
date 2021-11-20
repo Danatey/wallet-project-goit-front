@@ -1,40 +1,7 @@
 import React from "react";
 import { useTable } from "react-table";
-// import DatePicker from 'react-datepicker'
-
-// import 'react-datepicker/dist/react-datepicker.css'
 import s from "./diagramm.module.scss";
-
-// import makeData from './makeData'
-
-// const Year = () => {
-//   const [startDate, setStartDate] = useState(null);
-//   return (
-//     <DatePicker
-//       selected={startDate}
-//       onChange={(date) => setStartDate(date)}
-//       showYearPicker
-//       dateFormat="yyyy"
-//       placeholderText="Год"
-//       className={[s.arrow, s.dateInput]}
-
-//     />
-//   );
-// };
-
-// const Month = () => {
-//   const [startDate, setStartDate] = useState(null);
-//   return (
-//     <DatePicker
-//       selected={startDate}
-//       onChange={(date) => setStartDate(date)}
-//       dateFormat="MMM"
-//       showMonthYearPicker
-//       placeholderText="Месяц"
-//       className={[s.arrow, s.dateInput]}
-//     />
-//   );
-// };
+import TableFilters from "./TableFilters";
 
 function Table({ columns, data, colors, sumIncome }) {
   // Use the state and functions returned from useTable to build your UI
@@ -124,10 +91,7 @@ function TableStats({ data, colors, sumIncome }) {
 
   return (
     <div className={s.table}>
-      {/* <div className={s.dateFilter}>
-        <Month className={s.formFilter} />
-        <Year className={s.formFilter} />
-      </div> */}
+      <TableFilters />
       <Table
         columns={columns}
         data={data}

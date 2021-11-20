@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
-import DiagramTab from "./DiagramTab";
 import { format } from "date-fns";
-import "./diagramPage.scss";
-import { selectedStyles } from "./SelectedStyles";
+import "./tableFilters.scss";
+import { selectStyles } from "./SelectStyles";
 
 const currentMonth = new Date().getMonth() + 1;
 const months = Array.from({ length: 12 }, (item, i) => {
@@ -20,7 +19,7 @@ for (let i = currentYear; i >= 1940; i--) {
   years.push({ value: i, label: i.toString() });
 }
 
-function DiagramPage() {
+function TableFilters() {
   const [date, setDate] = useState({
     month: currentMonth,
     year: currentYear,
@@ -46,38 +45,29 @@ function DiagramPage() {
   }, [date]);
 
   return (
-    <>
-      <div className="selectContainer">
-        <div className="input-select-container">
-          <Select
-            styles={selectedStyles}
-            options={monthOptions}
-            placeholder="Месяц"
-            onChange={(option) => {
-              updateDate("month", option.value);
-            }}
-            isSearchable={false}
-            defaultValue={monthOptions.find(
-              (month) => month.value === date.month
-            )}
-          />
-        </div>
-        <div className="input-select-container">
-          <Select
-            styles={selectedStyles}
-            options={years}
-            placeholder="Год"
-            onChange={(option) => {
-              updateDate("year", option.value);
-            }}
-            isSearchable={false}
-            defaultValue={years.find((year) => year.value === date.year)}
-          />
-        </div>
-      </div>
-      <DiagramTab />
-    </>
+    <div className="selectContainer">
+      <Select
+        styles={selectStyles}
+        options={monthOptions}
+        placeholder="Месяц"
+        onChange={(option) => {
+          updateDate("month", option.value);
+        }}
+        isSearchable={false}
+        defaultValue={monthOptions.find((month) => month.value === date.month)}
+      />
+      <Select
+        styles={selectStyles}
+        options={years}
+        placeholder="Год"
+        onChange={(option) => {
+          updateDate("year", option.value);
+        }}
+        isSearchable={false}
+        defaultValue={years.find((year) => year.value === date.year)}
+      />
+    </div>
   );
 }
 
-export default DiagramPage;
+export default TableFilters;

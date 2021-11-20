@@ -1,12 +1,15 @@
+@import '../../common/utils/breakpoints.scss';
+
 .selectContainer {
   display: flex;
-  gap: 19px;
+  gap: 20px;
+  margin-bottom: 20px;
   margin-left: 0;
   margin-right: auto;
-}
 
-.input-select-container {
-  position: relative;
+  @media (max-width: $MaxMobileWidth) {
+    flex-direction: column;
+  }
 }
 
 .requiredHackInput {
