@@ -67,7 +67,11 @@
 
 .Dashboard__aside {
   @media screen and (min-width: $TabletWidth) and (max-width: 1279px) {
+    padding-top: 10px;
+  }
+  @media screen and (min-width: $TabletWidth) and (max-width: 1279px) {
     display: flex;
+    padding-top: 20px;
   }
 
   @media screen and (min-width: $DesktopWidth) {
