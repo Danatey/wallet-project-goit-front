@@ -12,7 +12,7 @@ const data = [
   { name: "Товары для дома", value: 300 },
   { name: "Образование", value: 3400.0 },
   { name: "Досуг", value: 1230.0 },
-  { name: "Другие расходы", value: 610.0 },
+  { name: "Другие расходы", value: 610.09 },
 ];
 const sumIncome = [
   { type:"Расходы:", money: 5000.00 },
