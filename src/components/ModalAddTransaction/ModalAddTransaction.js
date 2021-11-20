@@ -143,8 +143,8 @@ function ModalAddTransaction() {
                 onChange={(e) => {
                   if (
                     e.target.value === "" ||
-                    /^[0-9]$/.test(e.target.value)
-                    // /^[0-9]*(\.[0-9]?[0-9]?)?$/.test(e.target.value)
+                    // /^[0-9]$/.test(e.target.value)
+                    /^[0-9]*(\.[0-9]?[0-9]?)?$/.test(e.target.value)
                   ) {
                     handleInputChange(e);
                   }
@@ -171,7 +171,7 @@ function ModalAddTransaction() {
               name="comment"
               value={transaction.comment}
               onChange={handleInputChange}
-              required
+              // required
             />
           </label>
         </form>

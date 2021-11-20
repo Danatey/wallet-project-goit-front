@@ -16,7 +16,6 @@ function Currency() {
   useEffect(() => {
     // (1) определить в области обратного вызова эффекта
     const fetch = async () => {
-      console.log(1);
       try {
         const data = await fetchCurrency();
         const sliced = data.slice(0, -1);
