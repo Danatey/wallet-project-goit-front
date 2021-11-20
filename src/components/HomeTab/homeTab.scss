@@ -1,8 +1,19 @@
+.HomeTab {
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    margin-top: 76px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 46px;
+  }
+}
+
 .HomeTab-secondary {
   display: none;
   margin-left: auto;
   margin-right: auto;
-
+  border-spacing: 0px;
+  // width: 100%;
   @media screen and (min-width: 768px) {
     display: table-header-group;
   }
@@ -12,6 +23,7 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 27px;
   //   table-layout: fixed;
 
   @media screen and (min-width: 768px) {
@@ -42,6 +54,11 @@
   padding: 0.5rem;
   border-right: 1px solid #dcdcdf;
 }
+.HomeTab table {
+  width: 100%;
+  table-layout: fixed;
+}
+
 .HomeTab th:last-child,
 td:last-child {
   border-right: 0;
@@ -50,16 +67,34 @@ td:last-child {
 .HomeTab-column th,
 .HomeTab-columns td {
   table-layout: fixed;
-  width: 16.66%;
+  width: 114.66 px;
   overflow: hidden;
   word-wrap: break-word;
+
+  padding: 10px;
+  text-align: center;
+  @media screen and (min-width: 768px) {
+    width: 116.1 px;
+  }
 }
 
-.HomeTab__header {
+.HomeTab__header th:first-child {
   background: #ffffff;
-  border-radius: 30px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
-
+.HomeTab__header th:last-child {
+  background: #ffffff;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.HomeTab__header th {
+  padding: 10px;
+  text-align: center;
+}
+.HomeTab__header th:not(:first-child) {
+  background: #ffffff;
+}
 // .HomeTab2 {
 //   background-color: aqua;
 //   position: absolute;
