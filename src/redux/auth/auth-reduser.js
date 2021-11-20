@@ -6,14 +6,20 @@ const initialUserState = { name: null, email: null };
 
 const user = createReducer(initialUserState, {
   [register.fulfilled]: (_, { payload }) => payload.user,
-  //[logIn.fulfilled]: (_, { payload }) => payload.user,
+  [logIn.fulfilled]: (_, { payload }) => payload.user,
   [logOut.fulfilled]: () => initialUserState,
   [getCurrentUser.fulfilled]: (_, { payload }) => payload,
 });
 
-const token = createReducer(null, {
-  // [register.fulfilled]: (_, { payload }) => payload.token,
-  [logIn.fulfilled]: (_, { payload }) => payload.token,
+const refresh_token = createReducer(null, {
+  [register.fulfilled]: (_, { payload }) => payload.refresh_token,
+  [logIn.fulfilled]: (_, { payload }) => payload.refresh_token,
+  [logOut.fulfilled]: () => null,
+});
+
+const access_token = createReducer(null, {
+  [register.fulfilled]: (_, { payload }) => payload.access_token,
+  [logIn.fulfilled]: (_, { payload }) => payload.access_token,
   [logOut.fulfilled]: () => null,
 });
 
@@ -36,6 +42,7 @@ const isAuthenticated = createReducer(false, {
 export default combineReducers({
   user,
   isAuthenticated,
-  token,
+  refresh_token,
+  access_token,
   error,
 });

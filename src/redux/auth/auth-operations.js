@@ -3,7 +3,16 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { BACK_END } from "../../assets/API/BACK_END";
 
-const token = {
+const refresh_token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = "";
+  },
+};
+
+const access_token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
@@ -20,7 +29,8 @@ export const register = createAsyncThunk(
         `${BACK_END}/api/users/signup`,
         credentials
       );
-      token.set(response.data.token);
+      refresh_token.set(response.data.refresh_token);
+      access_token.set(response.data.refresh_token);
       return response.data;
     } catch (err) {
       rejectWithValue(err.message);
@@ -36,7 +46,8 @@ export const logIn = createAsyncThunk(
         `${BACK_END}/api/users/login`,
         credentials
       );
-      token.set(response.data.token);
+      refresh_token.set(response.data.refresh_token);
+      access_token.set(response.data.refresh_token);
       return response.data;
     } catch (err) {
       rejectWithValue(err.message);
@@ -49,7 +60,8 @@ export const logOut = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       await axios.post(`${BACK_END}/api/users/logout`);
-      token.unset();
+      refresh_token.unset();
+      access_token.unset();
     } catch (err) {
       rejectWithValue(err.message);
     }
@@ -59,13 +71,14 @@ export const logOut = createAsyncThunk(
 export const getCurrentUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
-    const persistedToken = thunkAPI.getState().auth.token;
+    const persistedRefreshToken = thunkAPI.getState().auth.refresh_token;
+    const persistedAccessToken = thunkAPI.getState().auth.access_token;
 
-    if (persistedToken === null) {
+    if (persistedRefreshToken === null || persistedAccessToken === null) {
       return thunkAPI.rejectWithValue();
     }
-
-    token.set(persistedToken);
+    refresh_token.set(persistedRefreshToken);
+    access_token.set(persistedAccessToken);
     try {
       const { data: response } = await axios.get(`${BACK_END}/api/users/info`);
       return response.data;
