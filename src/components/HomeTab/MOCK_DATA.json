@@ -1,7 +1,7 @@
 [
-    {"date":"13.11.2021","type":"-","comment":" ******** ******** ","category":"Расходы","sum":"1000","balance":1000, "id" : 1},
-    {"date":"15.11.2021","type":"-","comment":"","category":"Расходы","sum":"2000","balance":3000, "id" : 2},
-    {"date":"14.11.2021","type":"+","comment":"зарплата","category":"Доходы","sum":"3000","balance":6000, "id" : 3},
-    {"date":"11.11.2021","type":"-","comment":"Продукты","category":"Расходы","sum":"4000","balance":10000, "id" : 4},
-    {"date":"10.11.2021","type":"-","comment":"*********","category":"Расходы","sum":"5000","balance":15000, "id" : 5}
+    {"date":"13.11.2021","type":"-","comment":" ******** ******** ","category":"Расходы","amount":"1000","balance":1000, "id" : 1},
+    {"date":"15.11.2021","type":"-","comment":"","category":"Расходы","amount":"2000","balance":3000, "id" : 2},
+    {"date":"14.11.2021","type":"+","comment":"зарплата","category":"Доходы","amount":"3000","balance":6000, "id" : 3},
+    {"date":"11.11.2021","type":"-","comment":"Продукты","category":"Расходы","amount":"4000","balance":10000, "id" : 4},
+    {"date":"10.11.2021","type":"-","comment":"*********","category":"Расходы","amount":"5000","balance":15000, "id" : 5}
 ]
