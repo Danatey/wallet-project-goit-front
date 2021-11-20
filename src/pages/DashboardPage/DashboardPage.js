@@ -1,20 +1,30 @@
 import React, { useState, useEffect, Fragment } from "react";
+import { useDispatch } from "react-redux";
 import { Outlet, useLocation } from "react-router-dom";
+import Media from "react-media";
+
 import Header from "../../components/Header";
 import Navigation from "../../components/Navigation";
 import Balance from "../../components/Balance";
 import Currency from "../../components/Currency/Currency";
-import Media from "react-media";
+
+import { getCurrentUser } from "../../redux/auth/auth-operations";
+
 import "./Dashboard.scss";
 
 const DashboardPage = () => {
   const location = useLocation();
   const path = location.pathname;
   const [display, setDisplay] = useState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setDisplay(path === "/home" ? true : false);
   }, [path]);
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
 
   return (
     <>
