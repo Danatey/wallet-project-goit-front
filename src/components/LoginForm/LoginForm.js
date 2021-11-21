@@ -1,14 +1,7 @@
 import { React } from "react";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
 import { NavLink } from "react-router-dom";
-import MyTextInput from "../MyTextInput";
 import MainButton from "../MainButton";
 import GoogleAuth from "../GoogleAuth";
-import Logo from "../Logo";
-import { ReactComponent as EmailIcon } from "../../icons/email.svg";
-import { ReactComponent as LockIcon } from "../../icons/lock.svg";
-// import Loader from '../Loader';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/auth";
@@ -16,100 +9,97 @@ import "./LoginForm.scss";
 import "../MainButton/MainButton.scss";
 
 function LoginForm() {
-  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
-  const validationsSchema = Yup.object().shape({
-    email: Yup.string("Введите e-mail")
-      .email("Введите корректный e-mail")
-      .required("Обязательное поле для заполнения!"),
-    password: Yup.string("Ввведите пароль")
-      .min(6, "Пароль должен состоять минимум из 6 символов")
-      .max(12, "Пароль должен состоять максимум из 12 символов")
-      .required("Обязательное поле для заполнения!"),
-  });
+  const handleChange = (evt) => {
+    switch (evt.currentTarget.name) {
+      case "email":
+        setEmail(evt.currentTarget.value);
+        break;
 
-  const handleLogin = (evt) => {
-    // evt.preventDefault();
+      case "password":
+        setPassword(evt.currentTarget.value);
+        break;
 
-    dispatch(authOperations.logIn({ email, password }));
+      default:
+        return;
+    }
+  };
+
+  const handleLogin = async (evt) => {
+    evt.preventDefault();
+
+    await dispatch(authOperations.logIn({ email, password }));
     setEmail("");
     setPassword("");
+    await dispatch(authOperations.getCurrentUser());
   };
 
   return (
-    <Formik
-      initialValues={{
-        email: "",
-        password: "",
-      }}
-      validateOnBlur
-      onSubmit={handleLogin}
-      validationSchema={validationsSchema}
-    >
-      {({ handleChange, handleBlur, values, isValid, dirty }) => (
-        <Form className="form">
-          <div className="logo_wrapper">
-            <Logo />
-            <h1 className="Header__logo--text">Wallet</h1>
-          </div>
+    <form onSubmit={handleLogin} className="form" autoComplete="off">
+      <div className="container_google">
+        <p className="text">
+          Вы можете авторизоваться с помощью <br />
+          Google Account:
+        </p>
 
-          <div className="container_google">
-            <p className="text">
-              Вы можете авторизоваться с помощью <br />
-              Google Account:
-            </p>
+        <GoogleAuth />
+      </div>
 
-            <GoogleAuth />
-          </div>
+      <div className="container_input">
+        <p className="text">
+          Или зайти с помощью e-mail и пароля, предварительно
+          зарегистрировавшись:
+        </p>
 
-          <div className="container_input">
-            <p className="text">
-              Или зайти с помощью e-mail и пароля, предварительно
-              зарегистрировавшись:
-            </p>
+        <div className="form-field">
+          <input
+            className="input"
+            type="email"
+            name="email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            value={email}
+            placeholder=" "
+            title="Введите свою пошту."
+            required
+            onChange={handleChange}
+          />
+          <label className="label">E-mail:</label>
+        </div>
 
-            <MyTextInput
-              label={<EmailIcon width={20} height={16} />}
-              type="email"
-              name="email"
-              onChange={(e) => setEmail(e.currentTarget.value)}
-              onBlur={handleBlur}
-              value={values.email}
-              placeholder="E-mail"
-              className="input"
-            />
+        <div className="form-field">
+          <input
+            className="input"
+            onChange={handleChange}
+            type="password"
+            name="password"
+            value={password}
+            placeholder=" "
+            title="Пароль больше 6-ти символов"
+            required
+            minLength="6"
+          />
+          <label className="label">Пароль:</label>
+        </div>
+      </div>
 
-            <MyTextInput
-              label={<LockIcon width={16} height={21} />}
-              type="password"
-              name="password"
-              onChange={(e) => setPassword(e.currentTarget.value)}
-              onBlur={handleBlur}
-              value={values.password}
-              placeholder="Пароль"
-              className="input"
-            />
-          </div>
+      <div className="button_container">
+        <MainButton
+          type="submit"
+          text="Вход"
+          className="logo-btn"
+          disable="sd"
+        />
 
-          <div className="button_container">
-            <MainButton
-              type="submit"
-              text="Вход"
-              className="logo_btn"
-              disable="sd"
-            />
-
-            <div>
-              <NavLink to="/register" className="main_btn">
-                Регистрация
-              </NavLink>
-            </div>
-          </div>
-        </Form>
-      )}
-    </Formik>
+        <div>
+          <NavLink to="/register" className="main-btn">
+            Регистрация
+          </NavLink>
+        </div>
+      </div>
+    </form>
   );
 }
 
