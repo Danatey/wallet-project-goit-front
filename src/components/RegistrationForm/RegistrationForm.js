@@ -1,5 +1,5 @@
 import { React } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import MainButton from "../MainButton";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -12,6 +12,7 @@ function RegistrationForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (evt) => {
     switch (evt.currentTarget.name) {
@@ -39,6 +40,7 @@ function RegistrationForm() {
     setName("");
     setEmail("");
     setPassword("");
+    navigate("/login");
   };
 
   return (

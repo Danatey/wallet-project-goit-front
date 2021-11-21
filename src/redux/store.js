@@ -24,16 +24,16 @@ const middleware = [
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["refresh_token"],
 };
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     transactions: transactionsReducer,
- },
-    middleware,
-    devTools: process.env.NODE_ENV === "development",
+  },
+  middleware,
+  devTools: process.env.NODE_ENV === "development",
 });
 
 export const persistor = persistStore(store);
