@@ -1,14 +1,17 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addTransaction } from "../../redux/transactions/transactions-operations";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addTransaction,
+  getTransactionsList,
+} from "../../redux/transactions/transactions-operations";
 import Modal from "react-modal";
 import Select from "react-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { creditTransaction, debetTransaction } from "./transactionType";
 import "./modalTransaction.scss";
 import { format } from "date-fns";
 import { selectStyles } from "./SelectStyles";
+import { getCategoriesList } from "../../redux/transactions/transactions-selectors";
 
 Modal.setAppElement("#root");
 
@@ -25,6 +28,21 @@ function ModalAddTransaction() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const dispatch = useDispatch();
+  const categories = useSelector(getCategoriesList);
+
+  const fetchCategories = async () => {
+    try {
+      await dispatch(getTransactionsList()).unwrap();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (!categories) {
+      fetchCategories();
+    }
+  }, []);
 
   function openModal() {
     setIsOpen(true);
@@ -61,8 +79,7 @@ function ModalAddTransaction() {
           type: transaction.type ? "-" : "+",
           date: format(transaction.date, "yyyy-MM-dd"),
         })
-        // .unwrap()
-      );
+      ).unwrap();
       closeModal();
     } catch (e) {
       console.log(e);
@@ -102,7 +119,6 @@ function ModalAddTransaction() {
             <div className="back">
               <div className="indicator" />
             </div>
-            {/* {value ? checkedLabel ?? label : label} */}
           </label>
           <p
             className={`checkBox-option ${transaction.type ? "activPink" : ""}`}
@@ -116,7 +132,10 @@ function ModalAddTransaction() {
             <Select
               key={transaction.type}
               styles={selectStyles(transaction.type)}
-              options={transaction.type ? creditTransaction : debetTransaction}
+              options={(transaction.type
+                ? categories?.expenses
+                : categories?.incomes
+              )?.map((option) => ({ value: option, label: option }))}
               placeholder="Выберите категорию"
               onChange={(option) => {
                 updateTransaction("category", option.value);
@@ -172,7 +191,7 @@ function ModalAddTransaction() {
               name="comment"
               value={transaction.comment}
               onChange={handleInputChange}
-              // required
+              required
             />
           </label>
         </form>
