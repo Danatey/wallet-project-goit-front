@@ -28,12 +28,13 @@ function LoginForm() {
     }
   };
 
-  const handleLogin = (evt) => {
+  const handleLogin = async (evt) => {
     evt.preventDefault();
 
-    dispatch(authOperations.logIn({ email, password }));
+    await dispatch(authOperations.logIn({ email, password }));
     setEmail("");
     setPassword("");
+    await dispatch(authOperations.getCurrentUser());
   };
 
   return (

@@ -5,7 +5,7 @@ import "./RegistrationPage.scss";
 const RegistrationPage = () => {
   return (
     <div>
-      <div className="page_wrapper">
+      <div className="page_wrapper_reg">
         <p className="page_text">Finance App</p>
         <RegistrationForm />
       </div>

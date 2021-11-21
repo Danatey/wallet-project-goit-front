@@ -11,7 +11,7 @@ import DiagramTab from "./components/DiagramTab";
 import PrivateOutlet from "./components/PrivateRoute";
 import PublicOutlet from "./components/PublicRoute";
 import Currency from "./components/Currency";
-import Loader from "./components/Loader";
+// import Loader from "./components/Loader";
 import { authOperations } from "./redux/auth";
 
 import "./App.scss";
