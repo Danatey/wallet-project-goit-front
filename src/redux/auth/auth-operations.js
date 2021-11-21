@@ -47,7 +47,7 @@ export const logIn = createAsyncThunk(
         credentials
       );
       refresh_token.set(response.data.refresh_token);
-      access_token.set(response.data.refresh_token);
+      access_token.set(response.data.access_token);
       return response.data;
     } catch (err) {
       rejectWithValue(err.message);
