@@ -20,7 +20,7 @@ export const register = createAsyncThunk(
         `${BACK_END}/api/users/signup`,
         credentials
       );
-      token.set(response.data.token);
+      token.set(response.data.access_token);
       return response.data;
     } catch (err) {
       rejectWithValue(err.message);
@@ -36,7 +36,7 @@ export const logIn = createAsyncThunk(
         `${BACK_END}/api/users/login`,
         credentials
       );
-      token.set(response.data.token);
+      token.set(response.data.access_token);
       return response.data;
     } catch (err) {
       rejectWithValue(err.message);
