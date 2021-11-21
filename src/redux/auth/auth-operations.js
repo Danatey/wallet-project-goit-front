@@ -1,8 +1,8 @@
-import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import cookie from '../../services/cookies';
+import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import cookie from "../../services/cookies";
 
-import { BACK_END } from '../../assets/API/BACK_END';
+import { BACK_END } from "../../assets/API/BACK_END";
 
 const refresh_token = {
   set(token) {
@@ -30,6 +30,11 @@ export const register = createAsyncThunk(
         `${BACK_END}/api/users/signup`,
         credentials
       );
+      console.log(cookie);
+      console.log(response.data);
+      cookie.save("id", response.data.id, {
+        expires: 7,
+      });
       refresh_token.set(response.data.refresh_token);
       access_token.set(response.data.refresh_token);
       return response.data;
@@ -47,6 +52,11 @@ export const logIn = createAsyncThunk(
         `${BACK_END}/api/users/login`,
         credentials
       );
+      cookie.save("refresh_token", response.data.refresh_token, {
+        expires: 7,
+      });
+      console.log(cookie);
+      console.log(response.data.refresh_token);
       refresh_token.set(response.data.refresh_token);
       access_token.set(response.data.access_token);
       return response.data;
