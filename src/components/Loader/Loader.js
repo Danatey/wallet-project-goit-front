@@ -1,9 +1,11 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
+import './loader.scss';
 
 const LoaderComponent = () => {
 	return (
 		<Loader
+			className='loader'
 			type='Circles'
 			color='#4A56E2'
 			height={100}

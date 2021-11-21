@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Media from 'react-media';
 import Container from './components/Container';
@@ -13,42 +13,52 @@ import PublicOutlet from './components/PublicRoute';
 import Currency from './components/Currency';
 import Loader from './components/Loader';
 import { authOperations } from './redux/auth';
-
 import './App.scss';
 
 function App() {
 	const dispatch = useDispatch();
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		dispatch(authOperations.getCurrentUser());
 	}, [dispatch]);
 
+	useEffect(() => {
+		setLoading(false);
+	}, []);
+
 	return (
 		<Container>
-			<Loader />
 			<Routes>
 				{/* це приватний раут, поки що залишаю відкритим, щоб зручно було кодить, коли буде працювати логін, тоді розкоментую */}
-				<Route path='/' element={<PrivateOutlet />}>
+				{/* <Route path='/' element={<PrivateOutlet />}>
 					<Route element={<DashboardPage />}>
 						<Route index element={<Navigate to='/home' />} />
 						<Route path='home' element={<HomeTab />} />
 						<Route path='diagram' element={<DiagramTab />} />
 					</Route>
-				</Route>
+				</Route> */}
 				{/* тимчасово звичайний раут, не приватний */}
-				<Route path='/' element={<DashboardPage />}>
-					<Route index element={<Navigate to='/home' />} />
-					<Route path='home' element={<HomeTab />} />
-					<Route path='diagram' element={<DiagramTab />} />
-					<Route
-						path='currency'
-						element={
-							<Media query={{ maxWidth: 767 }}>
-								{matches => (matches ? <Currency /> : <Navigate to='/home' />)}
-							</Media>
-						}
-					/>
-				</Route>
+				{loading ? (
+					<Route path='*' element={<Loader />} />
+				) : (
+					<Route path='/' element={<DashboardPage />}>
+						<Route index element={<Navigate to='/home' />} />
+						<Route path='home' element={<HomeTab />} />
+						<Route path='diagram' element={<DiagramTab />} />
+						<Route
+							path='currency'
+							element={
+								<Media query={{ maxWidth: 767 }}>
+									{matches =>
+										matches ? <Currency /> : <Navigate to='/home' />
+									}
+								</Media>
+							}
+						/>
+					</Route>
+				)}
+
 				<Route path='login' element={<PublicOutlet restricted />}>
 					<Route index element={<LoginPage />} />
 				</Route>
