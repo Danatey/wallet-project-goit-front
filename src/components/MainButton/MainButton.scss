@@ -29,7 +29,7 @@
   }
 }
 
-.register-btn {
+.register_btn {
   @extend .Button;
   background-color: #24cca7;
   border: transparent;
@@ -43,7 +43,7 @@
   }
 }
 
-.logo-btn {
+.logo_btn {
   @extend .Button;
   background-color: #24cca7;
   border: transparent;
@@ -58,12 +58,12 @@
   }
 }
 
-.main-btn {
+.main_btn {
   @extend .Button;
   color: #4a56e2;
   background-color: #ffffff;
   border: 2px solid #4a56e2;
-  text-align: center;
+  padding-top: 10px;
 
   &:hover {
     color: #ffffff;
