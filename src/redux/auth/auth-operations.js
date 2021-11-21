@@ -1,7 +1,8 @@
-import axios from "axios";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import cookie from '../../services/cookies';
 
-import { BACK_END } from "../../assets/API/BACK_END";
+import { BACK_END } from '../../assets/API/BACK_END';
 
 const refresh_token = {
   set(token) {
