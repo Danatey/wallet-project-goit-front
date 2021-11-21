@@ -7,7 +7,11 @@ import { COLUMNS } from "./columns";
 import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
 import { nanoid } from "nanoid";
 
-import { fetchTransactions } from "../../redux/transactions/transactions-operations";
+// import { fetchTransactions } from "../../redux/transactions/transactions-operations";
+import {
+  transactionsOperations,
+  transactionsSelectors,
+} from "../../redux/transactions";
 
 import { HomeTabMobile } from "./HomeTabMobile";
 import ModalAddTransaction from "../ModalAddTransaction";
@@ -16,15 +20,16 @@ import "./homeTab.scss";
 
 const HomeTab = () => {
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => MOCK_DATA, []);
+  // const data = useMemo(() => MOCK_DATA, []);
 
-  // const data = useSelector((state) => state.transactions.items.result);
+  const data = useSelector(transactionsSelectors.getTransactions);
+
   const dispatch = useDispatch();
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data }, useSortBy);
 
   useEffect(() => {
-    dispatch(fetchTransactions());
+    dispatch(transactionsOperations.fetchTransactions());
   }, [dispatch]);
 
   return (

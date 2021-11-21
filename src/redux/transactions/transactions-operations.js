@@ -10,8 +10,7 @@ export const fetchTransactions = createAsyncThunk(
       const { data: response } = await axios.get(
         `${BACK_END}/api/transactions`
       );
-      // console.log(response.data);
-      return response.data;
+      return response.data.result;
     } catch (err) {
       return rejectWithValue(err.message);
     }
@@ -26,27 +25,26 @@ export const addTransaction = createAsyncThunk(
         `${BACK_END}/api/transactions/create`,
         transactionBody
       );
-      return response.data;
+      return response.data.transaction;
     } catch (err) {
       return rejectWithValue(err.message);
     }
   }
 );
 
-export const fetchTransactionsByCategory = createAsyncThunk(
-  "transactions/fetchTransactionsByCategory",
-  async (_, { rejectWithValue }) => {
-    try {
-      const { data: response } = await axios.get(
-        `${BACK_END}/api/transactions/categories`
-      );
-      // console.log(response.data);
-      return response.data;
-    } catch (err) {
-      return rejectWithValue(err.message);
-    }
-  }
-);
+// export const fetchTransactionsByCategory = createAsyncThunk(
+//   "transactions/fetchTransactionsByCategory",
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const { data: response } = await axios.get(
+//         `${BACK_END}/api/transactions/categories`
+//       );
+//       return response.data;
+//     } catch (err) {
+//       return rejectWithValue(err.message);
+//     }
+//   }
+// );
 
 export const getTransactionDate = createAsyncThunk(
   "transactions/getTransactionDate",
@@ -55,7 +53,7 @@ export const getTransactionDate = createAsyncThunk(
       const { data: response } = await axios.get(
         `${BACK_END}/api/transactions/categories?month=${month}&year=${year}`
       );
-      return response.data;
+      return response.data.categories;
     } catch (err) {
       return rejectWithValue(err.message);
     }
