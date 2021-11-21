@@ -25,6 +25,8 @@
   margin-right: auto;
   margin-top: 27px;
   display: table;
+  width: 280px;
+  table-layout: fixed;
 
   @media screen and (min-width: 768px) {
     display: none;
@@ -37,6 +39,12 @@
   font-weight: 700;
   line-height: 27px;
   // text-align: left;
+  @media screen and (max-width: 767px) {
+    padding-left: 20px;
+    // padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 .HomeTab-column {
@@ -46,6 +54,12 @@
   line-height: 24px;
   text-align: right;
   word-wrap: break-word;
+  @media screen and (max-width: 767px) {
+    // padding-left: 10px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 // .HomeTab-column td {
 //   word-wrap: break-word;
@@ -53,13 +67,21 @@
 .HomeTab td {
   border-bottom: 1px solid #dcdcdf;
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-  padding: 0.5rem;
-  border-right: 1px solid #dcdcdf;
+
+  @media screen and (min-width: 768px) {
+    border-right: 1px solid #dcdcdf;
+  }
 }
 
 .HomeTab th:last-child,
 td:last-child {
   border-right: 0;
+}
+.HomeTab-row {
+  width: 280px;
+  table-layout: fixed;
+  margin-top: 0px;
+  // border-collapse: separate;
 }
 .HomeTab-secondary td,
 .HomeTab-column th,
@@ -68,11 +90,12 @@ td:last-child {
   width: 114.66 px;
   overflow: hidden;
   word-wrap: break-word;
+  // border-collapse: separate;
 
   padding: 10px;
   text-align: center;
-  @media screen and (min-width: 768px) {
-    width: 116.1 px;
+  @media screen and (max-width: 767px) {
+    width: 50%;
   }
 }
 
@@ -114,7 +137,8 @@ td:last-child {
   border-left: 5px solid #ff6596;
   margin-bottom: 10px;
   // width: 280px;
-  // table-layout: fixed;
+  table-layout: fixed;
+  word-wrap: break-word;
 }
 // .color {
 //   border-left: 5px solid #24cca7;

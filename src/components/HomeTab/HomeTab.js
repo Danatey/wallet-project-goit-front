@@ -104,11 +104,6 @@ const HomeTab = () => {
             )}
           </div>
         )}
-
-        {/* let className = 'green';
-      if(data.type === '-'){
-        
-      } */}
       </Media>
       <ModalAddTransaction />{" "}
     </>
