@@ -1,0 +1,22 @@
+@import "../../common/main.scss";
+
+.user-info-modal-container {
+  position: relative;
+}
+.user-info-modal-list {
+  position: absolute;
+  z-index: 100;
+  top: 150%;
+  padding: 15px;
+  border-radius: 7%;
+
+  background-color: var(--secondary-text-color);
+}
+.user-info-modal-close {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8px;
+  border-radius: 18%;
+  background-color: var(--accent-color-blue);
+}
