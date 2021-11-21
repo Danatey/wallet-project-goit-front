@@ -1,23 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import Modal from "react-modal";
 import Logo from "../Logo";
-import { authSelectors } from "../../redux/auth";
+import MainButton from "../MainButton";
+import { authSelectors, authOperations } from "../../redux/auth";
 import sprite from "../../images/svg/symbol-defs.svg";
 import UserInfo from "../UserInfo";
 import "./Header.scss";
 
-import { useDispatch } from "react-redux";
-import * as authOperations from "../../redux/auth/auth-operations";
+Modal.setAppElement("#root");
 
 const Header = () => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const openModal = () => setIsOpen(true);
+
+  const closeModal = () => setIsOpen(false);
+
   const userName = useSelector(authSelectors.getUserName);
 
   const dispatch = useDispatch();
 
-  const handleClick = (event) => {
-    event.preventDefault();
-
+  const logOut = (e) => {
     dispatch(authOperations.logOut());
   };
   return (
@@ -29,13 +34,40 @@ const Header = () => {
       <div className="Header__logout">
         <UserInfo />
         <span className="Header__username">{userName}</span>
-        <button type="button" className="Header__button" onClick={handleClick}>
+        <button type="button" className="Header__button" onClick={openModal}>
           <svg className="Header__button--icon" width="18px" height="18px">
             <use href={`${sprite}#icon-logout`}></use>
           </svg>
           <span className="Header__logout-text">Выйти</span>
         </button>
       </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Logout Modal"
+        overlayClassName="Header-modal__overlay"
+        className="Header-modal__container"
+      >
+        <h1 className="Header-modal__title">
+          Вы действительно хотите выйти из приложения?
+        </h1>
+        <div className="Header-modal__btn-wrap">
+          <button
+            type="button"
+            className="Header-modal__button"
+            onClick={logOut}
+          >
+            Да
+          </button>
+          <button
+            type="button"
+            className="Header-modal__button"
+            onClick={closeModal}
+          >
+            Нет
+          </button>
+        </div>
+      </Modal>
     </header>
   );
 };
