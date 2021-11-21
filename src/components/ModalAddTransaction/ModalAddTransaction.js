@@ -58,9 +58,10 @@ function ModalAddTransaction() {
       await dispatch(
         addTransaction({
           ...transaction,
-          type: transaction.type ? "Расход" : "Доход",
+          type: transaction.type ? "-" : "+",
           date: format(transaction.date, "yyyy-MM-dd"),
-        }).unwrap()
+        })
+        // .unwrap()
       );
       closeModal();
     } catch (e) {
