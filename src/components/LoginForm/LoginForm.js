@@ -21,13 +21,13 @@ function LoginForm() {
   const [password, setPassword] = useState("");
 
   const validationsSchema = Yup.object().shape({
-    email: Yup.string("Enter your email")
-      .email("Enter a valid email")
-      .required("Email is required"),
-    password: Yup.string("Enter your password")
-      .min(6, "Password should be of minimum 6 characters length")
-      .max(12, "Password should be of maximum 12 characters length")
-      .required("Password is required"),
+    email: Yup.string("Введите e-mail")
+      .email("Введите корректный e-mail")
+      .required("Обязательное поле для заполнения!"),
+    password: Yup.string("Ввведите пароль")
+      .min(6, "Пароль должен состоять минимум из 6 символов")
+      .max(12, "Пароль должен состоять максимум из 12 символов")
+      .required("Обязательное поле для заполнения!"),
   });
 
   const handleLogin = (evt) => {
@@ -74,7 +74,7 @@ function LoginForm() {
               label={<EmailIcon width={20} height={16} />}
               type="email"
               name="email"
-              onChange={handleChange}
+              onChange={(e) => setEmail(e.currentTarget.value)}
               onBlur={handleBlur}
               value={values.email}
               placeholder="E-mail"
@@ -85,10 +85,10 @@ function LoginForm() {
               label={<LockIcon width={16} height={21} />}
               type="password"
               name="password"
-              onChange={handleChange}
+              onChange={(e) => setPassword(e.currentTarget.value)}
               onBlur={handleBlur}
               value={values.password}
-              placeholder="Password"
+              placeholder="Пароль"
               className="input"
             />
           </div>
