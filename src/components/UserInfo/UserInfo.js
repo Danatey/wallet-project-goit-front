@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { IconContext } from "react-icons";
 import { FaRegUserCircle } from "react-icons/fa";
 
@@ -8,6 +9,7 @@ import "./UserInfo.scss";
 
 const UserInfo = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const userName = useSelector((state) => state.auth.user.name);
 
   const openModalInfo = () => {
     setModalIsOpen(!modalIsOpen);
@@ -24,6 +26,7 @@ const UserInfo = () => {
       >
         <button onClick={openModalInfo} className="user-info-button">
           <FaRegUserCircle />
+          <span className="Header__username">{userName}</span>
         </button>
       </IconContext.Provider>
       {modalIsOpen ? <UserInfoModal closeModal={closeModalInfo} /> : <></>}

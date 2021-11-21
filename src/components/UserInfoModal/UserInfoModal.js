@@ -23,6 +23,7 @@ const UserInfoModal = ({ closeModal }) => {
     <>
       <div className="user-info-modal-container">
         <div className="user-info-modal-list">
+          <h3>Ваша карточка</h3>
           <ul>
             {user !== null ? (
               <>

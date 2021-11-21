@@ -1,22 +1,30 @@
 @import "../../common/main.scss";
 
 .user-info-modal-container {
+  font-family: "Circe";
   position: relative;
+  color: #000;
 }
 .user-info-modal-list {
   position: absolute;
+  width: 200px;
   z-index: 100;
   top: 150%;
+  right: 100%;
   padding: 15px;
   border-radius: 7%;
 
-  background-color: var(--secondary-text-color);
+  background-color: var(--primary-background-color);
 }
 .user-info-modal-close {
   display: block;
   margin-left: auto;
   margin-right: auto;
   padding: 8px;
-  border-radius: 18%;
-  background-color: var(--accent-color-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 10%;
+
+  color: var(--secondary-text-color);
+  background-color: var(--accent-color-grean);
 }

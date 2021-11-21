@@ -18,7 +18,7 @@ const Header = () => {
 
   const closeModal = () => setIsOpen(false);
 
-  const userName = useSelector(authSelectors.getUserName);
+  // const userName = useSelector(authSelectors.getUserName);
 
   const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ const Header = () => {
       </Link>
       <div className="Header__logout">
         <UserInfo />
-        <span className="Header__username">{userName}</span>
+        {/* <span className="Header__username">{userName}</span> */}
         <button type="button" className="Header__button" onClick={openModal}>
           <svg className="Header__button--icon" width="18px" height="18px">
             <use href={`${sprite}#icon-logout`}></use>

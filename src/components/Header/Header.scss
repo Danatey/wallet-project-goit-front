@@ -46,16 +46,16 @@
   line-height: 30px;
 }
 
-.Header__username {
-  margin-right: 10px;
-  font-family: "Circe";
+// .Header__username {
+//   margin-right: 10px;
+//   font-family: "Circe";
 
-  @media screen and (min-width: $TabletWidth) {
-    margin-right: 15px;
-    padding-right: 15px;
-    border-right: 1px solid;
-  }
-}
+//   @media screen and (min-width: $TabletWidth) {
+//     margin-right: 15px;
+//     padding-right: 15px;
+//     border-right: 1px solid;
+//   }
+// }
 
 .Header__button {
   display: flex;
