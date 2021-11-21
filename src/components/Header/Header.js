@@ -23,7 +23,6 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const logOut = (e) => {
-    ß;
     dispatch(authOperations.logOut());
   };
   return (
