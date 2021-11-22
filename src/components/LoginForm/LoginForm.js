@@ -1,26 +1,27 @@
 import { React } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/auth";
+import axios from "axios";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import { GoogleLogin } from "react-google-login";
 
 import MyTextInput from "../MyTextInput";
 import MainButton from "../MainButton";
-import GoogleAuth from "../GoogleAuth";
+// import GoogleAuth from "../GoogleAuth";
 import { NavLink } from "react-router-dom";
 import Logo from "../Logo";
 import { ReactComponent as EmailIcon } from "../../icons/email.svg";
 import { ReactComponent as LockIcon } from "../../icons/lock.svg";
+import { ReactComponent as GoogleIcon } from "../../images/googleSVG/google.svg";
 // import Loader from '../Loader';
-// import { useState } from "react";
 
 import "./LoginForm.scss";
 import "../MainButton/MainButton.scss";
+import "./GoogleAuth.scss";
 
 function LoginForm() {
   const dispatch = useDispatch();
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
 
   const validationsSchema = Yup.object().shape({
     email: Yup.string("Введите e-mail")
@@ -34,9 +35,20 @@ function LoginForm() {
 
   const handleLogin = ({ email, password }) => {
     // evt.preventDefault();
-
     dispatch(authOperations.logIn({ email, password }));
   };
+
+  const responseGoogle = (response) => {
+    axios({
+      method: "GET",
+      url: "https://wallet-project-goit-back.herokuapp.com",
+      data: { tokenId: response.tokenId },
+    }).then((response) => console.log(response));
+  };
+
+  // {
+  //           dispatch(authOperations.logIn(response.data.user));
+  //       }
 
   return (
     <Formik
@@ -61,7 +73,23 @@ function LoginForm() {
               Google Account:
             </p>
 
-            <GoogleAuth />
+            <GoogleLogin
+              clientId="949111004477-hbv1krtrrl6s8l4mk3iceaqe3sit06ih.apps.googleusercontent.com"
+              render={(renderProps) => (
+                <button
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                  className="button_google"
+                >
+                  <GoogleIcon className="googleSvg" />
+                  Google
+                </button>
+              )}
+              buttonText="Login"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}
+            />
           </div>
 
           <div className="container_input">
