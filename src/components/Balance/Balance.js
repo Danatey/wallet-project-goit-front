@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { authSelectors } from "../../redux/auth";
+import { transactionsSelectors } from "../../redux/transactions";
 import "./Balance.scss";
 
 const Balance = () => {
-  const balance = useSelector(authSelectors.getBalance);
+  const balance = useSelector(transactionsSelectors.getBalance);
 
   return (
     <div className="balance_container">
