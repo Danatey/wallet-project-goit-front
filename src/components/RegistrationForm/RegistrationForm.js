@@ -1,17 +1,31 @@
 import { React } from "react";
-import { NavLink } from "react-router-dom";
-import MainButton from "../MainButton";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/auth";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+
+import PasswordStrenght from "./PasswordStrength";
+import MyTextInput from "../MyTextInput";
+import MainButton from "../MainButton";
+import GoogleAuth from "../GoogleAuth";
+import { NavLink } from "react-router-dom";
+import Logo from "../Logo";
+
+import { ReactComponent as EmailIcon } from "../../icons/email.svg";
+import { ReactComponent as LockIcon } from "../../icons/lock.svg";
+import { ReactComponent as NameIcon } from "../../icons/name.svg";
+// import Loader from '../Loader';
+
 import "./RegistrationForm.scss";
 import "../MainButton/MainButton.scss";
 
 function RegistrationForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleChange = (evt) => {
     switch (evt.currentTarget.name) {
@@ -19,26 +33,10 @@ function RegistrationForm() {
         setName(evt.currentTarget.value);
         break;
 
-      case "email":
-        setEmail(evt.currentTarget.value);
-        break;
-
-      case "password":
-        setPassword(evt.currentTarget.value);
-        break;
-
-      default:
-        return;
-    }
-  };
-
-  const handleRegister = (evt) => {
-    evt.preventDefault();
+  const handleRegister = ({ name, email, password }) => {
+    // evt.preventDefault();
 
     dispatch(authOperations.register({ name, email, password }));
-    setName("");
-    setEmail("");
-    setPassword("");
   };
 
   return (
@@ -99,13 +97,75 @@ function RegistrationForm() {
           disable="sd"
         />
 
-        <div>
-          <NavLink to="/login" className="main-btn">
-            Вход
-          </NavLink>
-        </div>
-      </div>
-    </form>
+            <MyTextInput
+              label={<EmailIcon width={20} height={16} />}
+              type="email"
+              name="email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+              placeholder="E-mail"
+              className="input"
+              id="email"
+            />
+
+            <MyTextInput
+              label={<LockIcon width={16} height={21} />}
+              type="password"
+              name="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+              placeholder="Пароль"
+              className="input"
+              id="password"
+              onInput={(e) => setPassword(e.target.value)}
+            />
+
+            <MyTextInput
+              label={<LockIcon width={16} height={21} />}
+              type="password"
+              name="confirmPassword"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.confirmPassword}
+              placeholder="Подтвердите пароль"
+              className="input"
+            />
+
+            <PasswordStrenght password={password} />
+
+            <MyTextInput
+              label={<NameIcon width={18} height={18} />}
+              type="text"
+              name="name"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.name}
+              placeholder="Ваше имя"
+              className="input"
+              id="name"
+            />
+          </div>
+
+          <div className="button_container">
+            <MainButton
+              type="submit"
+              text="Регистрация"
+              disabled={!isValid && !dirty}
+              className="logo_btn"
+              disable="sd"
+            />
+
+            <div>
+              <NavLink to="/login" className="main_btn">
+                Вход
+              </NavLink>
+            </div>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
 }
 

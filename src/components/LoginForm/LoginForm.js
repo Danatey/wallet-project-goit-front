@@ -1,17 +1,26 @@
 import { React } from "react";
-import { NavLink } from "react-router-dom";
-import MainButton from "../MainButton";
-import GoogleAuth from "../GoogleAuth";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/auth";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+
+import MyTextInput from "../MyTextInput";
+import MainButton from "../MainButton";
+import GoogleAuth from "../GoogleAuth";
+import { NavLink } from "react-router-dom";
+import Logo from "../Logo";
+import { ReactComponent as EmailIcon } from "../../icons/email.svg";
+import { ReactComponent as LockIcon } from "../../icons/lock.svg";
+// import Loader from '../Loader';
+// import { useState } from "react";
+
 import "./LoginForm.scss";
 import "../MainButton/MainButton.scss";
 
 function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
   const handleChange = (evt) => {
     switch (evt.currentTarget.name) {
@@ -19,22 +28,10 @@ function LoginForm() {
         setEmail(evt.currentTarget.value);
         break;
 
-      case "password":
-        setPassword(evt.currentTarget.value);
-        break;
+  const handleLogin = ({ email, password }) => {
+    // evt.preventDefault();
 
-      default:
-        return;
-    }
-  };
-
-  const handleLogin = async (evt) => {
-    evt.preventDefault();
-
-    await dispatch(authOperations.logIn({ email, password }));
-    setEmail("");
-    setPassword("");
-    await dispatch(authOperations.getCurrentUser());
+    dispatch(authOperations.logIn({ email, password }));
   };
 
   return (
@@ -69,37 +66,47 @@ function LoginForm() {
           <label className="label">E-mail:</label>
         </div>
 
-        <div className="form-field">
-          <input
-            className="input"
-            onChange={handleChange}
-            type="password"
-            name="password"
-            value={password}
-            placeholder=" "
-            title="Пароль больше 6-ти символов"
-            required
-            minLength="6"
-          />
-          <label className="label">Пароль:</label>
-        </div>
-      </div>
+            <MyTextInput
+              label={<EmailIcon width={20} height={16} />}
+              type="email"
+              name="email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+              placeholder="E-mail"
+              className="input"
+            />
 
-      <div className="button_container">
-        <MainButton
-          type="submit"
-          text="Вход"
-          className="logo-btn"
-          disable="sd"
-        />
+            <MyTextInput
+              label={<LockIcon width={16} height={21} />}
+              type="password"
+              name="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+              placeholder="Пароль"
+              className="input"
+            />
+          </div>
 
-        <div>
-          <NavLink to="/register" className="main-btn">
-            Регистрация
-          </NavLink>
-        </div>
-      </div>
-    </form>
+          <div className="button_container">
+            <MainButton
+              type="submit"
+              text="Вход"
+              disabled={!isValid && !dirty}
+              className="logo_btn"
+              disable="sd"
+            />
+
+            <div>
+              <NavLink to="/register" className="main_btn">
+                Регистрация
+              </NavLink>
+            </div>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
 }
 

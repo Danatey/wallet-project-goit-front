@@ -34,7 +34,8 @@
     "sass": "^1.43.4",
     "styled-components": "^5.3.3",
     "web-vitals": "^1.1.2",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "zxcvbn": "^4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
