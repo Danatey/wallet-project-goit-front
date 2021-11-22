@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { authSelectors, authOperations } from "../../redux/auth";
+
+import { IconContext } from "react-icons";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 import "./UserInfoModal.scss";
 
 const UserInfoModal = ({ closeModal }) => {
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector(authSelectors.getUser);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
@@ -12,6 +17,10 @@ const UserInfoModal = ({ closeModal }) => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   });
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
 
   const handleKeyDown = (event) => {
     if (event.code === "Escape") {
@@ -21,9 +30,9 @@ const UserInfoModal = ({ closeModal }) => {
 
   return (
     <>
-      <div className="user-info-modal-container">
-        <div className="user-info-modal-list">
-          <h3>Ваша карточка</h3>
+      <div className="user-info-modal-list">
+        <div className="user-info-modal-wraper">
+          <h3 className="user-info-modal-headline">Ваша карточка</h3>
           <ul>
             {user !== null ? (
               <>
@@ -51,7 +60,9 @@ const UserInfoModal = ({ closeModal }) => {
             )}
           </ul>
           <button onClick={closeModal} className="user-info-modal-close">
-            Закрыть
+            <IconContext.Provider value={{ size: "40px" }}>
+              <IoIosCloseCircleOutline />
+            </IconContext.Provider>
           </button>
         </div>
       </div>

@@ -1,11 +1,17 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useSortBy, useTable } from "react-table";
-import MOCK_DATA from "./MOCK_DATA.json";
+import { useDispatch, useSelector } from "react-redux";
+// import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
+import {
+  transactionsSelectors,
+  transactionsOperations,
+} from "../../redux/transactions";
 
 const HomeTabMobile = () => {
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => MOCK_DATA, []);
+  // const data = useMemo(() => MOCK_DATA, []);
+  const data = useSelector(transactionsSelectors.getTransactions);
 
   //   const [textColor, setTextColor] = useState('black');
   //   const [isPink, setisPink] = useState(true);
@@ -23,16 +29,18 @@ const HomeTabMobile = () => {
     useSortBy
   );
 
-  useEffect(() => {}, [data]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(transactionsOperations.fetchTransactions());
+  }, [dispatch]);
+
   return (
     <>
       <div className="HomeTab-mobile">
         {rows.map((row, i) => {
           return (
-            <table
-              className="HomeTab-mobile HomeTab-mobile_table color"
-              {...getTableProps()}
-            >
+            <table className="HomeTab-mobile_table color" {...getTableProps()}>
               <tbody
                 className="HomeTab-mobile_table color"
                 key={row.id}
