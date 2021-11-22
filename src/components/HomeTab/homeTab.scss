@@ -11,12 +11,11 @@
 
 .HomeTab-secondary {
   display: none;
-  // margin-left: auto;
-  // margin-right: auto;
   border-spacing: 0px;
-  // width: 100%;
+  width: 700px;
+  table-layout: fixed;
   @media screen and (min-width: 768px) {
-    display: table-header-group;
+    display: table;
   }
 }
 
@@ -25,7 +24,9 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 27px;
-  //   table-layout: fixed;
+  display: table;
+  width: 280px;
+  table-layout: fixed;
 
   @media screen and (min-width: 768px) {
     display: none;
@@ -37,7 +38,13 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 27px;
-  text-align: left;
+  // text-align: left;
+  @media screen and (max-width: 767px) {
+    padding-left: 20px;
+    // padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 .HomeTab-column {
@@ -47,22 +54,34 @@
   line-height: 24px;
   text-align: right;
   word-wrap: break-word;
+  @media screen and (max-width: 767px) {
+    // padding-left: 10px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
-
+// .HomeTab-column td {
+//   word-wrap: break-word;
+// }
 .HomeTab td {
   border-bottom: 1px solid #dcdcdf;
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-  padding: 0.5rem;
-  border-right: 1px solid #dcdcdf;
-}
-.HomeTab table {
-  width: 100%;
-  table-layout: fixed;
+
+  @media screen and (min-width: 768px) {
+    border-right: 1px solid #dcdcdf;
+  }
 }
 
 .HomeTab th:last-child,
 td:last-child {
   border-right: 0;
+}
+.HomeTab-row {
+  width: 280px;
+  table-layout: fixed;
+  margin-top: 0px;
+  // border-collapse: separate;
 }
 .HomeTab-secondary td,
 .HomeTab-column th,
@@ -71,11 +90,12 @@ td:last-child {
   width: 114.66 px;
   overflow: hidden;
   word-wrap: break-word;
+  // border-collapse: separate;
 
   padding: 10px;
   text-align: center;
-  @media screen and (min-width: 768px) {
-    width: 116.1 px;
+  @media screen and (max-width: 767px) {
+    width: 50%;
   }
 }
 
@@ -97,20 +117,35 @@ td:last-child {
   background: #ffffff;
 }
 
-.HomeTab-mobile_table::before {
-  @media screen and (max-width: 767px) {
-    content: "";
-    position: absolute;
-    width: 5px;
-    height: 282px;
-
-    right: 0;
-    left: 0;
-    background-color: aqua;
-  }
-}
-// .HomeTab-column1 tr:last-child {
+// .HomeTab-mobile_table::before {
 //   @media screen and (max-width: 767px) {
-//     margin-bottom: 10px;
+//     content: "";
+//     position: absolute;
+//     width: 5px;
+//     height: 282px;
+
+//     right: 0;
+//     left: 0;
+//     background-color: aqua;
+//     border-radius: 10px;
 //   }
 // }
+.HomeTab-mobile_table {
+  background: #ffffff;
+  opacity: 0.8;
+  border-radius: 10px;
+  border-left: 5px solid #ff6596;
+  margin-bottom: 10px;
+  // width: 280px;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+// .color {
+//   border-left: 5px solid #24cca7;
+// }
+// .green {
+//   color: #24cca7;
+// }
+.pink {
+  color: #ff6596;
+}
