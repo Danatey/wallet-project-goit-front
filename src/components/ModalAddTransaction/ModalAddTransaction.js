@@ -12,6 +12,10 @@ import "./modalTransaction.scss";
 import { format } from "date-fns";
 import { selectStyles } from "./SelectStyles";
 import { getCategoriesList } from "../../redux/transactions/transactions-selectors";
+import { ReactComponent as Plus } from "../../icons/plus.svg";
+import { ReactComponent as Close } from "../../icons/close.svg";
+import { ReactComponent as DateRange } from "../../icons/date-range.svg";
+import DropdownIndicator from "./DropdownIndicator";
 
 Modal.setAppElement("#root");
 
@@ -89,7 +93,7 @@ function ModalAddTransaction() {
   return (
     <div>
       <button className="btn-open" onClick={openModal}>
-        Add
+        <Plus />
       </button>
       <Modal
         isOpen={modalIsOpen}
@@ -97,7 +101,11 @@ function ModalAddTransaction() {
         overlayClassName="modal-overlay"
         contentLabel="Example Modal"
         className="modal-container"
+        htmlOpenClassName="no-scroll"
       >
+        <button className="btn-cross" onClick={closeModal}>
+          <Close />
+        </button>
         <h2 className="Modal-title">Добавить транзакцию</h2>
 
         <div className="checkBox">
@@ -117,7 +125,9 @@ function ModalAddTransaction() {
               checked={transaction.type}
             />
             <div className="back">
-              <div className="indicator" />
+              <div className="indicator">
+                <Plus />
+              </div>
             </div>
           </label>
           <p
@@ -132,6 +142,7 @@ function ModalAddTransaction() {
             <Select
               key={transaction.type}
               styles={selectStyles(transaction.type)}
+              components={{ DropdownIndicator }}
               options={(transaction.type
                 ? categories?.expenses
                 : categories?.incomes
@@ -173,19 +184,21 @@ function ModalAddTransaction() {
               />
             </label>
 
-            <DatePicker
-              className="moneyInput"
-              selected={transaction.date}
-              onChange={(date) => {
-                updateTransaction("date", date);
-              }}
-              dateFormat="dd.MM.yyyy"
-            />
+            <div className="datepicker-container">
+              <DatePicker
+                className="dateInput"
+                selected={transaction.date}
+                onChange={(date) => {
+                  updateTransaction("date", date);
+                }}
+                dateFormat="dd.MM.yyyy"
+              />
+              <DateRange className="dateRange-Icon" />
+            </div>
           </div>
 
           <label className="lable">
-            <input
-              type="text"
+            <textarea
               placeholder="Комментарий"
               className="descriptionInput"
               name="comment"
