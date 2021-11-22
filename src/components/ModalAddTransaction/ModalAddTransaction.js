@@ -4,7 +4,6 @@ import {
   addTransaction,
   getTransactionsList,
 } from "../../redux/transactions/transactions-operations";
-import { authActions } from "../../redux/auth";
 import Modal from "react-modal";
 import Select from "react-select";
 import DatePicker from "react-datepicker";
@@ -85,13 +84,6 @@ function ModalAddTransaction() {
           date: format(transaction.date, "yyyy-MM-dd"),
         })
       ).unwrap();
-      dispatch(
-        authActions.changeBalance(
-          transaction.type
-            ? -1 * parseFloat(transaction.amount)
-            : transaction.amount
-        )
-      );
       closeModal();
     } catch (e) {
       console.log(e);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TableStats from "./TableStats";
 import PieChart from "./PieChart";
-import { authSelectors } from "../../redux/auth";
+import { transactionsSelectors } from "../../redux/transactions";
 
 import { fetchTransactionsByCategory } from "../../redux/transactions/transactions-operations";
 
@@ -37,7 +37,7 @@ const colors = [
 ];
 
 export const DiagramTab = () => {
-  const balance = useSelector(authSelectors.getBalance);
+  const balance = useSelector(transactionsSelectors.getBalance);
   const dispatch = useDispatch();
 
   useEffect(() => {
