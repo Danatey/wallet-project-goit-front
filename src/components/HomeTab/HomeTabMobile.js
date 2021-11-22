@@ -26,10 +26,13 @@ const HomeTabMobile = () => {
   useEffect(() => {}, [data]);
   return (
     <>
-      <table className="HomeTab-mobile " {...getTableProps()}>
+      <div className="HomeTab-mobile">
         {rows.map((row, i) => {
           return (
-            <div className="HomeTab-mobile_table color">
+            <table
+              className="HomeTab-mobile HomeTab-mobile_table color"
+              {...getTableProps()}
+            >
               <tbody
                 className="HomeTab-mobile_table color"
                 key={row.id}
@@ -62,10 +65,10 @@ const HomeTabMobile = () => {
                   <td className="HomeTab-column">{data[i].balance}</td>
                 </tr>
               </tbody>
-            </div>
+            </table>
           );
         })}
-      </table>
+      </div>
     </>
   );
 };
