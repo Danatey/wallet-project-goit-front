@@ -3,14 +3,9 @@ import { createReducer } from "@reduxjs/toolkit";
 import {
   fetchTransactions,
   addTransaction,
-  // fetchTransactionsByCategory,
   getTransactionDate,
   getTransactionsList,
 } from "./transactions-operations";
-
-// const categories = createReducer([], {
-//   [fetchTransactionsByCategory.fulfilled]: (_, { payload }) => payload,
-// });
 
 const stats = createReducer(null, {
   [getTransactionDate.fulfilled]: (_, { payload }) => payload,
@@ -18,6 +13,11 @@ const stats = createReducer(null, {
 
 const categoriesList = createReducer(null, {
   [getTransactionsList.fulfilled]: (_, { payload }) => payload,
+});
+
+const balance = createReducer(0, {
+  [addTransaction.fulfilled]: (_, { payload }) => payload.balance,
+  [fetchTransactions.fulfilled]: (_, { payload }) => payload[0].balance,
 });
 
 const items = createReducer([], {
@@ -47,7 +47,7 @@ const error = createReducer(null, {
 });
 
 export default combineReducers({
-  // categories,
+  balance,
   stats,
   categoriesList,
   items,

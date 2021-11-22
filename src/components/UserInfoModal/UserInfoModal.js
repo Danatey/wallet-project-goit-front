@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { authSelectors, authOperations } from "../../redux/auth";
 
 import "./UserInfoModal.scss";
 
 const UserInfoModal = ({ closeModal }) => {
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector(authSelectors.getUser);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
@@ -12,6 +14,10 @@ const UserInfoModal = ({ closeModal }) => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   });
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
 
   const handleKeyDown = (event) => {
     if (event.code === "Escape") {

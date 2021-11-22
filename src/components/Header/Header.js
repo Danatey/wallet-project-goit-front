@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "react-modal";
 import Logo from "../Logo";
-import MainButton from "../MainButton";
 import { authSelectors, authOperations } from "../../redux/auth";
 import sprite from "../../images/svg/symbol-defs.svg";
 import UserInfo from "../UserInfo";

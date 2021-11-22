@@ -10,5 +10,3 @@ function CurrencyPage() {
 }
 
 export default CurrencyPage;
-
-// <Route path="/currency" component={CurrencyPage}/>
