@@ -17,7 +17,8 @@ const categoriesList = createReducer(null, {
 
 const balance = createReducer(0, {
   [addTransaction.fulfilled]: (_, { payload }) => payload.balance,
-  [fetchTransactions.fulfilled]: (_, { payload }) => payload[0].balance,
+  [fetchTransactions.fulfilled]: (_, { payload }) =>
+    payload.length ? payload[0].balance : 0,
 });
 
 const items = createReducer([], {
