@@ -2,12 +2,10 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSortBy, useTable } from "react-table";
 import Media from "react-media";
-import MOCK_DATA from "./MOCK_DATA.json";
+// import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
 import { nanoid } from "nanoid";
-
-// import { fetchTransactions } from "../../redux/transactions/transactions-operations";
 import {
   transactionsOperations,
   transactionsSelectors,

@@ -1,17 +1,10 @@
-import React, { useEffect } from "react";
-
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
+import { authSelectors } from "../../redux/auth";
 import "./Balance.scss";
-
-import { authSelectors, authOperations } from "../../redux/auth";
 
 const Balance = () => {
   const balance = useSelector(authSelectors.getBalance);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(authOperations.getCurrentUser());
-  }, [dispatch]);
 
   return (
     <div className="balance_container">

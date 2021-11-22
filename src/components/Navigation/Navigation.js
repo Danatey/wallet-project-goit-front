@@ -1,7 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import Media from "react-media";
-import PropTypes from "prop-types";
 import home from "../../images/svg/home.svg";
 import diagram from "../../images/svg/diagram.svg";
 import currency from "../../images/svg/currency.svg";
