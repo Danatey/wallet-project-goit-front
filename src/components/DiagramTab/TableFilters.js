@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Select from 'react-select'
 import { format } from 'date-fns'
+import { ru } from 'date-fns/locale'
+
 import './tableFilters.scss'
 import { selectStyles } from './SelectStyles'
 import { useDispatch } from 'react-redux'
@@ -8,7 +10,9 @@ import { getTransactionDate } from '../../redux/transactions/transactions-operat
 
 const currentMonth = new Date().getMonth() + 1
 const months = Array.from({ length: 12 }, (item, i) => {
-  return format(new Date(0, i), 'LLLL')
+  return format(new Date(0, i), 'LLLL', {
+    locale: ru,
+  })
 })
 
 const monthOptions = Array(12)

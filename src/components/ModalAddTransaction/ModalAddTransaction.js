@@ -91,7 +91,7 @@ function ModalAddTransaction() {
   }
 
   return (
-    <div>
+    <>
       <button className="btn-open" onClick={openModal}>
         <Plus />
       </button>
@@ -137,7 +137,7 @@ function ModalAddTransaction() {
           </p>
         </div>
 
-        <form id="transaction-form" onSubmit={handleSubmit}>
+        <form id="transaction-form" onSubmit={handleSubmit} autoComplete="off">
           <div className="input-select-container">
             <Select
               key={transaction.type}
@@ -214,7 +214,7 @@ function ModalAddTransaction() {
           <p className="btn-text">отмена</p>
         </button>
       </Modal>
-    </div>
+    </>
   )
 }
 
