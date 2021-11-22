@@ -1,15 +1,15 @@
-@import "../../common/utils/breakpoints";
+@import '../../common/utils/breakpoints';
 
 .Container {
-  width: $MobileWidth;
+  max-width: $MaxMobileWidth;
   margin-left: auto;
   margin-right: auto;
 
   @media screen and (min-width: $TabletWidth) {
-    width: $TabletWidth;
+    max-width: $TabletWidth;
   }
 
   @media screen and (min-width: $DesktopWidth) {
-    width: $DesktopWidth;
+    max-width: $DesktopWidth;
   }
 }

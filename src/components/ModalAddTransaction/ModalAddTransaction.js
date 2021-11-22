@@ -15,6 +15,7 @@ import { getCategoriesList } from "../../redux/transactions/transactions-selecto
 import { ReactComponent as Plus } from "../../icons/plus.svg";
 import { ReactComponent as Close } from "../../icons/close.svg";
 import { ReactComponent as DateRange } from "../../icons/date-range.svg";
+import DropdownIndicator from "./DropdownIndicator";
 
 Modal.setAppElement("#root");
 
@@ -100,6 +101,7 @@ function ModalAddTransaction() {
         overlayClassName="modal-overlay"
         contentLabel="Example Modal"
         className="modal-container"
+        htmlOpenClassName="no-scroll"
       >
         <button className="btn-cross" onClick={closeModal}>
           <Close />
@@ -140,6 +142,7 @@ function ModalAddTransaction() {
             <Select
               key={transaction.type}
               styles={selectStyles(transaction.type)}
+              components={{ DropdownIndicator }}
               options={(transaction.type
                 ? categories?.expenses
                 : categories?.incomes
@@ -195,8 +198,7 @@ function ModalAddTransaction() {
           </div>
 
           <label className="lable">
-            <input
-              type="text"
+            <textarea
               placeholder="Комментарий"
               className="descriptionInput"
               name="comment"

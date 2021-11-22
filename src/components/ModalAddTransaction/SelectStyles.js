@@ -4,9 +4,9 @@ export const selectStyles = (type) => {
     control: (provided) => ({
       ...provided,
       border: "none",
+      paddingBottom: 4,
       borderRadius: 0,
       borderBottom: "1px solid #e0e0e0",
-      height: 34,
       minHeight: 34,
       boxShadow: "none",
       "&:hover": {
@@ -52,6 +52,11 @@ export const selectStyles = (type) => {
       alignItems: "flex-start",
       "&:hover": {
         color: "#000000",
+      },
+
+      "&>svg": {
+        with: 18,
+        height: 9,
       },
     }),
 
