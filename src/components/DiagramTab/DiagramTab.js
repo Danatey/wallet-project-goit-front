@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TableStats from "./TableStats";
 import PieChart from "./PieChart";
+import { authSelectors } from "../../redux/auth";
 
 import { fetchTransactionsByCategory } from "../../redux/transactions/transactions-operations";
-import { getCurrentUser } from "../../redux/auth/auth-operations";
 
 import s from "./diagramm.module.scss";
 
@@ -37,13 +37,8 @@ const colors = [
 ];
 
 export const DiagramTab = () => {
-  const balance = useSelector((state) => state.auth.user?.balance);
-  // const data = useSelector((state) => state.transactions.categories.categories);
+  const balance = useSelector(authSelectors.getBalance);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getCurrentUser());
-  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchTransactionsByCategory());

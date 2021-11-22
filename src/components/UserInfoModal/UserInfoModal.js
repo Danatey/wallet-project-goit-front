@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { authSelectors } from "../../redux/auth";
 
 import "./UserInfoModal.scss";
 
 const UserInfoModal = ({ closeModal }) => {
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector(authSelectors.getUser);
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
