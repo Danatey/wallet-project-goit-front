@@ -47,7 +47,7 @@ const HomeTabMobile = () => {
             </tr>
             <tr>
               <td className="HomeTab-column-header">Сумма</td>
-              <td className="HomeTab-column">{data[i].sum}</td>
+              <td className="HomeTab-column">{data[i].amount}</td>
             </tr>
             <tr>
               <td className="HomeTab-column-header">Баланс</td>
