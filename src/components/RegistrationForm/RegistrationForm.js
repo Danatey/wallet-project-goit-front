@@ -1,27 +1,31 @@
 import { React } from "react";
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { authOperations } from "../../redux/auth";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+
+import PasswordStrenght from "./PasswordStrength";
 import MyTextInput from "../MyTextInput";
 import MainButton from "../MainButton";
 import GoogleAuth from "../GoogleAuth";
+import { NavLink } from "react-router-dom";
 import Logo from "../Logo";
+
 import { ReactComponent as EmailIcon } from "../../icons/email.svg";
 import { ReactComponent as LockIcon } from "../../icons/lock.svg";
 import { ReactComponent as NameIcon } from "../../icons/name.svg";
 // import Loader from '../Loader';
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { authOperations } from "../../redux/auth";
+
 import "./RegistrationForm.scss";
 import "../MainButton/MainButton.scss";
 
 function RegistrationForm() {
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
 
   const validationsSchema = Yup.object({
     email: Yup.string()
@@ -41,16 +45,10 @@ function RegistrationForm() {
       .required("Обязательное поле для заполнения!"),
   });
 
-  const handleRegister = (evt) => {
+  const handleRegister = ({ name, email, password }) => {
     // evt.preventDefault();
 
-    dispatch(
-      authOperations.register({ name, email, password, confirmPassword })
-    );
-    setName("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
+    dispatch(authOperations.register({ name, email, password }));
   };
 
   return (
@@ -91,44 +89,50 @@ function RegistrationForm() {
               label={<EmailIcon width={20} height={16} />}
               type="email"
               name="email"
-              onChange={(e) => setEmail(e.currentTarget.value)}
+              onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
               placeholder="E-mail"
               className="input"
+              id="email"
             />
 
             <MyTextInput
               label={<LockIcon width={16} height={21} />}
               type="password"
               name="password"
-              onChange={(e) => setPassword(e.currentTarget.value)}
+              onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
-              placeholder="Password"
+              placeholder="Пароль"
               className="input"
+              id="password"
+              onInput={(e) => setPassword(e.target.value)}
             />
 
             <MyTextInput
               label={<LockIcon width={16} height={21} />}
               type="password"
               name="confirmPassword"
-              onChange={(e) => setConfirmPassword(e.currentTarget.value)}
+              onChange={handleChange}
               onBlur={handleBlur}
               value={values.confirmPassword}
-              placeholder="Confirm password"
+              placeholder="Подтвердите пароль"
               className="input"
             />
+
+            <PasswordStrenght password={password} />
 
             <MyTextInput
               label={<NameIcon width={18} height={18} />}
               type="text"
               name="name"
-              onChange={(e) => setName(e.currentTarget.value)}
+              onChange={handleChange}
               onBlur={handleBlur}
               value={values.name}
-              placeholder="Your name"
+              placeholder="Ваше имя"
               className="input"
+              id="name"
             />
           </div>
 
@@ -136,6 +140,7 @@ function RegistrationForm() {
             <MainButton
               type="submit"
               text="Регистрация"
+              disabled={!isValid && !dirty}
               className="logo_btn"
               disable="sd"
             />

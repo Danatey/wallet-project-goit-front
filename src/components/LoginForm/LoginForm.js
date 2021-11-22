@@ -1,24 +1,26 @@
 import { React } from "react";
+import { useDispatch } from "react-redux";
+import { authOperations } from "../../redux/auth";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { NavLink } from "react-router-dom";
+
 import MyTextInput from "../MyTextInput";
 import MainButton from "../MainButton";
 import GoogleAuth from "../GoogleAuth";
+import { NavLink } from "react-router-dom";
 import Logo from "../Logo";
 import { ReactComponent as EmailIcon } from "../../icons/email.svg";
 import { ReactComponent as LockIcon } from "../../icons/lock.svg";
 // import Loader from '../Loader';
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { authOperations } from "../../redux/auth";
+// import { useState } from "react";
+
 import "./LoginForm.scss";
 import "../MainButton/MainButton.scss";
 
 function LoginForm() {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
   const validationsSchema = Yup.object().shape({
     email: Yup.string("Введите e-mail")
@@ -30,12 +32,10 @@ function LoginForm() {
       .required("Обязательное поле для заполнения!"),
   });
 
-  const handleLogin = (evt) => {
+  const handleLogin = ({ email, password }) => {
     // evt.preventDefault();
 
     dispatch(authOperations.logIn({ email, password }));
-    setEmail("");
-    setPassword("");
   };
 
   return (
@@ -74,7 +74,7 @@ function LoginForm() {
               label={<EmailIcon width={20} height={16} />}
               type="email"
               name="email"
-              onChange={(e) => setEmail(e.currentTarget.value)}
+              onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
               placeholder="E-mail"
@@ -85,7 +85,7 @@ function LoginForm() {
               label={<LockIcon width={16} height={21} />}
               type="password"
               name="password"
-              onChange={(e) => setPassword(e.currentTarget.value)}
+              onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
               placeholder="Пароль"
@@ -97,6 +97,7 @@ function LoginForm() {
             <MainButton
               type="submit"
               text="Вход"
+              disabled={!isValid && !dirty}
               className="logo_btn"
               disable="sd"
             />
