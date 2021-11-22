@@ -6,6 +6,8 @@ import { transactionsSelectors } from "../../redux/transactions";
 
 import { fetchTransactionsByCategory } from "../../redux/transactions/transactions-operations";
 
+import NoTransaction from "../NoTransaction";
+
 import s from "./diagramm.module.scss";
 
 const data = [
@@ -45,16 +47,14 @@ export const DiagramTab = () => {
   }, [dispatch]);
   return (
     <>
-      <div className={s.statsSheet}>
-        {data !== undefined ? (
-          <>
-            <PieChart balance={balance} data={data} colors={colors} />
-            <TableStats data={data} sumIncome={sumIncome} colors={colors} />
-          </>
-        ) : (
-          <span className="contact-message">You have no transactions yet </span>
-        )}
-      </div>
+      {data === undefined ? (
+        <div className={s.statsSheet}>
+          <PieChart balance={balance} data={data} colors={colors} />
+          <TableStats data={data} sumIncome={sumIncome} colors={colors} />
+        </div>
+      ) : (
+        <NoTransaction />
+      )}
     </>
   );
 };
