@@ -3,11 +3,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Balance.scss";
 
-// import { getCurrentUser } from "../../redux/auth/auth-operations";
 import { authSelectors, authOperations } from "../../redux/auth";
 
 const Balance = () => {
-  // const balance = useSelector((state) => state.auth.user?.balance);
   const balance = useSelector(authSelectors.getBalance);
   const dispatch = useDispatch();
 
