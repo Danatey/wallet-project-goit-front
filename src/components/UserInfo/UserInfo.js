@@ -20,7 +20,7 @@ const UserInfo = () => {
   };
 
   return (
-    <>
+    <div className="user-info-container">
       <IconContext.Provider
         value={{ className: "user-info-global", size: "20px" }}
       >
@@ -30,7 +30,7 @@ const UserInfo = () => {
         </button>
       </IconContext.Provider>
       {modalIsOpen ? <UserInfoModal closeModal={closeModalInfo} /> : <></>}
-    </>
+    </div>
   );
 };
 

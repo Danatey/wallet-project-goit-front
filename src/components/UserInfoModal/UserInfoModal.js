@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { authSelectors, authOperations } from "../../redux/auth";
 
+import { IconContext } from "react-icons";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+
 import "./UserInfoModal.scss";
 
 const UserInfoModal = ({ closeModal }) => {
@@ -27,9 +30,9 @@ const UserInfoModal = ({ closeModal }) => {
 
   return (
     <>
-      <div className="user-info-modal-container">
-        <div className="user-info-modal-list">
-          <h3>Ваша карточка</h3>
+      <div className="user-info-modal-list">
+        <div className="user-info-modal-wraper">
+          <h3 className="user-info-modal-headline">Ваша карточка</h3>
           <ul>
             {user !== null ? (
               <>
@@ -57,7 +60,9 @@ const UserInfoModal = ({ closeModal }) => {
             )}
           </ul>
           <button onClick={closeModal} className="user-info-modal-close">
-            Закрыть
+            <IconContext.Provider value={{ size: "40px" }}>
+              <IoIosCloseCircleOutline />
+            </IconContext.Provider>
           </button>
         </div>
       </div>
