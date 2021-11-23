@@ -12,7 +12,7 @@ export const fetchTransactions = createAsyncThunk(
       );
       return response.data.result;
     } catch (err) {
-      return rejectWithValue(err.message);
+      return rejectWithValue(err.response.data);
     }
   }
 );
@@ -27,7 +27,7 @@ export const addTransaction = createAsyncThunk(
       );
       return response.data.transaction;
     } catch (err) {
-      return rejectWithValue(err.message);
+      return rejectWithValue(err.response.data);
     }
   }
 );
@@ -41,7 +41,7 @@ export const fetchTransactionsByCategory = createAsyncThunk(
       );
       return response.data;
     } catch (err) {
-      return rejectWithValue(err.message);
+      return rejectWithValue(err.response.data);
     }
   }
 );
@@ -55,7 +55,7 @@ export const getTransactionDate = createAsyncThunk(
       );
       return response.data.categories;
     } catch (err) {
-      return rejectWithValue(err.message);
+      return rejectWithValue(err.response.data);
     }
   }
 );
@@ -69,7 +69,7 @@ export const getTransactionsList = createAsyncThunk(
       );
       return response.data;
     } catch (err) {
-      return rejectWithValue(err.message);
+      return rejectWithValue(err.response.data);
     }
   }
 );

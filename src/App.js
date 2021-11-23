@@ -2,6 +2,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Media from "react-media";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Container from "./components/Container";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
@@ -60,6 +62,7 @@ function App() {
         </Route>
         <Route path="*" element={<LoginPage />} />
       </Routes>
+      <ToastContainer />
     </Container>
   );
 }

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import Modal from "react-modal";
 import Logo from "../Logo";
-import { authSelectors, authOperations } from "../../redux/auth";
+import { authOperations } from "../../redux/auth";
 import sprite from "../../images/svg/symbol-defs.svg";
 import UserInfo from "../UserInfo";
 import "./Header.scss";
@@ -16,8 +16,6 @@ const Header = () => {
   const openModal = () => setIsOpen(true);
 
   const closeModal = () => setIsOpen(false);
-
-  // const userName = useSelector(authSelectors.getUserName);
 
   const dispatch = useDispatch();
 
@@ -32,7 +30,6 @@ const Header = () => {
       </Link>
       <div className="Header__logout">
         <UserInfo />
-        {/* <span className="Header__username">{userName}</span> */}
         <button type="button" className="Header__button" onClick={openModal}>
           <svg className="Header__button--icon" width="18px" height="18px">
             <use href={`${sprite}#icon-logout`}></use>

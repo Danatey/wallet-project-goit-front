@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 import cookie from "../../services/cookies";
 
 import { BACK_END } from "../../assets/API/BACK_END";
@@ -31,7 +32,6 @@ export const register = createAsyncThunk(
         credentials
       );
       console.log(cookie);
-      console.log(response.data);
       cookie.save("id", response.data.id, {
         expires: 7,
       });
@@ -39,7 +39,17 @@ export const register = createAsyncThunk(
       access_token.set(response.data.refresh_token);
       return response.data;
     } catch (err) {
-      rejectWithValue(err.message);
+      if (err.response.status === 409) {
+        return rejectWithValue(toast.error("Вы уже зарегистрированы"));
+      }
+      if (err.response.status === 400) {
+        return rejectWithValue(
+          toast.error("Некорректные данные, попробуйте еще раз")
+        );
+      }
+      return rejectWithValue(
+        toast.error("Что-то пошло не так. Повторите попытку позже")
+      );
     }
   }
 );
@@ -61,7 +71,21 @@ export const logIn = createAsyncThunk(
       access_token.set(response.data.access_token);
       return response.data;
     } catch (err) {
-      rejectWithValue(err.message);
+      if (err.response.status === 401) {
+        return rejectWithValue(
+          toast.error(
+            "Неверные данные. Проверьте логин и пароль или зарегистрируйтесь"
+          )
+        );
+      }
+      if (err.response.status === 400) {
+        return rejectWithValue(
+          toast.error("Некорректные данные, попробуйте еще раз")
+        );
+      }
+      return rejectWithValue(
+        toast.error("Что-то пошло не так. Повторите попытку позже")
+      );
     }
   }
 );
@@ -74,7 +98,7 @@ export const logOut = createAsyncThunk(
       refresh_token.unset();
       access_token.unset();
     } catch (err) {
-      rejectWithValue(err.message);
+      return rejectWithValue(err.response.data);
     }
   }
 );
@@ -94,7 +118,10 @@ export const getCurrentUser = createAsyncThunk(
       const { data: response } = await axios.get(`${BACK_END}/api/users/info`);
       return response.data;
     } catch (err) {
-      thunkAPI.rejectWithValue(err.message);
+      if (err.response.status === 409) {
+        return thunkAPI.rejectWithValue(toast.error("Введите логин и пароль"));
+      }
+      return thunkAPI.rejectWithValue(err.response.data);
     }
   }
 );
