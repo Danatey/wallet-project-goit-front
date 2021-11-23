@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { IconContext } from "react-icons";
 import { FaRegUserCircle } from "react-icons/fa";
+import { authSelectors } from "../../redux/auth";
 
 import UserInfoModal from "../UserInfoModal";
 
@@ -9,7 +10,7 @@ import "./UserInfo.scss";
 
 const UserInfo = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const userName = useSelector((state) => state.auth.user.name);
+  const userName = useSelector(authSelectors.getUserName);
 
   const openModalInfo = () => {
     setModalIsOpen(!modalIsOpen);

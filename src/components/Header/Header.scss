@@ -141,9 +141,14 @@
 
   color: #ffffff;
   background-color: #24cca7;
+  transition: 100ms linear;
 
   border-radius: 20px;
   text-align: center;
+
+  &:hover {
+    background-color: #05bd95;
+  }
 
   &:nth-child(1) {
     margin-right: 25px;

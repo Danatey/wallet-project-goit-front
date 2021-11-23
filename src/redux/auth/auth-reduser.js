@@ -24,9 +24,13 @@ const setError = (_, { payload }) => payload;
 
 const error = createReducer(null, {
   [register.rejected]: setError,
+  [register.pending]: null,
   [logIn.rejected]: setError,
+  [logIn.pending]: null,
   [logOut.rejected]: setError,
+  [logOut.pending]: null,
   [getCurrentUser.rejected]: setError,
+  [getCurrentUser.pending]: null,
 });
 
 const isAuthenticated = createReducer(false, {
