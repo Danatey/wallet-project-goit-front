@@ -7,6 +7,7 @@ import {
 import Modal from 'react-modal'
 import Select from 'react-select'
 import DatePicker from 'react-datepicker'
+import DropdownIndicator from './DropdownIndicator'
 import 'react-datepicker/dist/react-datepicker.css'
 import './modalTransaction.scss'
 import { format } from 'date-fns'
@@ -15,7 +16,6 @@ import { getCategoriesList } from '../../redux/transactions/transactions-selecto
 import { ReactComponent as Plus } from '../../icons/plus.svg'
 import { ReactComponent as Close } from '../../icons/close.svg'
 import { ReactComponent as DateRange } from '../../icons/date-range.svg'
-import DropdownIndicator from './DropdownIndicator'
 
 Modal.setAppElement('#root')
 
@@ -106,12 +106,12 @@ function ModalAddTransaction() {
         <button className="btn-cross" onClick={closeModal}>
           <Close />
         </button>
-        <h2 className="Modal-title">Добавить транзакцию</h2>
+        <h2 className="modal-title">Добавить транзакцию</h2>
 
         <div className="checkBox">
           <p
             className={`checkBox-option ${
-              !transaction.type ? 'activGreen' : ''
+              !transaction.type ? 'active-green' : ''
             }`}
           >
             Доход
@@ -131,7 +131,9 @@ function ModalAddTransaction() {
             </div>
           </label>
           <p
-            className={`checkBox-option ${transaction.type ? 'activPink' : ''}`}
+            className={`checkBox-option ${
+              transaction.type ? 'active-pink' : ''
+            }`}
           >
             Расход
           </p>
@@ -155,7 +157,7 @@ function ModalAddTransaction() {
             />
             <input
               tabIndex={-1}
-              className="requiredHackInput"
+              className="required-hack-input"
               type="text"
               required
               onChange={() => ({})}
@@ -166,7 +168,7 @@ function ModalAddTransaction() {
           <div className="money-date-container">
             <label>
               <input
-                className="moneyInput"
+                className="modal-input money-input"
                 type="text"
                 placeholder="0.00"
                 name="amount"
@@ -185,7 +187,7 @@ function ModalAddTransaction() {
 
             <div className="datepicker-container">
               <DatePicker
-                className="dateInput"
+                className="modal-input date-input"
                 selected={transaction.date}
                 onChange={(date) => {
                   updateTransaction('date', date)
@@ -199,7 +201,7 @@ function ModalAddTransaction() {
           <label className="lable">
             <textarea
               placeholder="Комментарий"
-              className="descriptionInput"
+              className="modal-input description-input"
               name="comment"
               value={transaction.comment}
               onChange={handleInputChange}
