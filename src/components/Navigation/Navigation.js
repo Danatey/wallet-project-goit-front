@@ -15,12 +15,12 @@ const Navigation = () => {
           <NavLink
             to="/home"
             className="nav_link"
-            activeClassName="link_active"
+            ClassName="nav_link_active"
           >
             <img src={home} alt="home" className="nav_img" />
             <Media
               query="(min-width: 768px)"
-              render={() => <span className="nav_home_text">Главная</span>}
+              render={() => <span className="nav_text">Главная</span>}
             />
           </NavLink>
         </li>
@@ -28,23 +28,27 @@ const Navigation = () => {
           <NavLink
             to="/diagram"
             className="nav_link"
-            activeClassName="link_active"
+            ClassName="nav_link_active"
           >
             <img src={diagram} alt="diagram" className="nav_img" />
             <Media
               query="(min-width: 768px)"
               render={() => (
-                <span className="nav_diagram_text">Статистика</span>
+                <span className="nav_text">Статистика</span>
               )}
             />
           </NavLink>
         </li>
 
-        <li>
+        <li  className="nav_link_currency">
           <Media
             query="(max-width: 767px)"
             render={() => (
-              <NavLink to="/currency" className="nav_link">
+              <NavLink
+               to="/currency"
+               className="nav_link"
+              
+               ClassName="nav_link_active">
                 <img
                   src={currency}
                   width="44"
