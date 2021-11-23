@@ -1,5 +1,3 @@
-// import { format } from 'date-fns'
-
 export const COLUMNS = [
   {
     Header: "Дата",
@@ -21,9 +19,6 @@ export const COLUMNS = [
     Header: "Коментарий",
 
     accessor: "comment",
-    // Cell: ({ value }) => {
-    //   return format(new Date(value), 'dd/MM/yyyy')
-    // }
   },
   {
     Header: "Сумма",
