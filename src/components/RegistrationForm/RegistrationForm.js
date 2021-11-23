@@ -8,6 +8,8 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { GoogleLogin } from "react-google-login";
 
+import { BACK_END } from "../../assets/API/BACK_END";
+
 import PasswordStrenght from "./PasswordStrength";
 import MyTextInput from "../MyTextInput";
 import MainButton from "../MainButton";
@@ -57,7 +59,7 @@ function RegistrationForm() {
   };
 
   const responseGoogle = async (googleData) => {
-    const res = await fetch("/api/users/login", {
+    const res = await fetch(`${BACK_END}/api/users/login`, {
       method: "POST",
       body: JSON.stringify({
         token: googleData.tokenId,
@@ -100,7 +102,10 @@ function RegistrationForm() {
 
               {loginData ? (
                 <div>
-                  <h3>You logged in as {loginData.email}</h3>
+                  <h3 className="loggedIn">
+                    You logged in as
+                    {loginData.email}
+                  </h3>
                 </div>
               ) : (
                 <GoogleLogin

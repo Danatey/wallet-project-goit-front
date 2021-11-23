@@ -42,7 +42,7 @@
   flex-direction: column;
   justify-content: center;
 
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .text {
@@ -75,6 +75,13 @@
   align-items: center;
   justify-content: center;
   align-content: center;
+  padding-left: 12.5px;
+  padding-right: 12.5px;
+
+  @media screen and (min-width: $MaxMobileWidth) {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
 }
 
 .form-field {

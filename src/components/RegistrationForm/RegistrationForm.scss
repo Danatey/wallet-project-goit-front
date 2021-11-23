@@ -32,7 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .text_pr {
@@ -44,4 +44,11 @@
   width: 450px;
   height: 4px;
   margin-bottom: 30px;
+
+  @media screen and (min-width: $TabletWidth) {
+    background-color: #e5f1ef;
+    width: 450px;
+    height: 4px;
+    margin-bottom: 30px;
+  }
 }
