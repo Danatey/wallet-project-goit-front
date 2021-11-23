@@ -95,7 +95,9 @@ function LoginForm() {
 
                 {loginData ? (
                   <div>
-                    <h3>You logged in as {loginData.email}</h3>
+                    <h3 className="loggedIn">
+                      You logged in as {loginData.email}
+                    </h3>
                   </div>
                 ) : (
                   <GoogleLogin

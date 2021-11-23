@@ -56,8 +56,17 @@
   font-size: 14px;
   line-height: 24px;
 
-  color: --placeholder-text;
+  color: var(--placeholder-text);
   text-align: center;
+}
+
+.loggedIn {
+  text-align: center;
+  font-family: "Circe";
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 30px;
+  color: var(--accent-color-blue);
 }
 
 .container_input {
