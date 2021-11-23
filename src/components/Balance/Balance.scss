@@ -7,8 +7,10 @@
   background-color: var(--primary-background-color);
   border-radius: 30px;
   margin-bottom: 0px;
+  margin-right: auto;
+  margin-left: auto;
 
-  @media screen and (min-width: $TabletWidth) {
+  @media screen and (min-width: $TabletWidth) and (max-width: $DesktopWidth) {
     padding: 10px 40px;
     margin-right: 20px;
   }
