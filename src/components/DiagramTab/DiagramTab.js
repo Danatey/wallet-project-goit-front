@@ -20,7 +20,7 @@ export const DiagramTab = () => {
   // const balance = useSelector((state) => state.auth.user?.balance)
   const balance = useSelector(transactionsSelectors.getBalance);
   const stats = useSelector(transactionsSelectors.getCategoriesStats);
-  console.log(stats.data.length > 0);
+
   return (
     <>
       <div className={s.statsSheet}>
