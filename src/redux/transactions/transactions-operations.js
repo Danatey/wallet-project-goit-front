@@ -53,7 +53,7 @@ export const getTransactionDate = createAsyncThunk(
       const { data: response } = await axios.get(
         `${BACK_END}/api/transactions/categories?month=${month}&year=${year}`
       );
-      return response.data.categories;
+      return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
     }

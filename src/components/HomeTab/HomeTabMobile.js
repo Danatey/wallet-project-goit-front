@@ -1,17 +1,20 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { useSortBy, useTable } from "react-table";
+import React, { useState, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useSortBy, useTable } from "react-table";
+// import Media from "react-media";
 // import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
+// import { nanoid } from "nanoid";
 import {
-  transactionsSelectors,
   transactionsOperations,
+  transactionsSelectors,
 } from "../../redux/transactions";
+
+import ModalAddTransaction from "../ModalAddTransaction";
 
 const HomeTabMobile = () => {
   const columns = useMemo(() => COLUMNS, []);
   // const data = useMemo(() => MOCK_DATA, []);
-  const data = useSelector(transactionsSelectors.getTransactions);
 
   //   const [textColor, setTextColor] = useState('black');
   //   const [isPink, setisPink] = useState(true);
@@ -24,12 +27,15 @@ const HomeTabMobile = () => {
   // }
 
   // style={{ color:textColor}}
+  // const data = useMemo(() => MOCK_DATA, []);
+
+  const data = useSelector(transactionsSelectors.getTransactions);
+
+  const dispatch = useDispatch();
   const { getTableProps, getTableBodyProps, rows } = useTable(
     { columns, data },
     useSortBy
   );
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(transactionsOperations.fetchTransactions());
@@ -40,7 +46,10 @@ const HomeTabMobile = () => {
       <div className="HomeTab-mobile">
         {rows.map((row, i) => {
           return (
-            <table className="HomeTab-mobile_table color" {...getTableProps()}>
+            <table
+              className="HomeTab-mobile HomeTab-mobile_table color"
+              {...getTableProps()}
+            >
               <tbody
                 className="HomeTab-mobile_table color"
                 key={row.id}
@@ -76,6 +85,7 @@ const HomeTabMobile = () => {
             </table>
           );
         })}
+        <ModalAddTransaction />
       </div>
     </>
   );

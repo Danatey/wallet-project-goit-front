@@ -15,7 +15,7 @@ const GoogleAuth = () => {
 
   return (
     <GoogleLogin
-      clientId=""
+      clientId="949111004477-hbv1krtrrl6s8l4mk3iceaqe3sit06ih.apps.googleusercontent.com"
       render={({ onClick, disabled }) => (
         <GoogleAuthButton onClick={onClick} disabled={disabled} />
       )}

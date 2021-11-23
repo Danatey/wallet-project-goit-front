@@ -1,5 +1,5 @@
 import { ReactComponent as GoogleIcon } from "../../images/googleSVG/google.svg";
-import "./GoogleAuth.scss";
+// import "./GoogleAuth.scss";
 
 const GoogleAuthButton = ({ onClick, disabled }) => (
   <button className="button_google" onClick={onClick} disabled={disabled}>
