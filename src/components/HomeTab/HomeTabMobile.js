@@ -1,11 +1,20 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useSortBy, useTable } from "react-table";
-import MOCK_DATA from "./MOCK_DATA.json";
+// import Media from "react-media";
+// import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
+// import { nanoid } from "nanoid";
+import {
+  transactionsOperations,
+  transactionsSelectors,
+} from "../../redux/transactions";
+
+import ModalAddTransaction from "../ModalAddTransaction";
 
 const HomeTabMobile = () => {
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => MOCK_DATA, []);
+  // const data = useMemo(() => MOCK_DATA, []);
 
   //   const [textColor, setTextColor] = useState('black');
   //   const [isPink, setisPink] = useState(true);
@@ -18,18 +27,29 @@ const HomeTabMobile = () => {
   // }
 
   // style={{ color:textColor}}
+  // const data = useMemo(() => MOCK_DATA, []);
+
+  const data = useSelector(transactionsSelectors.getTransactions);
+
+  const dispatch = useDispatch();
   const { getTableProps, getTableBodyProps, rows } = useTable(
     { columns, data },
     useSortBy
   );
 
-  useEffect(() => {}, [data]);
+  useEffect(() => {
+    dispatch(transactionsOperations.fetchTransactions());
+  }, [dispatch]);
+
   return (
     <>
-      <table className="HomeTab-mobile " {...getTableProps()}>
+      <div className="HomeTab-mobile">
         {rows.map((row, i) => {
           return (
-            <div className="HomeTab-mobile_table color">
+            <table
+              className="HomeTab-mobile HomeTab-mobile_table color"
+              {...getTableProps()}
+            >
               <tbody
                 className="HomeTab-mobile_table color"
                 key={row.id}
@@ -62,10 +82,10 @@ const HomeTabMobile = () => {
                   <td className="HomeTab-column">{data[i].balance}</td>
                 </tr>
               </tbody>
-            </div>
+            </table>
           );
         })}
-      </table>
+      </div>
     </>
   );
 };
