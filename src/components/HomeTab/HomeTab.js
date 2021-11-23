@@ -13,7 +13,7 @@ import {
 
 import { HomeTabMobile } from "./HomeTabMobile";
 import ModalAddTransaction from "../ModalAddTransaction";
-import NoTransaction from "../NoTransaction";
+// import NoTransaction from "../NoTransaction";
 
 import "./homeTab.scss";
 
@@ -30,7 +30,6 @@ const HomeTab = () => {
   useEffect(() => {
     dispatch(transactionsOperations.fetchTransactions());
   }, [dispatch]);
-
   return (
     <>
       {/* {data === undefined ? ( */}
@@ -49,32 +48,29 @@ const HomeTab = () => {
                   <thead className="HomeTab__header">
                     {headerGroups.map((headerGroup) => (
                       <tr
+                        className="Home-color"
                         key={() => {
                           nanoid();
                         }}
                         {...headerGroup.getHeaderGroupProps()}
                       >
-                        {headerGroup.headers.map((column) => (
-                          <th
-                            className="HomeTab-column-header"
-                            {...column.getHeaderProps(
-                              column.getSortByToggleProps()
-                            )}
-                          >
-                            {column.render("Header")}
-                            <span>
-                              {column.isSorted ? (
-                                column.isSortedDesc ? (
-                                  <AiOutlineDown />
-                                ) : (
-                                  <AiOutlineUp />
-                                )
-                              ) : (
-                                ""
-                              )}
-                            </span>
-                          </th>
-                        ))}
+                        {row.cells.map((cell) => {
+                          return (
+                            <td
+                              key={() => {
+                                nanoid();
+                              }}
+                              className={
+                                row.values.type === "+"
+                                  ? `${"HomeTab-column"}  ${"green"}`
+                                  : `${"HomeTab-column"}  ${"red"}`
+                              }
+                              {...cell.getCellProps()}
+                            >
+                              {cell.render("Cell")}
+                            </td>
+                          );
+                        })}
                       </tr>
                     ))}
                   </thead>
