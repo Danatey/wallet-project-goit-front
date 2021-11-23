@@ -1,3 +1,5 @@
+@import "../../common/main.scss";
+
 .Button {
   display: inline-block;
   height: 50px;
@@ -10,7 +12,7 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
 
-  color: #ffffff;
+  color: var(--primary-background-color);
 
   border-radius: 20px;
   text-align: center;
@@ -18,24 +20,24 @@
   transition: 100ms linear, color 100ms linear, border-color 100ms linear;
 
   &.accent {
-    background-color: #24cca7;
-    color: #ffffff;
-    border-color: #24cca7;
+    background-color: var(--accent-color-grean);
+    color: var(--primary-background-color);
+    border-color: var(--accent-color-grean);
 
     &:hover {
-      background-color: #24cca7;
-      border-color: #24cca7;
+      background-color: var(--accent-color-grean);
+      border-color: var(--accent-color-grean);
     }
   }
 }
 
 .register_btn {
   @extend .Button;
-  background-color: #24cca7;
+  background-color: var(--accent-color-grean);
   border: transparent;
 
   &.accent {
-    box-shadow: 1px 3px 5px rgb(9, 126, 120);
+    box-shadow: 1px 3px 5px rgb(7, 112, 107);
   }
 
   &:hover {
@@ -45,12 +47,12 @@
 
 .logo_btn {
   @extend .Button;
-  background-color: #24cca7;
+  background-color: var(--accent-color-grean);
   border: transparent;
   margin-bottom: 20px;
 
   &.accent {
-    box-shadow: 1px 3px 5px rgb(9, 126, 120);
+    box-shadow: 1px 3px 5px rgb(7, 112, 107);
   }
 
   &:hover {
@@ -60,14 +62,14 @@
 
 .main_btn {
   @extend .Button;
-  color: #4a56e2;
-  background-color: #ffffff;
-  border: 2px solid #4a56e2;
+  color: var(--accent-color-blue);
+  background-color: var(--primary-background-color);
+  border: 2px solid var(--accent-color-blue);
   padding-top: 10px;
 
   &:hover {
-    color: #ffffff;
-    background-color: #4a56e2;
+    color: var(--primary-background-color);
+    background-color: var(--accent-color-blue);
   }
 }
 
