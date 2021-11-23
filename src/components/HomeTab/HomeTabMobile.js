@@ -85,6 +85,7 @@ const HomeTabMobile = () => {
             </table>
           );
         })}
+        <ModalAddTransaction />
       </div>
     </>
   );

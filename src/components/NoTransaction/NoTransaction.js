@@ -5,9 +5,7 @@ import "./NoTransaction.scss";
 const NoTransaction = () => {
   return (
     <div className="no-transaction-container">
-      <span className="no-transaction-message">
-        You have no transactions yet
-      </span>
+      <span className="no-transaction-message">Транзакций не найдено</span>
     </div>
   );
 };

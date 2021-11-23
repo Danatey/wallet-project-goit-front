@@ -48,29 +48,32 @@ const HomeTab = () => {
                   <thead className="HomeTab__header">
                     {headerGroups.map((headerGroup) => (
                       <tr
-                        className="Home-color"
                         key={() => {
                           nanoid();
                         }}
                         {...headerGroup.getHeaderGroupProps()}
                       >
-                        {row.cells.map((cell) => {
-                          return (
-                            <td
-                              key={() => {
-                                nanoid();
-                              }}
-                              className={
-                                row.values.type === "+"
-                                  ? `${"HomeTab-column"}  ${"green"}`
-                                  : `${"HomeTab-column"}  ${"red"}`
-                              }
-                              {...cell.getCellProps()}
-                            >
-                              {cell.render("Cell")}
-                            </td>
-                          );
-                        })}
+                        {headerGroup.headers.map((column) => (
+                          <th
+                            className="HomeTab-column-header"
+                            {...column.getHeaderProps(
+                              column.getSortByToggleProps()
+                            )}
+                          >
+                            {column.render("Header")}
+                            <span>
+                              {column.isSorted ? (
+                                column.isSortedDesc ? (
+                                  <AiOutlineDown />
+                                ) : (
+                                  <AiOutlineUp />
+                                )
+                              ) : (
+                                ""
+                              )}
+                            </span>
+                          </th>
+                        ))}
                       </tr>
                     ))}
                   </thead>
@@ -80,6 +83,7 @@ const HomeTab = () => {
                       prepareRow(row);
                       return (
                         <tr
+                          className="Home-color"
                           key={() => {
                             nanoid();
                           }}
@@ -91,7 +95,11 @@ const HomeTab = () => {
                                 key={() => {
                                   nanoid();
                                 }}
-                                className="HomeTab-column"
+                                className={
+                                  row.values.type === "+"
+                                    ? `${"HomeTab-column"}  ${"green"}`
+                                    : `${"HomeTab-column"}  ${"red"}`
+                                }
                                 {...cell.getCellProps()}
                               >
                                 {cell.render("Cell")}
