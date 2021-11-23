@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSortBy, useTable } from "react-table";
-// import Media from "react-media";
-// import MOCK_DATA from "./MOCK_DATA.json";
+import Media from "react-media";
 import { COLUMNS } from "./columns";
-// import { nanoid } from "nanoid";
+import { nanoid } from "nanoid";
 import {
   transactionsOperations,
   transactionsSelectors,
@@ -14,21 +13,6 @@ import ModalAddTransaction from "../ModalAddTransaction";
 
 const HomeTabMobile = () => {
   const columns = useMemo(() => COLUMNS, []);
-  // const data = useMemo(() => MOCK_DATA, []);
-
-  //   const [textColor, setTextColor] = useState('black');
-  //   const [isPink, setisPink] = useState(true);
-  //   const changeTextColor = () => {
-  //     if (data[i].type === '-') {
-  //      setisPink(!isPink);
-  //   setTextColor(isPink ? '#24cca7' : 'pink ');
-  //   }
-
-  // }
-
-  // style={{ color:textColor}}
-  // const data = useMemo(() => MOCK_DATA, []);
-
   const data = useSelector(transactionsSelectors.getTransactions);
 
   const dispatch = useDispatch();
@@ -47,11 +31,15 @@ const HomeTabMobile = () => {
         {rows.map((row, i) => {
           return (
             <table
-              className="HomeTab-mobile HomeTab-mobile_table color"
+              className={
+                data[i].type === "+"
+                  ? `${"HomeTab-mobile_table"}  ${"green"}`
+                  : `${"HomeTab-mobile_table "}  ${"red"}`
+              }
               {...getTableProps()}
             >
               <tbody
-                className="HomeTab-mobile_table color"
+                className="HomeTab-mobile"
                 key={row.id}
                 {...getTableBodyProps()}
               >
@@ -73,7 +61,13 @@ const HomeTabMobile = () => {
                 </tr>
                 <tr className="HomeTab-row">
                   <td className="HomeTab-column-header">Сумма</td>
-                  <td className="HomeTab-column pink green">
+                  <td
+                    className={
+                      data[i].type === "+"
+                        ? `${"HomeTab-column"}  ${"green"}`
+                        : `${"HomeTab-column"}  ${"red"}`
+                    }
+                  >
                     {data[i].amount}
                   </td>
                 </tr>

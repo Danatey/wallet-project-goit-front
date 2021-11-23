@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSortBy, useTable } from "react-table";
 import Media from "react-media";
-// import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
 import { nanoid } from "nanoid";
@@ -19,8 +18,6 @@ import "./homeTab.scss";
 
 const HomeTab = () => {
   const columns = useMemo(() => COLUMNS, []);
-  // const data = useMemo(() => MOCK_DATA, []);
-
   const data = useSelector(transactionsSelectors.getTransactions);
 
   const dispatch = useDispatch();

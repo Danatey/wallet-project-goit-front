@@ -1,9 +1,13 @@
+@import "../../common/utils/breakpoints";
+
 .HomeTab {
   width: 100%;
-  @media screen and (min-width: 768px) {
+  margin-top: 27px;
+
+  @media screen and (min-width: $TabletWidth) {
     margin-top: 76px;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: $DesktopWidth) {
     margin-top: 46px;
     margin-left: 30px;
   }
@@ -12,9 +16,9 @@
 .HomeTab-secondary {
   display: none;
   border-spacing: 0px;
-  width: 700px;
+  width: 688px;
   table-layout: fixed;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $TabletWidth) {
     display: table;
   }
 }
@@ -26,22 +30,19 @@
   display: table;
   width: 280px;
   table-layout: fixed;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $TabletWidth) {
     display: none;
   }
 }
-.HomeTab-mobile table:first-child {
-  margin-top: 27px;
-}
+
 .HomeTab-column-header {
   font-family: Circe;
   font-size: 18px;
   font-weight: 700;
   line-height: 27px;
-  // text-align: left;
-  @media screen and (max-width: 767px) {
+
+  @media screen and (max-width: $MaxMobileWidth) {
     padding-left: 20px;
-    // padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
   }
@@ -50,10 +51,6 @@
 .HomeTab td {
   border-bottom: 1px solid #dcdcdf;
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-
-  @media screen and (min-width: 768px) {
-    // border-right: 1px solid #dcdcdf;
-  }
 }
 
 .HomeTab th:last-child,
@@ -75,7 +72,7 @@ td:last-child {
 
   padding: 10px;
   text-align: center;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: $MaxMobileWidth) {
     width: 50%;
   }
 }
@@ -121,30 +118,24 @@ td:last-child {
   background: #ffffff;
 }
 
-// .HomeTab-mobile_table::before {
-//   @media screen and (max-width: 767px) {
-//     content: "";
-//     position: absolute;
-//     width: 5px;
-//     height: 282px;
-
-//     right: 0;
-//     left: 0;
-//     background-color: aqua;
-//     border-radius: 10px;
-//   }
-// }
 .HomeTab-mobile_table {
   background: #ffffff;
   opacity: 0.8;
   border-radius: 10px;
-  border-left: 5px solid #ff6596;
   margin-bottom: 10px;
-  // width: 280px;
   table-layout: fixed;
+  width: 280px;
   word-wrap: break-word;
+  &.red {
+    border-left: 5px solid #ff6596;
+  }
+  &.green {
+    border-left: 5px solid #24cca7;
+  }
 }
-
+.HomeTab-mobile table:first-child {
+  margin-right: 20px;
+}
 .HomeTab-column {
   font-family: Circe;
   font-size: 16px;
@@ -153,8 +144,7 @@ td:last-child {
   text-align: right;
   word-wrap: break-word;
   color: #000;
-  @media screen and (max-width: 767px) {
-    // padding-left: 10px;
+  @media screen and (max-width: $MaxMobileWidth) {
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -169,169 +159,3 @@ td:last-child {
 .Home-color :not(:nth-child(5)) {
   color: #000;
 }
-
-
-
-
-.HomeTab {
-  width: 100%;
-  @media screen and (min-width: 768px) {
-    margin-top: 76px;
-  }
-  @media screen and (min-width: 1280px) {
-    margin-top: 46px;
-    margin-left: 30px;
-  }
-}
-
-.HomeTab-secondary {
-  display: none;
-  border-spacing: 0px;
-  width: 700px;
-  table-layout: fixed;
-  @media screen and (min-width: 768px) {
-    display: table;
-  }
-}
-
-.HomeTab-mobile {
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 27px;
-  display: table;
-  width: 280px;
-  table-layout: fixed;
-
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
-}
-
-.HomeTab-column-header {
-  font-family: Circe;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 27px;
-  // text-align: left;
-  @media screen and (max-width: 767px) {
-    padding-left: 20px;
-    // padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-}
-
-
-.HomeTab-column {
-  font-family: Circe;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  text-align: right;
-  word-wrap: break-word;
-  color: #000;
-  @media screen and (max-width: 767px) {
-    // padding-left: 10px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  &.red {
-    color: #ff6596;
-  }
-  &.green {
-    color: #24cca7;
-  }
-}
-.Home-color :not(:nth-child(5)) {
-  color: #000;
-}
-
-
-.HomeTab td {
-  border-bottom: 1px solid #dcdcdf;
-  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-
-  @media screen and (min-width: 768px) {
-    border-right: 1px solid #dcdcdf;
-  }
-}
-
-.HomeTab th:last-child,
-td:last-child {
-  border-right: 0;
-}
-.HomeTab-row {
-  width: 280px;
-  table-layout: fixed;
-  margin-top: 0px;
-  // border-collapse: separate;
-}
-.HomeTab-secondary td,
-.HomeTab-column th,
-.HomeTab-columns td {
-  table-layout: fixed;
-  width: 114.66 px;
-  overflow: hidden;
-  word-wrap: break-word;
-  // border-collapse: separate;
-
-  padding: 10px;
-  text-align: center;
-  @media screen and (max-width: 767px) {
-    width: 50%;
-  }
-}
-
-.HomeTab__header th:first-child {
-  background: #ffffff;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-}
-.HomeTab__header th:last-child {
-  background: #ffffff;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-}
-.HomeTab__header th {
-  padding: 10px;
-  text-align: center;
-}
-.HomeTab__header th:not(:first-child) {
-  background: #ffffff;
-}
-
-// .HomeTab-mobile_table::before {
-//   @media screen and (max-width: 767px) {
-//     content: "";
-//     position: absolute;
-//     width: 5px;
-//     height: 282px;
-
-//     right: 0;
-//     left: 0;
-//     background-color: aqua;
-//     border-radius: 10px;
-//   }
-// }
-.HomeTab-mobile_table {
-  background: #ffffff;
-  opacity: 0.8;
-  border-radius: 10px;
-  border-left: 5px solid #ff6596;
-  margin-bottom: 10px;
-  // width: 280px;
-  table-layout: fixed;
-  word-wrap: break-word;
-}
-// .color {
-//   border-left: 5px solid #24cca7;
-// }
-// .green {
-//   color: #24cca7;
-// }
-.pink {
-  color: #ff6596;
-}
-
