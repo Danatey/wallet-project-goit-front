@@ -13,7 +13,7 @@ import {
 
 import { HomeTabMobile } from "./HomeTabMobile";
 import ModalAddTransaction from "../ModalAddTransaction";
-// import NoTransaction from "../NoTransaction";
+import NoTransaction from "../NoTransaction";
 
 import "./homeTab.scss";
 
@@ -32,93 +32,93 @@ const HomeTab = () => {
   }, [dispatch]);
   return (
     <>
-      {/* {data === undefined ? ( */}
-      <>
-        <Media
-          queries={{
-            mobile: "(min-width: 768px)",
-          }}
-        >
-          {({ mobile }) => (
-            <div className="HomeTab">
-              {!mobile ? (
-                <HomeTabMobile />
-              ) : (
-                <table className="HomeTab-secondary" {...getTableProps()}>
-                  <thead className="HomeTab__header">
-                    {headerGroups.map((headerGroup) => (
-                      <tr
-                        key={() => {
-                          nanoid();
-                        }}
-                        {...headerGroup.getHeaderGroupProps()}
-                      >
-                        {headerGroup.headers.map((column) => (
-                          <th
-                            className="HomeTab-column-header"
-                            {...column.getHeaderProps(
-                              column.getSortByToggleProps()
-                            )}
-                          >
-                            {column.render("Header")}
-                            <span>
-                              {column.isSorted ? (
-                                column.isSortedDesc ? (
-                                  <AiOutlineDown />
-                                ) : (
-                                  <AiOutlineUp />
-                                )
-                              ) : (
-                                ""
-                              )}
-                            </span>
-                          </th>
-                        ))}
-                      </tr>
-                    ))}
-                  </thead>
-
-                  <tbody {...getTableBodyProps()}>
-                    {rows.map((row) => {
-                      prepareRow(row);
-                      return (
+      {data.length > 0 ? (
+        <>
+          <Media
+            queries={{
+              mobile: "(min-width: 768px)",
+            }}
+          >
+            {({ mobile }) => (
+              <div className="HomeTab">
+                {!mobile ? (
+                  <HomeTabMobile />
+                ) : (
+                  <table className="HomeTab-secondary" {...getTableProps()}>
+                    <thead className="HomeTab__header">
+                      {headerGroups.map((headerGroup) => (
                         <tr
-                          className="Home-color"
                           key={() => {
                             nanoid();
                           }}
-                          {...row.getRowProps()}
+                          {...headerGroup.getHeaderGroupProps()}
                         >
-                          {row.cells.map((cell) => {
-                            return (
-                              <td
-                                key={() => {
-                                  nanoid();
-                                }}
-                                className={
-                                  row.values.type === "+"
-                                    ? `${"HomeTab-column"}  ${"green"}`
-                                    : `${"HomeTab-column"}  ${"red"}`
-                                }
-                                {...cell.getCellProps()}
-                              >
-                                {cell.render("Cell")}
-                              </td>
-                            );
-                          })}
+                          {headerGroup.headers.map((column) => (
+                            <th
+                              className="HomeTab-column-header"
+                              {...column.getHeaderProps(
+                                column.getSortByToggleProps()
+                              )}
+                            >
+                              {column.render("Header")}
+                              <span>
+                                {column.isSorted ? (
+                                  column.isSortedDesc ? (
+                                    <AiOutlineDown />
+                                  ) : (
+                                    <AiOutlineUp />
+                                  )
+                                ) : (
+                                  ""
+                                )}
+                              </span>
+                            </th>
+                          ))}
                         </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              )}
-            </div>
-          )}
-        </Media>
-      </>
-      {/* ) : (
-         <NoTransaction />
-      )} */}
+                      ))}
+                    </thead>
+
+                    <tbody {...getTableBodyProps()}>
+                      {rows.map((row) => {
+                        prepareRow(row);
+                        return (
+                          <tr
+                            className="Home-color"
+                            key={() => {
+                              nanoid();
+                            }}
+                            {...row.getRowProps()}
+                          >
+                            {row.cells.map((cell) => {
+                              return (
+                                <td
+                                  key={() => {
+                                    nanoid();
+                                  }}
+                                  className={
+                                    row.values.type === "+"
+                                      ? `${"HomeTab-column"}  ${"green"}`
+                                      : `${"HomeTab-column"}  ${"red"}`
+                                  }
+                                  {...cell.getCellProps()}
+                                >
+                                  {cell.render("Cell")}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            )}
+          </Media>
+        </>
+      ) : (
+        <NoTransaction />
+      )}
       <ModalAddTransaction />{" "}
     </>
   );

@@ -3,7 +3,6 @@ import TableStats from "./TableStats";
 import PieChart from "./PieChart";
 import s from "./diagramm.module.scss";
 import { transactionsSelectors } from "../../redux/transactions/";
-import NoTransaction from "../NoTransaction";
 
 const colors = [
   "#FED057",
@@ -21,12 +20,9 @@ export const DiagramTab = () => {
   // const balance = useSelector((state) => state.auth.user?.balance)
   const balance = useSelector(transactionsSelectors.getBalance);
   const stats = useSelector(transactionsSelectors.getCategoriesStats);
-
+  console.log(stats.data.length > 0);
   return (
     <>
-      {/* {stats?.data.length > 0 ? (
-        <NoTransaction />
-      ) : ( */}
       <div className={s.statsSheet}>
         <PieChart
           balance={balance}
@@ -35,7 +31,6 @@ export const DiagramTab = () => {
         />
         <TableStats colors={colors} />
       </div>
-      {/* )} */}
     </>
   );
 };
