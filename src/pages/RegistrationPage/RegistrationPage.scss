@@ -1,8 +1,11 @@
+@import "../../common/main.scss";
+
 .page_wrapper_reg {
   position: relative;
-  background-color: #e7eaf2;
+  background-color: var(--secondary-background-color);
+  margin-top: 50px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $TabletWidth) {
     width: 768px;
     height: 1024px;
 
@@ -23,7 +26,7 @@
     background-position: bottom 0 left 0, top 0 right 0, top 60px left 114px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: $DesktopWidth) {
     width: 1280px;
     height: 720px;
     background-image: url(../../images/frame-registration/frame-desctop.png),
