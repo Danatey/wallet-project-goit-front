@@ -62,7 +62,7 @@ function App() {
         </Route>
         <Route path="*" element={<LoginPage />} />
       </Routes>
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
     </Container>
   );
 }
