@@ -1,44 +1,43 @@
-import { useSelector } from 'react-redux'
-import TableStats from './TableStats'
-import PieChart from './PieChart'
-import s from './diagramm.module.scss'
-import { transactionsSelectors } from '../../redux/transactions/'
+import { useSelector } from "react-redux";
+import TableStats from "./TableStats";
+import PieChart from "./PieChart";
+import s from "./diagramm.module.scss";
+import { transactionsSelectors } from "../../redux/transactions/";
+import NoTransaction from "../NoTransaction";
 
 const colors = [
-  '#FED057',
-  '#FFD8D0',
-  '#FD9498',
-  '#C5BAFF',
-  '#6E78E8',
-  '#4A56E2',
-  '#81E1FF',
-  '#24CCA7',
-  '#00AD84',
-]
+  "#FED057",
+  "#FFD8D0",
+  "#FD9498",
+  "#C5BAFF",
+  "#6E78E8",
+  "#4A56E2",
+  "#81E1FF",
+  "#24CCA7",
+  "#00AD84",
+];
 
 export const DiagramTab = () => {
   // const balance = useSelector((state) => state.auth.user?.balance)
-  const balance = useSelector(transactionsSelectors.getBalance)
-  const stats = useSelector(transactionsSelectors.getCategoriesStats)
+  const balance = useSelector(transactionsSelectors.getBalance);
+  const stats = useSelector(transactionsSelectors.getCategoriesStats);
 
   return (
     <>
+      {/* {stats?.data.length > 0 ? (
+        <NoTransaction />
+      ) : ( */}
       <div className={s.statsSheet}>
-        {stats?.data.length > 0 ? (
-          <>
-            <PieChart
-              balance={balance}
-              data={stats?.data ? stats.data : []}
-              colors={colors}
-            />
-          </>
-        ) : (
-          <span className="contact-message">You have no transactions yet </span>
-        )}
+        <PieChart
+          balance={balance}
+          data={stats?.data ? stats.data : []}
+          colors={colors}
+        />
         <TableStats colors={colors} />
       </div>
+      {/* )} */}
     </>
-  )
-}
+  );
+};
 
-export default DiagramTab
+export default DiagramTab;
