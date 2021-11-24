@@ -129,29 +129,31 @@ const HomeTab = () => {
                     </tbody>
                   </table>
                 )}
+
+                <div className="HomeTab-secondary_pagination">
+                  <button
+                    disabled={!canPreviousPage}
+                    onClick={() => previousPage()}
+                  >
+                    <BiChevronsLeft />
+                  </button>
+                  <button disabled={!canNextPage} onClick={() => nextPage()}>
+                    <BiChevronRight />
+                  </button>
+                </div>
+
+                <div className="HomeTab-secondary_pagination">
+                  <span>
+                    Page {pageIndex + 1} of {pageOptions.length}
+                  </span>
+                </div>
               </div>
             )}
-
-            <div className="HomeTab-secondary_pagination">
-              <button
-                disabled={!canPreviousPage}
-                onClick={() => previousPage()}
-              >
-                <BiChevronsLeft />
-              </button>
-              <button disabled={!canNextPage} onClick={() => nextPage()}>
-                <BiChevronRight />
-              </button>
-            </div>
-
-            <div className="HomeTab-secondary_pagination">
-              <span>
-                Page {pageIndex + 1} of {pageOptions.length}
-              </span>
-            </div>
-          </div>
-        )}
-      </Media>
+          </Media>
+        </>
+      ) : (
+        <NoTransaction />
+      )}
       <ModalAddTransaction />{" "}
     </>
   );
