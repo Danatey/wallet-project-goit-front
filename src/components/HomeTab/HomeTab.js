@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useSortBy, useTable } from "react-table";
+import { useSortBy, useTable, usePagination } from "react-table";
 import Media from "react-media";
 import { COLUMNS } from "./columns";
 import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
+import { BiChevronsLeft, BiChevronRight } from "react-icons/bi";
 import { nanoid } from "nanoid";
 import {
   transactionsOperations,
@@ -21,8 +22,27 @@ const HomeTab = () => {
   const data = useSelector(transactionsSelectors.getTransactions);
 
   const dispatch = useDispatch();
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data }, useSortBy);
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    page,
+    canNextPage,
+    canPreviousPage,
+    pageOptions,
+    pageCount,
+    gotoPage,
+    nextPage,
+    previousPage,
+    setPageSize,
+    state: { pageIndex, pageSize },
+  } = useTable(
+    { columns, data, initialState: { pageSize: 5 } },
+    useSortBy,
+    usePagination
+  );
 
   useEffect(() => {
     dispatch(transactionsOperations.fetchTransactions());
@@ -111,11 +131,27 @@ const HomeTab = () => {
                 )}
               </div>
             )}
-          </Media>
-        </>
-      ) : (
-        <NoTransaction />
-      )}
+
+            <div className="HomeTab-secondary_pagination">
+              <button
+                disabled={!canPreviousPage}
+                onClick={() => previousPage()}
+              >
+                <BiChevronsLeft />
+              </button>
+              <button disabled={!canNextPage} onClick={() => nextPage()}>
+                <BiChevronRight />
+              </button>
+            </div>
+
+            <div className="HomeTab-secondary_pagination">
+              <span>
+                Page {pageIndex + 1} of {pageOptions.length}
+              </span>
+            </div>
+          </div>
+        )}
+      </Media>
       <ModalAddTransaction />{" "}
     </>
   );
