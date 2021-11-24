@@ -1,4 +1,4 @@
-@import '../../common/utils/breakpoints.scss';
+@import "../../common/utils/breakpoints.scss";
 
 .Dashboard__bg {
   position: relative;
@@ -27,7 +27,7 @@
 
 .Dashboard__wrap::before {
   @media screen and (min-width: $TabletWidth) {
-    content: '';
+    content: "";
     position: absolute;
     z-index: -1;
     right: 0;
@@ -77,13 +77,13 @@
     border-right: 1px solid #e7e5f2;
     box-shadow: inset -1px 0px 0px rgba(0, 0, 0, 0.05),
       1px 0px 0px rgba(255, 255, 255, 0.6);
-    flex-basis: 36%;
+    width: 36%;
   }
 }
 
 .Dashboard__nav {
   @media screen and (min-width: $TabletWidth) and (max-width: 1279px) {
-    flex-basis: 50%;
+    width: 50%;
   }
 }
 
@@ -93,12 +93,12 @@
   }
 
   @media screen and (min-width: $TabletWidth) and (max-width: 1279px) {
-    flex-basis: 50%;
+    width: 50%;
   }
 }
 
 .Dashboard__main {
   @media screen and (min-width: $DesktopWidth) {
-    flex-basis: 64%;
+    width: 64px;
   }
 }
