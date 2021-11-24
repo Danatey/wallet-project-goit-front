@@ -6,9 +6,9 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { GoogleLogin } from "react-google-login";
+// import { GoogleLogin } from "react-google-login";
 
-import { BACK_END } from "../../assets/API/BACK_END";
+// import { BACK_END } from "../../assets/API/BACK_END";
 
 import PasswordStrenght from "./PasswordStrength";
 import MyTextInput from "../MyTextInput";
@@ -18,7 +18,7 @@ import Logo from "../Logo";
 import { ReactComponent as EmailIcon } from "../../icons/email.svg";
 import { ReactComponent as LockIcon } from "../../icons/lock.svg";
 import { ReactComponent as NameIcon } from "../../icons/name.svg";
-import { ReactComponent as GoogleIcon } from "../../images/googleSVG/google.svg";
+// import { ReactComponent as GoogleIcon } from "../../images/googleSVG/google.svg";
 
 import "./RegistrationForm.scss";
 import "../MainButton/MainButton.scss";
@@ -28,11 +28,11 @@ function RegistrationForm() {
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
 
-  const [loginData, setLoginData] = useState(
-    localStorage.getItem("loginData")
-      ? JSON.parse(localStorage.getItem("loginData"))
-      : null
-  );
+  // const [loginData, setLoginData] = useState(
+  //   localStorage.getItem("loginData")
+  //     ? JSON.parse(localStorage.getItem("loginData"))
+  //     : null
+  // );
 
   const validationsSchema = Yup.object({
     email: Yup.string()
@@ -58,21 +58,21 @@ function RegistrationForm() {
     navigate("/login");
   };
 
-  const responseGoogle = async (googleData) => {
-    const res = await fetch(`${BACK_END}/api/users/login`, {
-      method: "POST",
-      body: JSON.stringify({
-        token: googleData.tokenId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  // const responseGoogle = async (googleData) => {
+  //   const res = await fetch(`${BACK_END}/api/users/login`, {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       token: googleData.tokenId,
+  //     }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
 
-    const data = await res.json();
-    setLoginData(data);
-    localStorage.setItem("loginData", JSON.stringify(data));
-  };
+  //   const data = await res.json();
+  //   setLoginData(data);
+  //   localStorage.setItem("loginData", JSON.stringify(data));
+  // };
 
   return (
     <>
@@ -94,7 +94,7 @@ function RegistrationForm() {
               <h1 className="Header__logo--text">Wallet</h1>
             </div>
 
-            <div className="container_google">
+            {/* <div className="container_google">
               <p className="text">
                 Вы можете авторизоваться с помощью <br />
                 Google Account:
@@ -126,7 +126,7 @@ function RegistrationForm() {
                   cookiePolicy={"single_host_origin"}
                 />
               )}
-            </div>
+            </div> */}
 
             <div className="container_input">
               <p className="text">

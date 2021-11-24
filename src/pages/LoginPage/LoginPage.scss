@@ -3,7 +3,6 @@
 .page_wrapper {
   position: relative;
   background-color: var(--secondary-background-color);
-  margin-top: 50px;
 
   @media screen and (min-width: $TabletWidth) {
     width: 768px;
