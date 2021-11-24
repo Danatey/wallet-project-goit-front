@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useSortBy, useTable, usePagination } from "react-table";
+import { useSortBy, useTable } from "react-table";
 import Media from "react-media";
 import { COLUMNS } from "./columns";
 import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
@@ -28,7 +28,7 @@ const HomeTab = () => {
     headerGroups,
     rows,
     prepareRow,
-    page,
+    // page,
     // canNextPage,
     // canPreviousPage,
     // pageOptions,
@@ -40,10 +40,11 @@ const HomeTab = () => {
     // state: { pageIndex, pageSize },
   } = useTable(
     {
-      columns, data
+      columns,
+      data,
       // , initialState: { pageSize: 5 }
     },
-    useSortBy,
+    useSortBy
     // usePagination
   );
 
@@ -75,6 +76,9 @@ const HomeTab = () => {
                         >
                           {headerGroup.headers.map((column) => (
                             <th
+                              key={() => {
+                                nanoid();
+                              }}
                               className="HomeTab-column-header"
                               {...column.getHeaderProps(
                                 column.getSortByToggleProps()
@@ -132,7 +136,7 @@ const HomeTab = () => {
                     </tbody>
                   </table>
                 )}
-{/* 
+                {/* 
                 <div className="HomeTab-secondary_pagination">
                   <button
                     disabled={!canPreviousPage}

@@ -29,6 +29,7 @@ const HomeTabMobile = () => {
         {rows.map((row, i) => {
           return (
             <table
+              key={i}
               className={
                 data[i].type === "+"
                   ? `${"HomeTab-mobile_table"}  ${"green"}`

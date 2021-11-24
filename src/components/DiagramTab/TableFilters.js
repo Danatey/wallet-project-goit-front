@@ -39,6 +39,7 @@ function TableFilters() {
 
   // раскоментировать после гот. редакса
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function updateTransactionForPeriod() {
     try {
       await dispatch(
@@ -52,7 +53,7 @@ function TableFilters() {
   useEffect(() => {
     updateTransactionForPeriod();
     // console.log(date)
-  }, [date]);
+  }, [date, updateTransactionForPeriod]);
 
   return (
     <div className="selectContainer">
