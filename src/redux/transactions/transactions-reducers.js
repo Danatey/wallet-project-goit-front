@@ -15,12 +15,6 @@ const categoriesList = createReducer(null, {
   [getTransactionsList.fulfilled]: (_, { payload }) => payload,
 });
 
-const balance = createReducer(0, {
-  [addTransaction.fulfilled]: (_, { payload }) => payload.balance,
-  [fetchTransactions.fulfilled]: (_, { payload }) =>
-    payload.length ? payload[0].balance : 0,
-});
-
 const items = createReducer([], {
   [fetchTransactions.fulfilled]: (_, { payload }) => payload,
   [addTransaction.fulfilled]: (state, { payload }) => [payload, ...state],
@@ -48,7 +42,6 @@ const error = createReducer(null, {
 });
 
 export default combineReducers({
-  balance,
   stats,
   categoriesList,
   items,

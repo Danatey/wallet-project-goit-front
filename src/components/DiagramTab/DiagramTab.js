@@ -1,8 +1,10 @@
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import TableStats from "./TableStats";
 import PieChart from "./PieChart";
 import s from "./diagramm.module.scss";
 import { transactionsSelectors } from "../../redux/transactions/";
+import { authSelectors, authOperations } from "../../redux/auth/";
 
 const colors = [
   "#FED057",
@@ -17,9 +19,13 @@ const colors = [
 ];
 
 export const DiagramTab = () => {
-  // const balance = useSelector((state) => state.auth.user?.balance)
-  const balance = useSelector(transactionsSelectors.getBalance);
+  const dispatch = useDispatch();
+  const balance = useSelector(authSelectors.getBalance);
   const stats = useSelector(transactionsSelectors.getCategoriesStats);
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
 
   return (
     <>
