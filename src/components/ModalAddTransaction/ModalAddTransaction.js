@@ -75,7 +75,7 @@ function ModalAddTransaction() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    console.log('123')
     try {
       await dispatch(
         addTransaction({
