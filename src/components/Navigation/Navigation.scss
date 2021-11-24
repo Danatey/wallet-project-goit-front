@@ -3,7 +3,7 @@
 
 .nav_container {
   padding-top: 10px;
-  padding: 8px 30px;
+  padding: 12px 30px; 
 
   @media screen and (min-width: $DesktopWidth) {
    padding-top:  20px;
@@ -19,7 +19,6 @@
   @media screen and (min-width: $TabletWidth) and (max-width: $DesktopWidth)  {
     display: block;  
     padding: 0;
-    // margin-bottom: 20px;
     }
   
     @media screen  and (min-width: $DesktopWidth) {
@@ -30,7 +29,6 @@
     }
 
 .nav_list li {
-  width: 33.33333%;
   height: 100%;
   // display: flex;
   // justify-content: center;
@@ -45,32 +43,23 @@
 .nav_link {
   width: 100%;
   display: flex;
+  gap: 23px;
   align-items: center;
 
   @media screen  and (max-width: $MaxMobileWidth) {
      justify-content: center;
+     gap: 30px;
 }
 }
 
-.nav_link_active .nav_img {
-    pointer-events: none;
-    fill: #ffffff;
-    background-color: #fff;
-    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
-  }
-
-.nav_img {
+.nav_icon {
   height: 44px;
   width: 44px;
 
-  // &:hover {
-  //   fill: #ffffff;
-  // }
-  @media screen  and (min-width: $MaxMobileWidth) {
+  @media screen and (min-width: $MaxMobileWidth) {
     height: 24px;
     width: 24px;
-    margin-right: 25px;
-}
+  }
 }
 
 .nav_text {
@@ -82,19 +71,31 @@
   line-height: 27px;
   color: #000000;
 
-  @media screen  and (max-width: $MaxMobileWidth) {
-  display: none;
-}
-}
-
-.nav_link_active .nav_text {
-  font-weight: 700;
-}
-
-
-.nav_link_currency {
-  @media screen  and (min-width: $MaxMobileWidth) {
+  @media screen and (max-width: $MaxMobileWidth) {
     display: none;
   }
 }
 
+.nav_link_active {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .nav_text {
+    font-weight: 700;
+  }
+
+  .nav_icon {
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  }
+
+  .nav_icon path {
+    fill: #4a56e2;
+  }
+}
+
+.nav_link_currency {
+  @media screen and (min-width: $MaxMobileWidth) {
+    display: none;
+  }
+}
