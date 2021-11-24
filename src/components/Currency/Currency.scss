@@ -1,43 +1,34 @@
 @import "../../common/main.scss";
 
 
-
-// .currency_body {
-
-//   background-image: url('../../images/svg/wave.svg'); 
-//   background: linear-gradient(
-//     180deg,
-//     rgba(255, 255, 255, 0.2) -8.67%,
-//     rgba(255, 255, 255, 0) 116.22%
-//   );
-//   @media screen and (min-width: $DesktopWidth) {
-//       background: linear-gradient(
-//         180deg,
-//         rgba(255, 255, 255, 0.2) -7.46%,
-//         rgba(255, 255, 255, 0) 100%
-//       );
-//     }
-// }
-
-
-@media screen and (min-width: $DesktopWidth) {
+@media screen and (max-width: $MaxMobileWidth) {
   .currency_sidebar {
-    width: 348px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
   }
 }
+
 @media screen and (min-width: $TabletWidth) and (max-width: $DesktopWidth) {
-  .currency_sidebar {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-bottom: 20px;
+    .currency_sidebar {
+      margin-bottom: 0px;
+    }
   }
-
-  .currency_body {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.2) -7.46%,
-      rgba(255, 255, 255, 0) 100%
-    );
+  
+  @media screen and (min-width: $TabletWidth) {
+    .currency_sidebar {
+      display: flex;
+      margin-bottom: 20px;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+    }
   }
-}
+  
+  @media screen and (min-width: $DesktopWidth) {
+    .currency_sidebar {
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 0px 70px 0px 0px;
+    }
+  }
