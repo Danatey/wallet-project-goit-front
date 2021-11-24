@@ -4,17 +4,9 @@ import { toast } from "react-toastify";
 import cookie from "../../services/cookies";
 
 import { BACK_END } from "../../assets/API/BACK_END";
+import Cookies from "js-cookie";
 
-const refresh_token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = "";
-  },
-};
-
-const access_token = {
+const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
@@ -31,13 +23,6 @@ export const register = createAsyncThunk(
         `${BACK_END}/api/users/signup`,
         credentials
       );
-      // console.log(cookie);
-      // console.log(response.data);
-      cookie.save("id", response.data.id, {
-        expires: 7,
-      });
-      refresh_token.set(response.data.refresh_token);
-      access_token.set(response.data.refresh_token);
       return response.data;
     } catch (err) {
       if (err.response.status === 409) {
@@ -66,8 +51,7 @@ export const logIn = createAsyncThunk(
       cookie.save("refresh_token", response.data.refresh_token, {
         expires: 7,
       });
-      refresh_token.set(response.data.refresh_token);
-      access_token.set(response.data.access_token);
+      token.set(response.data.access_token);
       return response.data;
     } catch (err) {
       if (err.response.status === 401) {
@@ -94,8 +78,8 @@ export const logOut = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       await axios.post(`${BACK_END}/api/users/logout`);
-      refresh_token.unset();
-      access_token.unset();
+      token.unset();
+      cookie.remove("refresh_token");
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
@@ -105,14 +89,14 @@ export const logOut = createAsyncThunk(
 export const getCurrentUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
-    const persistedRefreshToken = thunkAPI.getState().auth.refresh_token;
+    const refreshToken = cookie.get("refresh_token");
     const persistedAccessToken = thunkAPI.getState().auth.access_token;
 
-    if (persistedRefreshToken === null || persistedAccessToken === null) {
+    if (refreshToken === null || persistedAccessToken === null) {
       return thunkAPI.rejectWithValue();
     }
-    refresh_token.set(persistedRefreshToken);
-    access_token.set(persistedAccessToken);
+
+    token.set(persistedAccessToken);
     try {
       const { data: response } = await axios.get(`${BACK_END}/api/users/info`);
       return response.data;
