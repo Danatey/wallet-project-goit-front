@@ -4,7 +4,7 @@ import { useSortBy, useTable, usePagination } from "react-table";
 import Media from "react-media";
 import { COLUMNS } from "./columns";
 import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
-import { BiChevronsLeft, BiChevronRight } from "react-icons/bi";
+// import { BiChevronsLeft, BiChevronRight } from "react-icons/bi";
 import { nanoid } from "nanoid";
 import {
   transactionsOperations,
@@ -29,19 +29,22 @@ const HomeTab = () => {
     rows,
     prepareRow,
     page,
-    canNextPage,
-    canPreviousPage,
-    pageOptions,
-    pageCount,
-    gotoPage,
-    nextPage,
-    previousPage,
-    setPageSize,
-    state: { pageIndex, pageSize },
+    // canNextPage,
+    // canPreviousPage,
+    // pageOptions,
+    // pageCount,
+    // gotoPage,
+    // nextPage,
+    // previousPage,
+    // setPageSize,
+    // state: { pageIndex, pageSize },
   } = useTable(
-    { columns, data, initialState: { pageSize: 5 } },
+    {
+      columns, data
+      // , initialState: { pageSize: 5 }
+    },
     useSortBy,
-    usePagination
+    // usePagination
   );
 
   useEffect(() => {
@@ -129,7 +132,7 @@ const HomeTab = () => {
                     </tbody>
                   </table>
                 )}
-
+{/* 
                 <div className="HomeTab-secondary_pagination">
                   <button
                     disabled={!canPreviousPage}
@@ -146,7 +149,7 @@ const HomeTab = () => {
                   <span>
                     Page {pageIndex + 1} of {pageOptions.length}
                   </span>
-                </div>
+                </div> */}
               </div>
             )}
           </Media>

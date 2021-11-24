@@ -1,9 +1,7 @@
 import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSortBy, useTable } from "react-table";
-import Media from "react-media";
 import { COLUMNS } from "./columns";
-import { nanoid } from "nanoid";
 import {
   transactionsOperations,
   transactionsSelectors,
