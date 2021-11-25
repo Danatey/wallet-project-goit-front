@@ -1,0 +1,27 @@
+@import "../../common/main.scss";
+
+.user-info-container {
+  font-family: "Circe";
+  position: relative;
+  color: #000;
+}
+.user-info-global {
+  vertical-align: middle;
+  margin-right: 10px;
+  color: #bdbdbd;
+}
+.user-info-button {
+  margin-right: 10px;
+}
+.Header__username {
+  margin-right: 10px;
+  font-family: "Circe";
+
+  color: #bdbdbd;
+
+  @media screen and (min-width: $TabletWidth) {
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 1px solid;
+  }
+}

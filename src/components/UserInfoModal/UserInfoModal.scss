@@ -1,0 +1,26 @@
+@import "../../common/main.scss";
+.user-info-modal-list {
+  position: absolute;
+  min-width: 300px;
+  z-index: 100;
+  top: 150%;
+  right: -30%;
+  padding: 15px;
+  border-radius: 7%;
+
+  background-color: var(--primary-background-color);
+}
+.user-info-modal-wraper {
+  padding: 5px;
+  border-radius: 7%;
+  border: 1px solid var(--placeholder-text);
+}
+.user-info-modal-headline {
+  text-align: center;
+}
+.user-info-modal-close {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--placeholder-text);
+}

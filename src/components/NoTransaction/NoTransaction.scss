@@ -1,0 +1,19 @@
+@import "../../common/main.scss";
+
+.no-transaction-container {
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+  @media screen and (min-width: 1280px) {
+    width: 700px;
+    margin-top: 100px;
+  }
+}
+.no-transaction-message {
+  font-family: Poppins;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0em;
+}

@@ -1,0 +1,44 @@
+@import "../../common/main.scss";
+
+.balance_container {
+  min-width: 280px;
+  max-width: 350px;
+  padding: 8px 30px;
+  background-color: var(--primary-background-color);
+  border-radius: 30px;
+  margin-bottom: 0px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media screen and (min-width: $TabletWidth) and (max-width: $DesktopWidth) {
+    padding: 10px 40px;
+    margin-right: 20px;
+  }
+  @media screen and (min-width: $DesktopWidth) {
+    margin-bottom: 30px;
+  }
+  
+}
+
+.balance_title {
+  font-family: Circe, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  margin: 0;
+  text-transform: uppercase;
+  color: #a6a6a6;
+}
+
+.balance_result {
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 45px;
+  margin: 0;
+  align-items: center;
+  color: #000000;
+}
+
+  
+

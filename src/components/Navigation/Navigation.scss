@@ -1,0 +1,101 @@
+@import "../../common/main.scss";
+
+
+.nav_container {
+  padding-top: 10px;
+  padding: 12px 30px; 
+
+  @media screen and (min-width: $DesktopWidth) {
+   padding-top:  20px;
+  }
+}
+.nav_list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 0;
+  width: 100%;
+
+  @media screen and (min-width: $TabletWidth) and (max-width: $DesktopWidth)  {
+    display: block;  
+    padding: 0;
+    }
+  
+    @media screen  and (min-width: $DesktopWidth) {
+      display: block;  
+      margin-bottom: 30px;
+  
+    }
+    }
+
+.nav_list li {
+  height: 100%;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  @media screen  and (min-width: $MaxMobileWidth) {
+     &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+}
+}
+
+.nav_link {
+  width: 100%;
+  display: flex;
+  gap: 23px;
+  align-items: center;
+
+  @media screen  and (max-width: $MaxMobileWidth) {
+     justify-content: center;
+     gap: 30px;
+}
+}
+
+.nav_icon {
+  height: 44px;
+  width: 44px;
+
+  @media screen and (min-width: $MaxMobileWidth) {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.nav_text {
+  display: block;
+  font-family: Poppins, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  color: #000000;
+
+  @media screen and (max-width: $MaxMobileWidth) {
+    display: none;
+  }
+}
+
+.nav_link_active {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .nav_text {
+    font-weight: 700;
+  }
+
+  .nav_icon {
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  }
+
+  .nav_icon path {
+    fill: #4a56e2;
+  }
+}
+
+.nav_link_currency {
+  @media screen and (min-width: $MaxMobileWidth) {
+    display: none;
+  }
+}

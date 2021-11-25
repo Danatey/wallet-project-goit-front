@@ -1,0 +1,78 @@
+@import "../../common/main.scss";
+
+.Button {
+  display: inline-block;
+  height: 50px;
+  width: 280px;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: var(--primary-background-color);
+
+  border-radius: 20px;
+  text-align: center;
+
+  transition: 100ms linear, color 100ms linear, border-color 100ms linear;
+
+  &.accent {
+    background-color: var(--accent-color-grean);
+    color: var(--primary-background-color);
+    border-color: var(--accent-color-grean);
+
+    &:hover {
+      background-color: var(--accent-color-grean);
+      border-color: var(--accent-color-grean);
+    }
+  }
+}
+
+.register_btn {
+  @extend .Button;
+  background-color: var(--accent-color-grean);
+  border: transparent;
+
+  &.accent {
+    box-shadow: 1px 3px 5px rgb(7, 112, 107);
+  }
+
+  &:hover {
+    background-color: #05bd95;
+  }
+}
+
+.logo_btn {
+  @extend .Button;
+  background-color: var(--accent-color-grean);
+  border: transparent;
+  margin-bottom: 20px;
+
+  &.accent {
+    box-shadow: 1px 3px 5px rgb(7, 112, 107);
+  }
+
+  &:hover {
+    background-color: #05bd95;
+  }
+}
+
+.main_btn {
+  @extend .Button;
+  color: var(--accent-color-blue);
+  background-color: var(--primary-background-color);
+  border: 2px solid var(--accent-color-blue);
+  padding-top: 10px;
+
+  &:hover {
+    color: var(--primary-background-color);
+    background-color: var(--accent-color-blue);
+  }
+}
+
+.mr-20 {
+  margin-bottom: 20px;
+}
